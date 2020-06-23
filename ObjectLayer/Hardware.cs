@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace BusinessLayer
+namespace ObjectLayer
 {
-    public class HardwarePart
+    public class Hardware
     {
         public int ID { get; set; }
         public string Parttype { get; set; }

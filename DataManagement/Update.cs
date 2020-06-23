@@ -3,34 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SQLite;
 using ObjectLayer;
+using System.Data.SQLite;
 using System.Data;
 
 namespace DataManagement
 {
-    public class Insert
+    public class Update
     {
-        
-
         private static SQLiteConnection con = new SQLiteConnection(SharedFields.DBPath);
         private static SQLiteCommand cmd;
-        private static SQLiteDataAdapter daad;
-        private static SQLiteDataReader dare;
-        
-        public static bool InsertDevice(Computer Computer)
+        public static bool UpdateDevice(Computer Computer)
         {
-            bool insertresult = false;
+            bool updateresult = false;
             try
             {
                 con.Open();
                 if(con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("INSERT INTO Computers " +
-                        " (Infopren_Code,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
-                        "CD_Price,CD_Date,CD_Status)" +
-                        " VALUES (@Infopren_Code,@Serial_Number,@CD_Name,@CD_Phone,@CD_Device_company," +
-                        "@CD_Model,@CD_Price,@CD_Date,@CD_Status)", con);
+                    cmd = new SQLiteCommand("UPDATE Computers SET Infopren_Code = @Infopren_Code," +
+                        "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
+                        "CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
+                        "CD_Price=@CD_Price,CD_Date=@CD_Date," +
+                        "CD_Status=@CD_Status " +
+                        "WHERE Infopren_Code='" +Computer.InformationProvioslyEnteredCode + "'", con);
 
                     cmd.Parameters.AddWithValue("@Infopren_Code", Computer.InformationProvioslyEnteredCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Computer.SerialNumber);
@@ -42,10 +38,9 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@CD_Date", Computer.Date);
                     cmd.Parameters.AddWithValue("@CD_Status", Computer.Status);
                     cmd.ExecuteNonQuery();
+                    updateresult = true;
                     con.Close();
-                    insertresult = true;
                 }
-                
             }
             catch (Exception)
             {
@@ -53,26 +48,23 @@ namespace DataManagement
                 
             }
 
-
-            
-            
-            return insertresult;
-            
+            return updateresult;
         }
 
-        public static bool InsertDevice(Laptop Laptop)
+        public static bool UpdateDevice(Laptop Laptop)
         {
-            bool insertresult = false;
+            bool updateresult = false;
             try
             {
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("INSERT INTO Laptops " +
-                        " (Infopren_Code,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
-                        "CD_Price,CD_Date,CD_Status)" +
-                        " VALUES (@Infopren_Code,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
-                        "@CD_Model,@CD_Price,@CD_Date,@CD_Status)", con);
+                    cmd = new SQLiteCommand("UPDATE Laptops SET Infopren_Code = @Infopren_Code," +
+                        "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
+                        "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
+                        "CD_Price=@CD_Price,CD_Date=@CD_Date," +
+                        "CD_Status=@CD_Status " +
+                        "WHERE Infopren_Code='" + Laptop.InformationProvioslyEnteredCode + "'", con);
 
                     cmd.Parameters.AddWithValue("@Infopren_Code", Laptop.InformationProvioslyEnteredCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Laptop.SerialNumber);
@@ -85,8 +77,8 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@CD_Date", Laptop.Date);
                     cmd.Parameters.AddWithValue("@CD_Status", Laptop.Status);
                     cmd.ExecuteNonQuery();
+                    updateresult = true;
                     con.Close();
-                    insertresult = true;
                 }
             }
             catch (Exception)
@@ -95,23 +87,23 @@ namespace DataManagement
 
             }
 
-
-            return insertresult;
+            return updateresult;
         }
 
-        public static bool InsertDevice(Mobile Mobile)
+        public static bool UpdateDevice(Mobile Mobile)
         {
-            bool insertresult = false;
+            bool updateresult = false;
             try
             {
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("INSERT INTO Mobiles " +
-                        " (Infopren_Code,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
-                        "CD_Price,CD_Date,CD_Status)" +
-                        " VALUES (@Infopren_Code,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
-                        "@CD_Model,@CD_Price,@CD_Date,@CD_Status)", con);
+                    cmd = new SQLiteCommand("UPDATE Mobiles SET Infopren_Code = @Infopren_Code," +
+                        "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
+                        "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
+                        "CD_Price=@CD_Price,CD_Date=@CD_Date," +
+                        "CD_Status=@CD_Status " +
+                        "WHERE Infopren_Code='" + Mobile.InformationProvioslyEnteredCode + "'", con);
 
                     cmd.Parameters.AddWithValue("@Infopren_Code", Mobile.InformationProvioslyEnteredCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Mobile.SerialNumber);
@@ -124,8 +116,8 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@CD_Date", Mobile.Date);
                     cmd.Parameters.AddWithValue("@CD_Status", Mobile.Status);
                     cmd.ExecuteNonQuery();
+                    updateresult = true;
                     con.Close();
-                    insertresult = true;
                 }
             }
             catch (Exception)
@@ -134,23 +126,23 @@ namespace DataManagement
 
             }
 
-
-            return insertresult;
+            return updateresult;
         }
 
-        public static bool InsertDevice(Tablet Tablet)
+        public static bool UpdateDevice(Tablet Tablet)
         {
-            bool insertresult = false;
+            bool updateresult = false;
             try
             {
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("INSERT INTO Tablets " +
-                        " (Infopren_Code,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
-                        "CD_Price,CD_Date,CD_Status)" +
-                        " VALUES (@Infopren_Code,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
-                        "@CD_Model,@CD_Price,@CD_Date,@CD_Status)", con);
+                    cmd = new SQLiteCommand("UPDATE Tablets SET Infopren_Code = @Infopren_Code," +
+                        "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
+                        "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
+                        "CD_Price=@CD_Price,CD_Date=@CD_Date," +
+                        "CD_Status=@CD_Status " +
+                        "WHERE Infopren_Code='" + Tablet.InformationProvioslyEnteredCode + "'", con);
 
                     cmd.Parameters.AddWithValue("@Infopren_Code", Tablet.InformationProvioslyEnteredCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Tablet.SerialNumber);
@@ -163,8 +155,8 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@CD_Date", Tablet.Date);
                     cmd.Parameters.AddWithValue("@CD_Status", Tablet.Status);
                     cmd.ExecuteNonQuery();
+                    updateresult = true;
                     con.Close();
-                    insertresult = true;
                 }
             }
             catch (Exception)
@@ -173,22 +165,22 @@ namespace DataManagement
 
             }
 
-
-            return insertresult;
+            return updateresult;
         }
-        public static bool InsertDevice(OtherDevice OtherDevice)
+        public static bool UpdateDevice(OtherDevice OtherDevice)
         {
-            bool insertresult = false;
+            bool updateresult = false;
             try
             {
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("INSERT INTO Otherdevices " +
-                        " (Infopren_Code,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
-                        "CD_Price,CD_Date,CD_Status)" +
-                        " VALUES (@Infopren_Code,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
-                        "@CD_Model,@CD_Price,@CD_Date,@CD_Status)", con);
+                    cmd = new SQLiteCommand("UPDATE Otherdevices SET Infopren_Code = @Infopren_Code," +
+                        "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
+                        "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
+                        "CD_Price=@CD_Price,CD_Date=@CD_Date," +
+                        "CD_Status=@CD_Status " +
+                        "WHERE Infopren_Code='" + OtherDevice.InformationProvioslyEnteredCode + "'", con);
 
                     cmd.Parameters.AddWithValue("@Infopren_Code", OtherDevice.InformationProvioslyEnteredCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", OtherDevice.SerialNumber);
@@ -201,8 +193,8 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@CD_Date", OtherDevice.Date);
                     cmd.Parameters.AddWithValue("@CD_Status", OtherDevice.Status);
                     cmd.ExecuteNonQuery();
+                    updateresult = true;
                     con.Close();
-                    insertresult = true;
                 }
             }
             catch (Exception)
@@ -211,8 +203,7 @@ namespace DataManagement
 
             }
 
-
-            return insertresult;
+            return updateresult;
         }
     }
 }

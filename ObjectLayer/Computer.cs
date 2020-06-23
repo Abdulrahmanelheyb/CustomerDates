@@ -5,28 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace BusinessLayer
+namespace ObjectLayer
 {
     public class Computer : Device
     {
         public Computer()
         {
-
+            
         }
-
-        public static List<HardwarePart> HardwareParts = new List<HardwarePart>();
-        public static List<SoftwarePart> SoftwareParts = new List<SoftwarePart>();
-        public static List<string> HardwarePartsTypes = new List<string>();
-        public static List<string> SoftwarePartsTypes = new List<string>();
+        public static List<Computer> Computers = new List<Computer>();
+        
 
         public static int SumComputerPartsPrice()
         {
             int result = 0;
-            foreach (HardwarePart Hpart in HardwareParts)
+            foreach (Hardware Hpart in Hardwares)
             {
                 result += Hpart.Price;
             }
-            foreach (SoftwarePart Spart in SoftwareParts)
+            foreach (Software Spart in Softwares)
             {
                 result += Spart.Price;
             }

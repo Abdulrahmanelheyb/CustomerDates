@@ -51,14 +51,14 @@ namespace CustomerDates.Classes
                 {
                     MessageBox.Show("Device Limit Is Expired \nPlease Contact With AE3 Company.");
                 }
-
+                
                 if (devdata == null)
                 {
                     return;
                 }
                 SQLiteConnection connect = new SQLiteConnection(Globals.DBPath);
                 connect.Open();
-                if (connect.State == System.Data.ConnectionState.Open)
+                if (connect.State == ConnectionState.Open)
                 {
                     SQLiteCommand cmd = new SQLiteCommand("INSERT INTO " + tablename +
                         " (Infopren_Code,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
