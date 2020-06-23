@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ObjectLayer;
 using System.Data.SQLite;
+using System.Data;
 
 namespace DataManagement
 {
@@ -18,6 +19,21 @@ namespace DataManagement
         {
             bool searchresult = false;
 
+            try
+            {
+                con.Open();
+                if (con.State == ConnectionState.Open)
+                {
+
+
+                    con.Close();
+                    searchresult = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
 
             return searchresult;
         }
@@ -26,6 +42,21 @@ namespace DataManagement
         {
             bool searchresult = false;
 
+            try
+            {
+                con.Open();
+                if(con.State == ConnectionState.Open)
+                {
+
+
+                    con.Close();
+                    searchresult = true;
+                }
+            }
+            catch (Exception)
+            {
+    
+            }
 
             return searchresult;
         }
@@ -34,6 +65,21 @@ namespace DataManagement
         {
             bool searchresult = false;
 
+            try
+            {
+                con.Open();
+                if (con.State == ConnectionState.Open)
+                {
+
+
+                    con.Close();
+                    searchresult = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
 
             return searchresult;
         }
@@ -42,6 +88,21 @@ namespace DataManagement
         {
             bool searchresult = false;
 
+            try
+            {
+                con.Open();
+                if (con.State == ConnectionState.Open)
+                {
+
+
+                    con.Close();
+                    searchresult = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
 
             return searchresult;
         }
@@ -49,6 +110,21 @@ namespace DataManagement
         {
             bool searchresult = false;
 
+            try
+            {
+                con.Open();
+                if (con.State == ConnectionState.Open)
+                {
+
+
+                    con.Close();
+                    searchresult = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
 
             return searchresult;
         }
