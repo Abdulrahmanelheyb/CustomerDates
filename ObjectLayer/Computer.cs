@@ -30,5 +30,14 @@ namespace ObjectLayer
             
             return result;
         }
+
+
+        public override string ToString()
+        {
+            string DEVID = InformationProvioslyEnteredCode;
+            return DEVID;
+            
+        }
+
     }
 }
