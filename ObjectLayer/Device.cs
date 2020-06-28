@@ -21,7 +21,7 @@ namespace ObjectLayer
         public string Model { get; set; }
         public int Price { get; set; }
         public string Status { get; set; }
-        public DateTime Date { get { return Date; } set; }
+        public DateTime Date { get;  set; }
         public enum StatusType { Repairing, Completed, Failed }
        
 

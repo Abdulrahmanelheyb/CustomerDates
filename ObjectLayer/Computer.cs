@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace ObjectLayer
 {
     public class Computer : Device
@@ -14,7 +15,6 @@ namespace ObjectLayer
             
         }
         public static List<Computer> Computers = new List<Computer>();
-        
 
         public static int SumComputerPartsPrice()
         {
@@ -31,6 +31,7 @@ namespace ObjectLayer
             return result;
         }
 
+        
 
         public override string ToString()
         {

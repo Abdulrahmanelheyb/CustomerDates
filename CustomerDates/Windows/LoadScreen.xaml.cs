@@ -26,9 +26,9 @@ namespace CustomerDates
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Loadings.CheckIfDatabaseAvailable();
+           
             progressbarduration();
-            DataManagment.LoadUsers();
+           
 
         }
         #region Progress Bar Methods >>>>
@@ -64,10 +64,7 @@ namespace CustomerDates
             }
             if(loadproc.Value > 75)
             {
-                if(Loadings.Checkexpyd() == true && Loadings.Checkdevslmt() == true)
-                {
-                    Environment.Exit(0);
-                }
+                
             }
         }
         #endregion

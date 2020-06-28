@@ -56,7 +56,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Assets\ICON_Windows_256x256.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Assets\ICON_Windows_256x256.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>CustomerDates.App</StartupObject>
@@ -122,32 +122,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\DataManagment.cs" />
-    <Compile Include="Classes\HardwareParts.cs" />
-    <Compile Include="Classes\Loadings.cs" />
-    <Compile Include="Classes\MainWindowMethods.cs" />
-    <Compile Include="Classes\SoftwareParts.cs" />
-    <Compile Include="Pages\About.xaml.cs">
-      <DependentUpon>About.xaml</DependentUpon>
+    <Compile Include="ObjectsUI\ComputerUI.cs" />
+    <Compile Include="ObjectsUI\LaptopUI.cs" />
+    <Compile Include="ObjectsUI\MobileUI.cs" />
+    <Compile Include="ObjectsUI\TabletUI.cs" />
+    <Compile Include="MainWindow.cs" />
+    <Compile Include="DockPanelLeftMW.cs" />
+    <Compile Include="MainWindowControls\DockPanelLeft.xaml.cs">
+      <DependentUpon>DockPanelLeft.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ReportDevice.xaml.cs">
+    <Compile Include="Windows\ReportDevice.xaml.cs">
       <DependentUpon>ReportDevice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Tools.xaml.cs">
-      <DependentUpon>Tools.xaml</DependentUpon>
+    <Compile Include="ObjectsUI\DeviceRow.xaml.cs">
+      <DependentUpon>DeviceRow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Lap_Comp_Tab_DeviceTool.xaml">
+    <Compile Include="MainWindowControls\DeviceTools.xaml.cs">
+      <DependentUpon>DeviceTools.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resources\MainWindowDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Lap_Comp_Tab_DeviceTool.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="LoadScreen.xaml">
+    <Page Include="Windows\LoadScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Login.xaml">
+    <Page Include="Windows\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,34 +164,32 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Globals.cs" />
-    <Compile Include="Classes\UniqueCode.cs" />
-    <Compile Include="Lap_Comp_Tab_DeviceTool.xaml.cs">
+    <Compile Include="Windows\Lap_Comp_Tab_DeviceTool.xaml.cs">
       <DependentUpon>Lap_Comp_Tab_DeviceTool.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoadScreen.xaml.cs">
+    <Compile Include="Windows\LoadScreen.xaml.cs">
       <DependentUpon>LoadScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Login.xaml.cs">
+    <Compile Include="Windows\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\About.xaml">
+    <Page Include="MainWindowControls\DockPanelLeft.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Settings.xaml">
+    <Page Include="Windows\ReportDevice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ReportDevice.xaml">
+    <Page Include="ObjectsUI\DeviceRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Tools.xaml">
+    <Page Include="MainWindowControls\DeviceTools.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,45 +221,45 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\176x176.png" />
-    <Resource Include="Assets\200x200.png" />
-    <Resource Include="Assets\600x600.png" />
-    <Resource Include="Assets\D2 %3b Login.png" />
-    <Resource Include="Assets\LoginBTN.png" />
+    <Resource Include="Resources\Assets\176x176.png" />
+    <Resource Include="Resources\Assets\200x200.png" />
+    <Resource Include="Resources\Assets\600x600.png" />
+    <Resource Include="Resources\Assets\D2 %3b Login.png" />
+    <Resource Include="Resources\Assets\LoginBTN.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Down.png" />
-    <Resource Include="Assets\Top.png" />
+    <Resource Include="Resources\Assets\Down.png" />
+    <Resource Include="Resources\Assets\Top.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Exit Icon %28Program%29.png" />
+    <Resource Include="Resources\Assets\Exit Icon %28Program%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Exit Black.png" />
+    <Resource Include="Resources\Assets\Exit Black.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\NewDeviceDsgn.png" />
+    <Resource Include="Resources\Assets\NewDeviceDsgn.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\ICON_Windows_256x256.ico" />
+    <Resource Include="Resources\Assets\ICON_Windows_256x256.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Arrow.png" />
+    <Resource Include="Resources\Assets\Arrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Needs List In Design.png" />
+    <Resource Include="Resources\Assets\Needs List In Design.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Total financial in design.png" />
+    <Resource Include="Resources\Assets\Total financial in design.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Menu blue.png" />
+    <Resource Include="Resources\Assets\Menu blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Exit Blue.png" />
+    <Resource Include="Resources\Assets\Exit Blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Menu.png" />
+    <Resource Include="Resources\Assets\Menu.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
@@ -271,61 +274,58 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Minimize icon.png" />
+    <Resource Include="Resources\Assets\Minimize icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Minimize icon blue.png" />
+    <Resource Include="Resources\Assets\Minimize icon blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\homebtn.png" />
+    <Resource Include="Resources\Assets\homebtn.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\homebtnmousehover.png" />
+    <Resource Include="Resources\Assets\homebtnmousehover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\homebtnpressed.png" />
+    <Resource Include="Resources\Assets\homebtnpressed.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Maximize.png" />
+    <Resource Include="Resources\Assets\Maximize.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Maximize Blue.png" />
+    <Resource Include="Resources\Assets\Maximize Blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Arrow Blue.png" />
-    <Resource Include="Assets\Arrow White.png" />
+    <Resource Include="Resources\Assets\Arrow Blue.png" />
+    <Resource Include="Resources\Assets\Arrow White.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Add White.png" />
-    <Resource Include="Assets\Add Blue.png" />
+    <Resource Include="Resources\Assets\Add White.png" />
+    <Resource Include="Resources\Assets\Add Blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Delete ICON Blue.png" />
-    <Resource Include="Assets\Delete ICON White.png" />
-    <Resource Include="Assets\Search Blue.png" />
-    <Resource Include="Assets\Search White.png" />
-    <Resource Include="Assets\Update Blue.png" />
-    <Resource Include="Assets\Update White.png" />
+    <Resource Include="Resources\Assets\Delete ICON Blue.png" />
+    <Resource Include="Resources\Assets\Delete ICON White.png" />
+    <Resource Include="Resources\Assets\Search Blue.png" />
+    <Resource Include="Resources\Assets\Search White.png" />
+    <Resource Include="Resources\Assets\Update Blue.png" />
+    <Resource Include="Resources\Assets\Update White.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Add Black.png" />
-    <Resource Include="Assets\Delete ICON Black.png" />
-    <Resource Include="Assets\Search Black.png" />
-    <Resource Include="Assets\Update Black.png" />
+    <Resource Include="Resources\Assets\Add Black.png" />
+    <Resource Include="Resources\Assets\Delete ICON Black.png" />
+    <Resource Include="Resources\Assets\Search Black.png" />
+    <Resource Include="Resources\Assets\Update Black.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Maximize Black.png" />
+    <Resource Include="Resources\Assets\Maximize Black.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Notes.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\View Black.png" />
-    <Resource Include="Assets\View Blue.png" />
-    <Resource Include="Assets\View White.png" />
+    <Resource Include="Resources\Assets\View Black.png" />
+    <Resource Include="Resources\Assets\View Blue.png" />
+    <Resource Include="Resources\Assets\View White.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EntityFramework">
@@ -354,12 +354,16 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\About.png" />
+    <Resource Include="Resources\Assets\About.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
       <Project>{b5b9dfba-8c05-47a9-b15d-b4f77ca77ebe}</Project>
       <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ObjectLayer\ObjectLayer.csproj">
+      <Project>{46c5e114-b24b-407d-9b62-9b2703c93657}</Project>
+      <Name>ObjectLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

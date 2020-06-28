@@ -13,16 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomerDates
+namespace CustomerDates.UserControls
 {
     /// <summary>
-    /// Interaction logic for Tools.xaml
+    /// Interaction logic for DeviceTools.xaml
     /// </summary>
-    public partial class Tools : Page
+    public partial class DeviceTools : UserControl
     {
-        public Tools()
+        public DeviceTools()
         {
             InitializeComponent();
         }
+
+        
     }
 }

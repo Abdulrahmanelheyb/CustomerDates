@@ -49,8 +49,9 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckComputer.cs" />
+    <Compile Include="ComputerData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UniqueCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ObjectLayer\ObjectLayer.csproj">

@@ -190,7 +190,7 @@
         <Canvas x:Name="Signture_cvs" HorizontalAlignment="Left" Height="84" VerticalAlignment="Top" Width="643" Margin="0,712,0,0" Background="#FFC2C2C2"/>
         <Canvas Background="White" Margin="0,795,0.2,0">
             <Border Background="White" Height="29" Width="170" BorderThickness="0,0,2,0" BorderBrush="Black"/>
-            <Image Height="28" Width="22" Canvas.Left="11" Source="Assets/600x600.png" Canvas.Top="1"/>
+            <Image Height="28" Width="22" Canvas.Left="11" Source="/Resources/Assets/600x600.png" Canvas.Top="1"/>
             <Label Canvas.Left="38" FontSize="15" FontFamily="{StaticResource cdfont}" Content="Customer Dates" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Black" Height="29"/>
             <Label Name="RaportDate" Canvas.Left="170" FontSize="15"  Content="Date :" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="{StaticResource cdfont}" Foreground="Black" Height="29" Width="308"/>
             <Label Name="Vrs" Canvas.Left="523" FontSize="15" Content="Version : 1.0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="{StaticResource cdfont}" Foreground="Black" Height="29" Width="120"/>
@@ -232,7 +232,7 @@
                                         <Setter Property="Background" TargetName="border">
 
                                             <Setter.Value>
-                                                <ImageBrush ImageSource="Assets/Exit Blue.png" />
+                                                <ImageBrush ImageSource="/Resources/Assets/Exit Blue.png" />
                                             </Setter.Value>
 
                                         </Setter>
@@ -242,7 +242,7 @@
                                         <Setter Property="Background" TargetName="border">
 
                                             <Setter.Value>
-                                                <ImageBrush ImageSource="Assets/Exit Black.png" Stretch="Uniform" />
+                                                <ImageBrush ImageSource="/Resources/Assets/Exit Black.png" Stretch="Uniform" />
                                             </Setter.Value>
 
                                         </Setter>
@@ -260,7 +260,7 @@
                 </Style>
             </Button.Resources>
             <Button.Background>
-                <ImageBrush ImageSource="Assets/Exit Icon (Program).png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="/Resources/Assets/Exit Icon (Program).png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Button  HorizontalAlignment="Right" Click="Minimizebtn_Click" x:Name="Minimizebtn" Margin="0,10,34.2,0" VerticalAlignment="Top" Width="15" Height="15" BorderBrush="{x:Null}" BorderThickness="0" Cursor="Hand">
@@ -274,7 +274,7 @@
                             <Setter Property="Background" TargetName="border">
 
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="Assets/Minimize icon blue.png" Stretch="Uniform"/>
+                                    <ImageBrush ImageSource="/Resources/Assets/Minimize icon blue.png" Stretch="Uniform"/>
                                 </Setter.Value>
 
                             </Setter>
@@ -283,7 +283,7 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Background" TargetName="border" >
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="Assets/Minimize icon.png" Stretch="Uniform"/>
+                                    <ImageBrush ImageSource="/Resources/Assets/Minimize icon.png" Stretch="Uniform"/>
                                 </Setter.Value>
                             </Setter>
 
@@ -292,7 +292,7 @@
                 </ControlTemplate>
             </Button.Template>
             <Button.Background>
-                <ImageBrush ImageSource="Assets/Minimize icon.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="/Resources/Assets/Minimize icon.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
 

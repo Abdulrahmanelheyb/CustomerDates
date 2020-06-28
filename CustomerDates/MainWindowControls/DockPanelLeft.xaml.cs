@@ -10,25 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomerDates.Pages
+namespace CustomerDates.MainWindowControls
 {
     /// <summary>
-    /// Interaction logic for About.xaml
+    /// Interaction logic for DockPanelLeft.xaml
     /// </summary>
-    public partial class About : Window
+    public partial class DockPanelLeft : UserControl
     {
-        public About()
+        public DockPanelLeft()
         {
             InitializeComponent();
-             
         }
 
-        private void Window_Deactivated(object sender, EventArgs e)
+        private void homebtn_Click(object sender, RoutedEventArgs e)
         {
-            
-            Close();
+           
+        }
+
+        public virtual void Comp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("helo");
         }
     }
 }

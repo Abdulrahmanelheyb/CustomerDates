@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomerDates.Pages
+namespace CustomerDates.UserControls
 {
     /// <summary>
-    /// Interaction logic for Settings.xaml
+    /// Interaction logic for ListItem.xaml
     /// </summary>
-    public partial class Settings : Page
+    public partial class DeviceRow : ListBoxItem
     {
-        public Settings()
+        public DeviceRow()
         {
             InitializeComponent();
         }
