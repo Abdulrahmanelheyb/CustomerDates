@@ -39,20 +39,15 @@ namespace CustomerDates
         {
             InitializeComponent();
             this.MaxHeight = SystemParameters.WorkArea.Height;
-            DockPanelLeftMW();
            
         }
+
+        
+
+        #region Window Events
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
-
-            
-
             //add to list
-
-            
-            
-            
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -87,7 +82,7 @@ namespace CustomerDates
 
 
         }
-        
+
         private void Minimizebtn_Click(object sender, RoutedEventArgs e)
         {
             if (this.WindowState == WindowState.Normal)
@@ -112,7 +107,11 @@ namespace CustomerDates
             this.Close();
         }
 
-        private void Toolsdock_MouseDown(object sender, MouseButtonEventArgs e)
+
+        #endregion
+
+        #region TopDock events
+        private void Topdock_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
@@ -120,13 +119,49 @@ namespace CustomerDates
             }
         }
 
-        
+        private void Computers_Click(object sender, RoutedEventArgs e)
+        {
+            UC_Computers uccomputers = new UC_Computers();
+            Status.Content = UC_Computers.UCGetName();
+            SetUserControl(Viewgrid,uccomputers);
+            
+        }
+        private void Laptops_Click(object sender, RoutedEventArgs e)
+        {
+            UC_Laptops uclaptops = new UC_Laptops();
+            Status.Content = UC_Laptops.UCGetName();
+            SetUserControl(Viewgrid, uclaptops);
+        }
+
+        private void Mobiles_Click(object sender, RoutedEventArgs e)
+        {
+            UC_Mobiles ucmobiles = new UC_Mobiles();
+            Status.Content = UC_Mobiles.UCGetName();
+            SetUserControl(Viewgrid, ucmobiles);
+        }
+
+        private void Tablets_Click(object sender, RoutedEventArgs e)
+        {
+            UC_Tablets uctablets = new UC_Tablets();
+            Status.Content = UC_Tablets.UCGetName();
+            SetUserControl(Viewgrid, uctablets);
+        }
+
+        private void OtherDevices_Click(object sender, RoutedEventArgs e)
+        {
+            UC_OtherDevices ucotherdevices = new UC_OtherDevices();
+            Status.Content = UC_OtherDevices.UCGetName();
+            SetUserControl(Viewgrid, ucotherdevices);
+        }
 
 
 
 
 
 
+
+
+        #endregion
 
 
     }

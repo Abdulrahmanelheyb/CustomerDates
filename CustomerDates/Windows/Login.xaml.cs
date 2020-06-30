@@ -68,6 +68,7 @@ namespace CustomerDates
             CheckUserIsCorrect();
             MainWindow mw = new MainWindow();
             mw.Show();
+            this.Close();
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -76,8 +77,7 @@ namespace CustomerDates
         }
         private void window_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadScreen los = new LoadScreen();
-            los.Close();
+            
         }
 
         private void recmovelogin_MouseDown(object sender, MouseButtonEventArgs e)
