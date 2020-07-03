@@ -35,7 +35,7 @@ namespace ObjectLayer
 
         public override string ToString()
         {
-            string DEVID = InformationProvioslyEnteredCode;
+            string DEVID = DeviceInformationCode;
             return DEVID;
             
         }

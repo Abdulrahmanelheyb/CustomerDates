@@ -5,10 +5,36 @@ namespace BusinessLayer
 {
     public class UniqueCode
     {
+        private static string Gchars = null;
+        private static string last = null;
+        private static void RandomChars()
+        {
+            last = null;
+            char[] CharCodeArray = Gchars.ToCharArray();
+            Random rdm = new Random();
+            int Charindex;
+
+            do
+            {
+                Charindex = rdm.Next(0, 11);
+                if (CharCodeArray[Charindex] != '*')
+                {
+                    last += CharCodeArray[Charindex].ToString();
+                }
+                else
+                {
+
+                }
+                CharCodeArray[Charindex] = '*';
+
+            } while (last.Length != 11);
+            
+        }
         public static bool GetCode(Device device)
         {
+            Gchars = null;
             bool rlt = false;
-            string Gchars = null;
+            
             if (string.IsNullOrEmpty(device.CustomerName) == false && string.IsNullOrWhiteSpace(device.CustomerName) == false && device.CustomerName.Length >= 2)
             {
                 Gchars += device.CustomerName[device.CustomerName.Length - 1].ToString() + device.CustomerName[device.CustomerName.Length - 2].ToString();
@@ -46,28 +72,10 @@ namespace BusinessLayer
 
             if (Gchars != null)
             {
-                string last = null;
+                
                 if (Gchars.Length == 11)
                 {
-                    char[] CharCodeArray = Gchars.ToCharArray();
-                    Random rdm = new Random();
-                    int Charindex;
-                    
-                    do
-                    {
-                        Charindex = rdm.Next(0, 11);
-                        if (CharCodeArray[Charindex] != '*')
-                        {
-                            last += CharCodeArray[Charindex].ToString();
-                        }
-                        else
-                        {
-
-                        }
-                        CharCodeArray[Charindex] = '*';
-
-                    } while (last.Length != 11);
-                    device.InformationProvioslyEnteredCode = last.ToUpper();
+                    RandomChars();
                 }
                 else
                 {
@@ -78,10 +86,11 @@ namespace BusinessLayer
                     Random rdmabc = new Random();
                     int index = rdmabc.Next(0, 26);
                     Gchars += abcchars[index];
-
+                    RandomChars();
 
                 }
-
+                if(last != null)
+                device.DeviceInformationCode = last.ToUpper();
             }
             else { throw new Exception(""); }
             return rlt;

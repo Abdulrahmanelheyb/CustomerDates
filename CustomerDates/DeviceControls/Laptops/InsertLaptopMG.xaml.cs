@@ -13,9 +13,9 @@ namespace CustomerDates.DeviceControls
     // Don't forget add print fuatures for give code to customer.
     /// </summary>
     ///SolidColorBrush((Color)ColorConverter.ConvertFormString("#0000FF"));
-    public partial class InsertComputerMG : Window
+    public partial class InsertLaptopMG : Window
     {
-        public InsertComputerMG()
+        public InsertLaptopMG()
         {
             InitializeComponent();
             statustogglelistcreator();

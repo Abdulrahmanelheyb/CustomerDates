@@ -7,7 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace CustomerDates
+namespace CustomerDates.DeviceControls
 {
     // Don't forget add print fuatures for give code to customer.
     /// </summary>

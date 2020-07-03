@@ -22,8 +22,8 @@ namespace BusinessLayer
             bool result = false;
             try
             {
-                if (string.IsNullOrEmpty(computer.InformationProvioslyEnteredCode) &&
-                    string.IsNullOrWhiteSpace(computer.InformationProvioslyEnteredCode))
+                if (string.IsNullOrEmpty(computer.DeviceInformationCode) &&
+                    string.IsNullOrWhiteSpace(computer.DeviceInformationCode))
                 {
 
                 }
@@ -87,6 +87,12 @@ namespace BusinessLayer
                result = Insert.InsertDevice(computer);
             }
             return result;
+        }
+
+        public static bool LoadComputer()
+        {
+            bool rlt = Load.LoadComputers();
+            return rlt;
         }
 
         public static void CheckHardware(Hardware hardware)

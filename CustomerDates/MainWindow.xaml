@@ -10,7 +10,7 @@
          WindowStartupLocation="CenterScreen"
         Closed="Window_Closed" WindowStyle="None" AllowsTransparency="True" AllowDrop="False"
         ResizeMode="NoResize"  KeyDown="Window_KeyDown" Loaded="Window_Loaded"
-        Background="{x:Null}" Title="Customer Dates" Width="900" >
+        Background="{x:Null}" Title="Customer Dates" MinWidth="1000" Width="1000" MinHeight="700" Height="700">
 
     <Window.Resources>
         <FontFamily x:Key="cdfont">Arial</FontFamily>

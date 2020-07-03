@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BusinessLayer;
+using CustomerDates.Classes;
+using CustomerDates.UserControls;
 
 namespace CustomerDates.DeviceControls
 {
@@ -23,6 +26,12 @@ namespace CustomerDates.DeviceControls
         public ComputersManager()
         {
             InitializeComponent();
+            if (ComputerData.LoadComputer()== true)
+            {
+                ComputerUI.GetComputerRows();
+                ComputerListBox.ItemsSource = ComputerUI.DeviceRows;
+            }
+            
         }
 
         public static string UCGetName()
@@ -57,8 +66,7 @@ namespace CustomerDates.DeviceControls
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            DeleteComputerMG delete = new DeleteComputerMG();
-            delete.Show();
+            
         }
 
         private void ReportButton_Click(object sender, RoutedEventArgs e)

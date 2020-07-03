@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomerDates.UserControls
+namespace CustomerDates.DeviceControls
 {
     /// <summary>
     /// Interaction logic for HardwarePartInformations.xaml

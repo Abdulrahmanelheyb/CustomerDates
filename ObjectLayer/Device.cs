@@ -13,7 +13,7 @@ namespace ObjectLayer
         public static List<Software> Softwares = new List<Software>();
         public static List<string> HardwaresTypes = new List<string>();
         public static List<string> SoftwaresTypes = new List<string>();
-        public string InformationProvioslyEnteredCode { get; set; }
+        public string DeviceInformationCode { get; set; }
         public string CustomerName { get; set; }
         public string CustomerPhoneNumber { get; set; }
         public string SerialNumber { get; set; }

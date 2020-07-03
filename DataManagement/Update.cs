@@ -26,9 +26,9 @@ namespace DataManagement
                         "CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
                         "CD_Price=@CD_Price,CD_Date=@CD_Date," +
                         "CD_Status=@CD_Status " +
-                        "WHERE Infopren_Code='" +Computer.InformationProvioslyEnteredCode + "'", con);
+                        "WHERE Infopren_Code='" +Computer.DeviceInformationCode + "'", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Computer.InformationProvioslyEnteredCode);
+                    cmd.Parameters.AddWithValue("@Infopren_Code", Computer.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Computer.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Computer.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Computer.CustomerPhoneNumber);
@@ -64,9 +64,9 @@ namespace DataManagement
                         "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
                         "CD_Price=@CD_Price,CD_Date=@CD_Date," +
                         "CD_Status=@CD_Status " +
-                        "WHERE Infopren_Code='" + Laptop.InformationProvioslyEnteredCode + "'", con);
+                        "WHERE Infopren_Code='" + Laptop.DeviceInformationCode + "'", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Laptop.InformationProvioslyEnteredCode);
+                    cmd.Parameters.AddWithValue("@Infopren_Code", Laptop.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Laptop.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Laptop.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Laptop.CustomerPhoneNumber);
@@ -103,9 +103,9 @@ namespace DataManagement
                         "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
                         "CD_Price=@CD_Price,CD_Date=@CD_Date," +
                         "CD_Status=@CD_Status " +
-                        "WHERE Infopren_Code='" + Mobile.InformationProvioslyEnteredCode + "'", con);
+                        "WHERE Infopren_Code='" + Mobile.DeviceInformationCode + "'", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Mobile.InformationProvioslyEnteredCode);
+                    cmd.Parameters.AddWithValue("@Infopren_Code", Mobile.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Mobile.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Mobile.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Mobile.CustomerPhoneNumber);
@@ -142,9 +142,9 @@ namespace DataManagement
                         "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
                         "CD_Price=@CD_Price,CD_Date=@CD_Date," +
                         "CD_Status=@CD_Status " +
-                        "WHERE Infopren_Code='" + Tablet.InformationProvioslyEnteredCode + "'", con);
+                        "WHERE Infopren_Code='" + Tablet.DeviceInformationCode + "'", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Tablet.InformationProvioslyEnteredCode);
+                    cmd.Parameters.AddWithValue("@Infopren_Code", Tablet.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Tablet.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Tablet.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Tablet.CustomerPhoneNumber);
@@ -180,9 +180,9 @@ namespace DataManagement
                         "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
                         "CD_Price=@CD_Price,CD_Date=@CD_Date," +
                         "CD_Status=@CD_Status " +
-                        "WHERE Infopren_Code='" + OtherDevice.InformationProvioslyEnteredCode + "'", con);
+                        "WHERE Infopren_Code='" + OtherDevice.DeviceInformationCode + "'", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", OtherDevice.InformationProvioslyEnteredCode);
+                    cmd.Parameters.AddWithValue("@Infopren_Code", OtherDevice.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", OtherDevice.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", OtherDevice.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", OtherDevice.CustomerPhoneNumber);

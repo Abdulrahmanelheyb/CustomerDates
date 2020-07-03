@@ -131,19 +131,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DeviceControls\Computers\InsertComputerMG.xaml.cs">
+      <DependentUpon>InsertComputerMG.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindowAlterMethods.cs" />
     <Compile Include="ObjectsUI\ComputerUI.cs" />
     <Compile Include="ObjectsUI\LaptopUI.cs" />
     <Compile Include="ObjectsUI\MobileUI.cs" />
     <Compile Include="ObjectsUI\TabletUI.cs" />
-    <Compile Include="DeviceControls\Computers\DeleteComputerMG.xaml.cs">
-      <DependentUpon>DeleteComputerMG.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DeviceControls\Computers\UpdateComputerMG.xaml.cs">
       <DependentUpon>UpdateComputerMG.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeviceControls\Computers\InsertComputerMG.xaml.cs">
-      <DependentUpon>InsertComputerMG.xaml</DependentUpon>
+    <Compile Include="DeviceControls\Laptops\InsertLaptopMG.xaml.cs">
+      <DependentUpon>InsertLaptopMG.xaml</DependentUpon>
     </Compile>
     <Compile Include="DeviceControls\HardwarePartInformations.xaml.cs">
       <DependentUpon>HardwarePartInformations.xaml</DependentUpon>
@@ -172,6 +172,10 @@
     <Compile Include="DeviceControls\DeviceRow.xaml.cs">
       <DependentUpon>DeviceRow.xaml</DependentUpon>
     </Compile>
+    <Page Include="DeviceControls\Computers\InsertComputerMG.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\DeviceManagerDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,15 +196,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DeviceControls\Computers\DeleteComputerMG.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="DeviceControls\Computers\UpdateComputerMG.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DeviceControls\Computers\InsertComputerMG.xaml">
+    <Page Include="DeviceControls\Laptops\InsertLaptopMG.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

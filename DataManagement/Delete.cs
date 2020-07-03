@@ -23,7 +23,7 @@ namespace DataManagement
                 if(con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("DELETE FROM Computers WHERE Infopren_Code='" + 
-                        Computer.InformationProvioslyEnteredCode + "'", con);
+                        Computer.DeviceInformationCode + "'", con);
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
@@ -42,7 +42,7 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("DELETE FROM Laptops WHERE Infopren_Code='" +
-                        Laptop.InformationProvioslyEnteredCode + "'", con);
+                        Laptop.DeviceInformationCode + "'", con);
                     cmd.ExecuteNonQuery();
 
                     con.Close();
@@ -62,7 +62,7 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("DELETE FROM Mobiles WHERE Infopren_Code='" +
-                        Mobile.InformationProvioslyEnteredCode + "'", con);
+                        Mobile.DeviceInformationCode + "'", con);
                     cmd.ExecuteNonQuery();
 
                     con.Close();
@@ -82,7 +82,7 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("DELETE FROM Tablets WHERE Infopren_Code='" +
-                        Tablet.InformationProvioslyEnteredCode + "'", con);
+                        Tablet.DeviceInformationCode + "'", con);
                     cmd.ExecuteNonQuery();
 
                     con.Close();
@@ -102,7 +102,7 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("DELETE FROM Otherdevices WHERE Infopren_Code='" +
-                        OtherDevice.InformationProvioslyEnteredCode + "'", con);
+                        OtherDevice.DeviceInformationCode + "'", con);
                     cmd.ExecuteNonQuery();
 
                     con.Close();

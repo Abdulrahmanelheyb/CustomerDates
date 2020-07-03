@@ -13,8 +13,7 @@ namespace DataManagement
     {
         private static SQLiteConnection con = new SQLiteConnection(SharedFields.DBPath);
         private static SQLiteCommand cmd;
-        private static SQLiteDataAdapter daad;
-        private static SQLiteDataReader dare;
+        private static SQLiteDataReader dare = null;
         public static bool LoadComputers()
         {
             bool loadresult = false;
@@ -30,11 +29,15 @@ namespace DataManagement
                     dare = cmd.ExecuteReader();
                     while (dare.Read())
                     {
+                        
                         computer = new Computer();
-                        computer.InformationProvioslyEnteredCode = dare.GetString(0);
-                        computer.SerialNumber = dare.GetString(1);
+                        computer.DeviceInformationCode = dare.GetString(0);
+                        if (dare.IsDBNull(1) == false)
+                        {
+                            computer.SerialNumber = dare.GetString(1).ToString();
+                        }
                         computer.CustomerName = dare.GetString(2);
-                        computer.CustomerPhoneNumber = dare.GetString(3);
+                        computer.CustomerPhoneNumber = dare.GetInt64(3).ToString();
                         computer.DeviceCompany = dare.GetString(4);
                         computer.Model = dare.GetString(5);
                         computer.Price = dare.GetInt32(6);
@@ -47,9 +50,9 @@ namespace DataManagement
                 }
                 
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                
+                throw;
             }
             return loadresult;
         }
@@ -69,7 +72,7 @@ namespace DataManagement
                     while (dare.Read())
                     {
                         laptop = new Laptop();
-                        laptop.InformationProvioslyEnteredCode = dare.GetString(0);
+                        laptop.DeviceInformationCode = dare.GetString(0);
                         laptop.SerialNumber = dare.GetString(1);
                         laptop.CustomerName = dare.GetString(2);
                         laptop.CustomerPhoneNumber = dare.GetString(3);
@@ -107,7 +110,7 @@ namespace DataManagement
                     while (dare.Read())
                     {
                         mobile = new Mobile();
-                        mobile.InformationProvioslyEnteredCode = dare.GetString(0);
+                        mobile.DeviceInformationCode = dare.GetString(0);
                         mobile.SerialNumber = dare.GetString(1);
                         mobile.CustomerName = dare.GetString(2);
                         mobile.CustomerPhoneNumber = dare.GetString(3);
@@ -145,7 +148,7 @@ namespace DataManagement
                     while (dare.Read())
                     {
                         tablet = new Tablet();
-                        tablet.InformationProvioslyEnteredCode = dare.GetString(0);
+                        tablet.DeviceInformationCode = dare.GetString(0);
                         tablet.SerialNumber = dare.GetString(1);
                         tablet.CustomerName = dare.GetString(2);
                         tablet.CustomerPhoneNumber = dare.GetString(3);
@@ -183,7 +186,7 @@ namespace DataManagement
                     while (dare.Read())
                     {
                         otherdevice = new OtherDevice();
-                        otherdevice.InformationProvioslyEnteredCode = dare.GetString(0);
+                        otherdevice.DeviceInformationCode = dare.GetString(0);
                         otherdevice.SerialNumber = dare.GetString(1);
                         otherdevice.CustomerName = dare.GetString(2);
                         otherdevice.CustomerPhoneNumber = dare.GetString(3);
