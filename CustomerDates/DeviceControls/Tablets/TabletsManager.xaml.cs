@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomerDates.UserControls
+namespace CustomerDates.DeviceControls
 {
     /// <summary>
     /// Interaction logic for Computers.xaml
     /// </summary>
-    public partial class UC_Tablets : UserControl
+    public partial class TabletsManager : UserControl
     {
-        public UC_Tablets()
+        public TabletsManager()
         {
             InitializeComponent();
         }

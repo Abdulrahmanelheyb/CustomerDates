@@ -127,28 +127,51 @@
     <Compile Include="ObjectsUI\LaptopUI.cs" />
     <Compile Include="ObjectsUI\MobileUI.cs" />
     <Compile Include="ObjectsUI\TabletUI.cs" />
-    <Compile Include="UserControls\UC_OtherDevices.xaml.cs">
-      <DependentUpon>UC_OtherDevices.xaml</DependentUpon>
+    <Compile Include="DeviceControls\Computers\DeleteComputerMG.xaml.cs">
+      <DependentUpon>DeleteComputerMG.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UC_Tablets.xaml.cs">
-      <DependentUpon>UC_Tablets.xaml</DependentUpon>
+    <Compile Include="DeviceControls\Computers\UpdateComputerMG.xaml.cs">
+      <DependentUpon>UpdateComputerMG.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UC_Mobiles.xaml.cs">
-      <DependentUpon>UC_Mobiles.xaml</DependentUpon>
+    <Compile Include="DeviceControls\Computers\InsertComputerMG.xaml.cs">
+      <DependentUpon>InsertComputerMG.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UC_Laptops.xaml.cs">
-      <DependentUpon>UC_Laptops.xaml</DependentUpon>
+    <Compile Include="DeviceControls\HardwarePartInformations.xaml.cs">
+      <DependentUpon>HardwarePartInformations.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UC_Computers.xaml.cs">
-      <DependentUpon>UC_Computers.xaml</DependentUpon>
+    <Compile Include="DeviceControls\OtherDevices\OtherDevicesManager.xaml.cs">
+      <DependentUpon>OtherDevicesManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceControls\SoftwarePartInformations.xaml.cs">
+      <DependentUpon>SoftwarePartInformations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceControls\Tablets\TabletsManager.xaml.cs">
+      <DependentUpon>TabletsManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceControls\Mobiles\MobilesManager.xaml.cs">
+      <DependentUpon>MobilesManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceControls\Laptops\LaptopsManager.xaml.cs">
+      <DependentUpon>LaptopsManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceControls\Computers\ComputersManager.xaml.cs">
+      <DependentUpon>ComputersManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ReportDevice.xaml.cs">
       <DependentUpon>ReportDevice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ObjectsUI\DeviceRow.xaml.cs">
+    <Compile Include="DeviceControls\DeviceRow.xaml.cs">
       <DependentUpon>DeviceRow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\DeviceManagerDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\DeviceToolsResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\HardwareSoftwareUCDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -160,29 +183,45 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\UC_OtherDevices.xaml">
+    <Page Include="DeviceControls\Computers\DeleteComputerMG.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\UC_Tablets.xaml">
+    <Page Include="DeviceControls\Computers\UpdateComputerMG.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\UC_Mobiles.xaml">
+    <Page Include="DeviceControls\Computers\InsertComputerMG.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\UC_Laptops.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\UC_Computers.xaml">
+    <Page Include="DeviceControls\HardwarePartInformations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Lap_Comp_Tab_DeviceTool.xaml">
+    <Page Include="DeviceControls\OtherDevices\OtherDevicesManager.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DeviceControls\SoftwarePartInformations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeviceControls\Tablets\TabletsManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DeviceControls\Mobiles\MobilesManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DeviceControls\Laptops\LaptopsManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DeviceControls\Computers\ComputersManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\LoadScreen.xaml">
       <SubType>Designer</SubType>
@@ -200,9 +239,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Windows\Lap_Comp_Tab_DeviceTool.xaml.cs">
-      <DependentUpon>Lap_Comp_Tab_DeviceTool.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\LoadScreen.xaml.cs">
       <DependentUpon>LoadScreen.xaml</DependentUpon>
     </Compile>
@@ -217,7 +253,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ObjectsUI\DeviceRow.xaml">
+    <Page Include="DeviceControls\DeviceRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

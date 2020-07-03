@@ -49,15 +49,26 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComputerData.cs" />
+    <Compile Include="CustomerDates\CheckLogin.cs" />
+    <Compile Include="Computer\ComputerData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniqueCode.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataManagement\DataManagement.csproj">
+      <Project>{8ecf62ce-3b98-4702-bb7b-62a2f0b13d44}</Project>
+      <Name>DataManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ObjectLayer\ObjectLayer.csproj">
       <Project>{46c5e114-b24b-407d-9b62-9b2703c93657}</Project>
       <Name>ObjectLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Laptop\" />
+    <Folder Include="Mobile\" />
+    <Folder Include="OtherDevice\" />
+    <Folder Include="Tablet\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

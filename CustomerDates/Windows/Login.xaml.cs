@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using CustomerDates.Classes;
+using BusinessLayer;
 
 namespace CustomerDates
 {
@@ -18,57 +18,23 @@ namespace CustomerDates
             InitializeComponent();
         }
 
-        
-
-        private void CheckUserIsCorrect()
-        {
-            //if (DataManagment.users[0] == userbx.Text)
-            //{
-            //    if (DataManagment.pwds[0] == Passbx.Password)
-            //    {
-            //        MainWindow mw = new MainWindow();
-            //        this.Close();
-            //        mw.Show();
-            //    }
-            //    else
-            //    {
-            //        attempt++;
-            //        MessageBox.Show("Password Is False Can Try Only 3 Attempts");
-            //        if (attempt == 3)
-            //        {
-            //            MessageBox.Show("You Tried 3 Attempt the program is locked !");
-            //            Environment.Exit(0);
-            //        }
-            //    }
-            //}
-
-            //if (DataManagment.users[1] == userbx.Text)
-            //{
-            //    if (DataManagment.pwds[1] == Passbx.Password)
-            //    {
-            //        MainWindow mw = new MainWindow();
-            //        this.Close();
-            //        mw.Show();
-            //    }
-            //    else
-            //    {
-            //        attempt++;
-            //        MessageBox.Show("Password Is False Can Try Only 3 Attempts");
-            //        if (attempt == 3)
-            //        {
-            //            MessageBox.Show("You Tried 3 Attempt the program is locked !");
-            //            Environment.Exit(0);
-            //        }
-            //    }
-            //}
-        }
-
         private void loginbtn_Click(object sender, RoutedEventArgs e)
         {
-            CheckUserIsCorrect();
-            MainWindow mw = new MainWindow();
-            mw.Show();
-            this.Close();
+            try
+            {
+                if (CheckLogin.CheckUser(usertbx.Text, Passtbx.Password) == true)
+                {
+                    MainWindow mw = new MainWindow();
+                    mw.Show();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR | Login\n" + ex.Message);
+            }
+            
+            
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -97,7 +63,12 @@ namespace CustomerDates
         {
             if (e.Key == Key.Enter)
             {
-                CheckUserIsCorrect();
+                if (CheckLogin.CheckUser(usertbx.Text, Passtbx.Password) == true)
+                {
+                    MainWindow mw = new MainWindow();
+                    mw.Show();
+                    this.Close();
+                }
             }
         }
 

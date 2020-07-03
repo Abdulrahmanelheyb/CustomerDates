@@ -13,33 +13,33 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomerDates.UserControls
+namespace CustomerDates.DeviceControls
 {
     /// <summary>
     /// Interaction logic for Computers.xaml
     /// </summary>
-    public partial class UC_Computers : UserControl
+    public partial class LaptopsManager : UserControl
     {
-        public UC_Computers()
+        public LaptopsManager()
         {
             InitializeComponent();
         }
 
         public static string UCGetName()
         {
-            return "Computers";
+            return "Laptops";
         }
         private void SearchIO_Click(object sender, RoutedEventArgs e)
         {
             if (SearchPanel.Visibility ==Visibility.Visible)
             {
                 SearchPanel.Visibility = Visibility.Collapsed;
-                ComputerListBox.Margin = new Thickness(33, 0, 0, 0);
+                LaptopsListBox.Margin = new Thickness(33, 0, 0, 0);
             }
             else
             {
                 SearchPanel.Visibility = Visibility.Visible;
-                ComputerListBox.Margin = new Thickness(33,33, 0, 0);
+                LaptopsListBox.Margin = new Thickness(33,33, 0, 0);
             }
         }
     }

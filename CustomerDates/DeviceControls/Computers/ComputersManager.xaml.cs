@@ -13,33 +13,57 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomerDates.UserControls
+namespace CustomerDates.DeviceControls
 {
     /// <summary>
     /// Interaction logic for Computers.xaml
     /// </summary>
-    public partial class UC_Mobiles : UserControl
+    public partial class ComputersManager : UserControl
     {
-        public UC_Mobiles()
+        public ComputersManager()
         {
             InitializeComponent();
         }
+
         public static string UCGetName()
         {
-            return "Mobiles";
+            return "Computers";
         }
         private void SearchIO_Click(object sender, RoutedEventArgs e)
         {
             if (SearchPanel.Visibility ==Visibility.Visible)
             {
                 SearchPanel.Visibility = Visibility.Collapsed;
-                MobilesListBox.Margin = new Thickness(33, 0, 0, 0);
+                ComputerListBox.Margin = new Thickness(33, 0, 0, 0);
             }
             else
             {
                 SearchPanel.Visibility = Visibility.Visible;
-                MobilesListBox.Margin = new Thickness(33,33, 0, 0);
+                ComputerListBox.Margin = new Thickness(33,33, 0, 0);
             }
+        }
+
+        private void InsertButton_Click(object sender, RoutedEventArgs e)
+        {
+            InsertComputerMG insert = new InsertComputerMG();
+            insert.Show();
+        }
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateComputerMG update = new UpdateComputerMG();
+            update.Show();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteComputerMG delete = new DeleteComputerMG();
+            delete.Show();
+        }
+
+        private void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

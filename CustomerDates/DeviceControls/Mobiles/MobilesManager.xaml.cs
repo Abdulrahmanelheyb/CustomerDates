@@ -13,32 +13,32 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomerDates.UserControls
+namespace CustomerDates.DeviceControls
 {
     /// <summary>
     /// Interaction logic for Computers.xaml
     /// </summary>
-    public partial class UC_OtherDevices : UserControl
+    public partial class MobilesManager : UserControl
     {
-        public UC_OtherDevices()
+        public MobilesManager()
         {
             InitializeComponent();
         }
         public static string UCGetName()
         {
-            return "Other Devices";
+            return "Mobiles";
         }
         private void SearchIO_Click(object sender, RoutedEventArgs e)
         {
             if (SearchPanel.Visibility ==Visibility.Visible)
             {
                 SearchPanel.Visibility = Visibility.Collapsed;
-                OtherDevicesListBox.Margin = new Thickness(33, 0, 0, 0);
+                MobilesListBox.Margin = new Thickness(33, 0, 0, 0);
             }
             else
             {
                 SearchPanel.Visibility = Visibility.Visible;
-                OtherDevicesListBox.Margin = new Thickness(33,33, 0, 0);
+                MobilesListBox.Margin = new Thickness(33,33, 0, 0);
             }
         }
     }

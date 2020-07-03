@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using ObjectLayer;
+using DataManagement;
 
 namespace BusinessLayer
 {
@@ -16,8 +17,9 @@ namespace BusinessLayer
             
         }
 
-        public static void CheckComputer(Computer computer)
+        private static bool CheckComputer(Computer computer)
         {
+            bool result = false;
             try
             {
                 if (string.IsNullOrEmpty(computer.InformationProvioslyEnteredCode) &&
@@ -26,7 +28,7 @@ namespace BusinessLayer
 
                 }
 
-                if (string.IsNullOrEmpty(computer.SerialNumber) && string.IsNullOrWhiteSpace(computer.SerialNumber))
+                if (string.IsNullOrEmpty(computer.SerialNumber) == true && string.IsNullOrWhiteSpace(computer.SerialNumber) == true)
                 {
                     computer.SerialNumber = DBNull.Value.ToString();
                 }
@@ -57,7 +59,7 @@ namespace BusinessLayer
                    // the check is need get only int for get correct values
                 }
 
-                if (computer.Date == null)
+                if (computer.Date == default)
                 {
                     throw new Exception("ERROR | Date is empty");
                 }
@@ -67,11 +69,24 @@ namespace BusinessLayer
                     throw new Exception("Please enter status");
                 }
 
+                result = true;
             }
             catch (Exception exc)
             {
                 throw new ApplicationException("ERROR | Data fields \n", exc);
             }
+            return result;
+        }
+
+        public static bool InsertComputer(Computer computer)
+        {
+            bool result = false;
+            if (CheckComputer(computer) == true)
+            {
+               UniqueCode.GetCode(computer);
+               result = Insert.InsertDevice(computer);
+            }
+            return result;
         }
 
         public static void CheckHardware(Hardware hardware)

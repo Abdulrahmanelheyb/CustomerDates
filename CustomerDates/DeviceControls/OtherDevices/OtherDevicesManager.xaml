@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CustomerDates.UserControls"
-             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="CustomerDates.UserControls.UC_OtherDevices"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="CustomerDates.DeviceControls.OtherDevicesManager"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="White">
     <UserControl.Resources>

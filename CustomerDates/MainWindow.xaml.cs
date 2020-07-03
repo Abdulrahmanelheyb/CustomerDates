@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using ObjectLayer;
 using BusinessLayer;
-using CustomerDates.UserControls;
+using CustomerDates.DeviceControls;
 
 namespace CustomerDates
 {
@@ -121,36 +121,36 @@ namespace CustomerDates
 
         private void Computers_Click(object sender, RoutedEventArgs e)
         {
-            UC_Computers uccomputers = new UC_Computers();
-            Status.Content = UC_Computers.UCGetName();
+            ComputersManager uccomputers = new ComputersManager();
+            Status.Content = ComputersManager.UCGetName();
             SetUserControl(Viewgrid,uccomputers);
             
         }
         private void Laptops_Click(object sender, RoutedEventArgs e)
         {
-            UC_Laptops uclaptops = new UC_Laptops();
-            Status.Content = UC_Laptops.UCGetName();
+            LaptopsManager uclaptops = new LaptopsManager();
+            Status.Content = LaptopsManager.UCGetName();
             SetUserControl(Viewgrid, uclaptops);
         }
 
         private void Mobiles_Click(object sender, RoutedEventArgs e)
         {
-            UC_Mobiles ucmobiles = new UC_Mobiles();
-            Status.Content = UC_Mobiles.UCGetName();
+            MobilesManager ucmobiles = new MobilesManager();
+            Status.Content = MobilesManager.UCGetName();
             SetUserControl(Viewgrid, ucmobiles);
         }
 
         private void Tablets_Click(object sender, RoutedEventArgs e)
         {
-            UC_Tablets uctablets = new UC_Tablets();
-            Status.Content = UC_Tablets.UCGetName();
+            TabletsManager uctablets = new TabletsManager();
+            Status.Content = TabletsManager.UCGetName();
             SetUserControl(Viewgrid, uctablets);
         }
 
         private void OtherDevices_Click(object sender, RoutedEventArgs e)
         {
-            UC_OtherDevices ucotherdevices = new UC_OtherDevices();
-            Status.Content = UC_OtherDevices.UCGetName();
+            OtherDevicesManager ucotherdevices = new OtherDevicesManager();
+            Status.Content = OtherDevicesManager.UCGetName();
             SetUserControl(Viewgrid, ucotherdevices);
         }
 
