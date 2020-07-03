@@ -28,10 +28,22 @@ namespace CustomerDates.DeviceControls
             InitializeComponent();
             if (ComputerData.LoadComputer()== true)
             {
+                ComputerUI.DeviceRows.Clear();
                 ComputerUI.GetComputerRows();
                 ComputerListBox.ItemsSource = ComputerUI.DeviceRows;
             }
-            
+            //ListColumnNames.CustomerName.Content = "Customer Name";
+            //ListColumnNames.CustomerPhoneNumber.Content = "";
+            //CustomerName.Content = 
+            //CustomerPhoneNumber.Content =
+            //DeviceCompany.Content = 
+            //Model.Content = 
+            //SerialNumber.Content = 
+            //Price.Content = 
+            //DeviceInformationCode.Content
+            //Date.Content = 
+
+
         }
 
         public static string UCGetName()

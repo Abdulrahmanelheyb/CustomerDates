@@ -12,8 +12,8 @@
     </UserControl.Resources>
 
     <Grid x:Name="maingrid" Background="#FF00184B">
-        <Border VerticalAlignment="Center" HorizontalAlignment="Left" CornerRadius="0,10,10,0" Background="Black" BorderBrush="#FF00AEFF" BorderThickness="2" Margin="0,70" Width="33">
-            <StackPanel Tag="LeftDockPanel" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" Width="29" Margin="0,20">
+        <Border VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="Black" BorderBrush="#FF00AEFF" BorderThickness="0,0,2,0" Margin="0" Width="33">
+            <StackPanel Tag="LeftDockPanel" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="Transparent" Width="31" Margin="0,20">
                 <Button x:Name="InsertButton" Template="{DynamicResource DeviceToolsInsertButton}" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="0,0,0,0" Grid.Row="0" Click="InsertButton_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/CustomerDates;component/Resources/Assets/Add White.png"/>
@@ -42,8 +42,8 @@
             </StackPanel>
 
         </Border>
-        <Border VerticalAlignment="Top" HorizontalAlignment="Center" Background="Black" BorderBrush="#FF00AEFF" CornerRadius="0,0,10,10" BorderThickness="2" Height="33" Margin="178,0">
-            <StackPanel x:Name="SearchPanel" Orientation="Horizontal" Tag="SearchTopDockPanel" HorizontalAlignment="Center" Height="29" Margin="0" VerticalAlignment="Top">
+        <Border VerticalAlignment="Top" HorizontalAlignment="Center" Background="Black" BorderBrush="#FF00AEFF" CornerRadius="0,0,10,10" BorderThickness="2,0,2,2" Height="33" Margin="178,0">
+            <StackPanel x:Name="SearchPanel" Orientation="Horizontal" Tag="SearchTopDockPanel" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Stretch">
                 <ComboBox x:Name="SearchPropertyComboBox" FontFamily="{StaticResource cdfont}" Background="White" BorderThickness="0,0,0,1" Template="{DynamicResource SearchComboBox}" Foreground="Black" Width="100" Margin="10,5,0,5">
                     <ComboBoxItem x:Name="cbiname" Content="Name"/>
                     <ComboBoxItem x:Name="cbiphone" Content="Phone"/>
@@ -59,7 +59,9 @@
                 </Button>
             </StackPanel>
         </Border>
-        <ListBox x:Name="ComputerListBox" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" BorderThickness="0" Margin="33,33,0,0" Background="#FF00184B" BorderBrush="#FF00AEFF"/>
+        <ListBox x:Name="ComputerListBox" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" BorderThickness="0" Margin="33,33,0,0" Background="#FF00184B" BorderBrush="#FF00AEFF">
+            <UserControls:DeviceRow x:Name="ListColumnNames" IsSelected="False"/>
+        </ListBox>
 
 
     </Grid>
