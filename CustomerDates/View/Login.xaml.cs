@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using BusinessLayer;
+using CustomerDates;
+using CustomerDates.ViewModel.CustomerDatesServices;
 
 namespace CustomerDates
 {

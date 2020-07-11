@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BusinessLayer;
-using CustomerDates.Classes;
-using CustomerDates.UserControls;
+using CustomerDates;
+using CustomerDates.ViewModel.ComputerServices;
+using ObjectLayer;
 
-namespace CustomerDates.DeviceControls
+namespace CustomerDates.DeviceControls.Computers
 {
     /// <summary>
     /// Interaction logic for Computers.xaml
@@ -26,42 +27,59 @@ namespace CustomerDates.DeviceControls
         public ComputersManager()
         {
             InitializeComponent();
-            if (ComputerData.LoadComputer()== true)
-            {
-                ComputerUI.DeviceRows.Clear();
-                ComputerUI.GetComputerRows();
-                ComputerListBox.ItemsSource = ComputerUI.DeviceRows;
-            }
-            //ListColumnNames.CustomerName.Content = "Customer Name";
-            //ListColumnNames.CustomerPhoneNumber.Content = "";
-            //CustomerName.Content = 
-            //CustomerPhoneNumber.Content =
-            //DeviceCompany.Content = 
-            //Model.Content = 
-            //SerialNumber.Content = 
-            //Price.Content = 
-            //DeviceInformationCode.Content
-            //Date.Content = 
-
-
+            ComputerData.LoadComputer();
+            SearchPanel.Visibility = Visibility.Collapsed;
+            ListGrid.Margin = new Thickness(33, 0, 0, 0);
         }
 
         public static string UCGetName()
         {
             return "Computers";
         }
+        
         private void SearchIO_Click(object sender, RoutedEventArgs e)
         {
             if (SearchPanel.Visibility ==Visibility.Visible)
             {
                 SearchPanel.Visibility = Visibility.Collapsed;
-                ComputerListBox.Margin = new Thickness(33, 0, 0, 0);
+                ListGrid.Margin = new Thickness(33, 0, 0, 0);
+                DeviceListBox.DataContext = Computer.Computers;
             }
             else
             {
                 SearchPanel.Visibility = Visibility.Visible;
-                ComputerListBox.Margin = new Thickness(33,33, 0, 0);
+                ListGrid.Margin = new Thickness(33, 33, 0, 0);
+                DeviceListBox.DataContext = ComputerData.SearchComputer();
             }
+        }
+
+        
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateComputerMG update = new UpdateComputerMG();
+            if (DeviceListBox.SelectedIndex > -1)
+            {
+                update.SetComputerData(Computer.Computers[DeviceListBox.SelectedIndex]);
+                update.Show();
+            }
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DeviceListBox.SelectedIndex >-1)
+            {
+                if (ComputerData.DeleteComputer(Computer.Computers[DeviceListBox.SelectedIndex]) == true)
+                {
+                    ComputerData.LoadComputer();
+                }
+                
+            }
+            
+        }
+
+        private void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
@@ -70,20 +88,24 @@ namespace CustomerDates.DeviceControls
             insert.Show();
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+
+        
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateComputerMG update = new UpdateComputerMG();
-            update.Show();
+            if (!(SearchPropertyComboBox.SelectedIndex <= -1))
+            {
+                DeviceListBox.ItemsSource = ComputerData.SearchComputer(((ComboBoxItem)SearchPropertyComboBox.SelectedItem).Tag.ToString(), SearchValueTextBox.Text);
+
+            }
+            else
+            {
+                MessageBox.Show("Please Select Property Type For Search");
+            }
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private void SearchValueTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             
-        }
-
-        private void ReportButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

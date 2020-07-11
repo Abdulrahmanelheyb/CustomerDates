@@ -9,30 +9,32 @@ using System.Data;
 
 namespace DataManagement
 {
-    class Delete
+    public class Delete
     {
         private static SQLiteConnection con = new SQLiteConnection(SharedFields.DBPath);
         private static SQLiteCommand cmd;
         
 
-        public static void Delete_Device(Computer Computer)
+        public static bool Delete_Device(Computer Computer)
         {
+            bool rlt = false;
             try
             {
                 con.Open();
                 if(con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("DELETE FROM Computers WHERE Infopren_Code='" + 
+                    cmd = new SQLiteCommand("DELETE FROM Computers WHERE DeviceInformationCode='" + 
                         Computer.DeviceInformationCode + "'", con);
                     cmd.ExecuteNonQuery();
                     con.Close();
+                    rlt = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                
+                throw ex;
             }
+            return rlt;
         }
         public static void Delete_Device(Laptop Laptop)
         {
@@ -41,17 +43,16 @@ namespace DataManagement
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("DELETE FROM Laptops WHERE Infopren_Code='" +
+                    cmd = new SQLiteCommand("DELETE FROM Laptops WHERE DeviceInformationCode='" +
                         Laptop.DeviceInformationCode + "'", con);
                     cmd.ExecuteNonQuery();
 
                     con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                throw ex;
             }
         }
         public static void Delete_Device(Mobile Mobile)
@@ -61,17 +62,16 @@ namespace DataManagement
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("DELETE FROM Mobiles WHERE Infopren_Code='" +
+                    cmd = new SQLiteCommand("DELETE FROM Mobiles WHERE DeviceInformationCode='" +
                         Mobile.DeviceInformationCode + "'", con);
                     cmd.ExecuteNonQuery();
 
                     con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                throw ex;
             }
         }
         public static void Delete_Device(Tablet Tablet)
@@ -81,17 +81,16 @@ namespace DataManagement
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("DELETE FROM Tablets WHERE Infopren_Code='" +
+                    cmd = new SQLiteCommand("DELETE FROM Tablets WHERE DeviceInformationCode='" +
                         Tablet.DeviceInformationCode + "'", con);
                     cmd.ExecuteNonQuery();
 
                     con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                throw ex;
             }
         }
         public static void Delete_Device(OtherDevice OtherDevice)
@@ -101,17 +100,16 @@ namespace DataManagement
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("DELETE FROM Otherdevices WHERE Infopren_Code='" +
+                    cmd = new SQLiteCommand("DELETE FROM Otherdevices WHERE DeviceInformationCode='" +
                         OtherDevice.DeviceInformationCode + "'", con);
                     cmd.ExecuteNonQuery();
 
                     con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                throw ex;
             }
         }
     }

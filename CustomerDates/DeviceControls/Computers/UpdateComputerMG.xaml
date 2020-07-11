@@ -40,7 +40,6 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
@@ -58,16 +57,11 @@
                 <TextBlock VerticalAlignment="Center" Grid.Column="0" HorizontalAlignment="Right" Grid.Row="3" Text="Model" Margin="0,0,5,0" Foreground="White"/>
                 <TextBox x:Name="ModelTextBox" Grid.Row="3" Grid.Column="1" CharacterCasing="Upper" Padding="0,2,0,0" FontFamily="{StaticResource cdfont}" Height="25" Foreground="White" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" BorderBrush="#FFFF1B00" BorderThickness="2,0,0,0" CaretBrush="White" Background="{x:Null}" Margin="0"/>
 
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="4"  TextWrapping="Wrap" Text="Additional Externals" Margin="0,0,5,0" Foreground="White"/>
-                <ComboBox x:Name="AdditionalExternalsComboBox" Grid.Column="1" Grid.Row="4"  Width="182" Height="25" Template="{DynamicResource AdditionalExternalsComboBoxTemplate}" BorderBrush="White" Background="{x:Null}" BorderThickness="0,0,0,1" Foreground="White">
-                    <CheckBox Content="HElo" VerticalContentAlignment="Center" Template="{StaticResource CheckBoxControlTemplate}" Foreground="White"/>
-                </ComboBox>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Text="Serial Number" Grid.Row="4" Margin="0,0,5,0" Foreground="White"/>
+                <TextBox x:Name="SerialNumberTextBox"  Grid.Row="4" Grid.Column="1" CharacterCasing="Upper" Padding="0,2,0,0" FontFamily="{StaticResource cdfont}" Height="25" Foreground="White" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" MaxLength="11" MaxLines="1" BorderThickness="0" CaretBrush="White"/>
 
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Text="Serial Number" Grid.Row="5" Margin="0,0,5,0" Foreground="White"/>
-                <TextBox x:Name="SerialNumberTextBox"  Grid.Row="5" Grid.Column="1" CharacterCasing="Upper" Padding="0,2,0,0" FontFamily="{StaticResource cdfont}" Height="25" Foreground="White" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" MaxLength="11" MaxLines="1" BorderThickness="0" CaretBrush="White"/>
-
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="6" Text="Status" Margin="0,0,5,0" Foreground="White"/>
-                <Border  Grid.Row="6" Width="182" Grid.Column="1" Height="25" BorderBrush="White" BorderThickness="0,0,0,1">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="5" Text="Status" Margin="0,0,5,0" Foreground="White"/>
+                <Border  Grid.Row="5" Width="182" Grid.Column="1" Height="25" BorderBrush="White" BorderThickness="0,0,0,1">
                     <Grid HorizontalAlignment="Stretch" Margin="0,0,0.4,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -79,8 +73,8 @@
                         <ToggleButton x:Name="Failed" Grid.Column="2" Content="Failed" FontFamily="{StaticResource cdfont}" FontSize="10" VerticalContentAlignment="Center" Height="20" Margin="5,0" Template="{StaticResource StatusButtonsStyle}" Background="{x:Null}" BorderBrush="Red" BorderThickness="0" Foreground="Red" Padding="0" Checked="Failed_Checked"/>
                     </Grid>
                 </Border>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Text="Price" Grid.Row="7" Margin="0,0,5,0" Foreground="White"/>
-                <TextBox x:Name="PriceTextBox" Grid.Row="7" Grid.Column="1" IsReadOnly="True" IsReadOnlyCaretVisible="False" FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="{StaticResource cdfont}" Height="25" Foreground="White" Padding="0,0,10,3" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" BorderBrush="{x:Null}" BorderThickness="0"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Text="Price" Grid.Row="6" Margin="0,0,5,0" Foreground="White"/>
+                <TextBox x:Name="PriceTextBox" Grid.Row="6" Grid.Column="1" IsReadOnly="True" IsReadOnlyCaretVisible="False" FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="{StaticResource cdfont}" Height="25" Foreground="White" Padding="0,0,10,3" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" BorderBrush="{x:Null}" BorderThickness="0"/>
 
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Text="Code" Grid.Row="8" Margin="0,0,5,0" Foreground="White"/>
                 <TextBox x:Name="CodeTextBox"  Grid.Row="8" Grid.Column="1" Foreground="White" Height="26" VerticalContentAlignment="Center"  FontSize="12" FontFamily="{StaticResource cdfont}" Padding="0,0,10,3" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" BorderBrush="{x:Null}" BorderThickness="0" IsReadOnly="True" HorizontalContentAlignment="Center"/>
@@ -115,7 +109,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Content="Issue" HorizontalAlignment="Left" Margin="10,0,0,0" Padding="0,0,0,1" VerticalAlignment="Top" Height="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="440" Foreground="White" />
+                <Label Grid.Column="0" Content="Issue " Name="OperationStatus" HorizontalAlignment="Left" Margin="10,0,0,0" Padding="0,0,0,1" VerticalAlignment="Top" Height="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="440" Foreground="White" />
             </Grid>
         </Border>
 

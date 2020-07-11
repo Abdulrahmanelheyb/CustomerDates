@@ -1,66 +1,18 @@
-﻿<Window xmlns:UserControls="clr-namespace:CustomerDates.UserControls" 
-        
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CustomerDates"
-        x:Class="CustomerDates.MainWindow"
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Class="CustomerDates.MainWindow"
         mc:Ignorable="d"
          WindowStartupLocation="CenterScreen"
         Closed="Window_Closed" WindowStyle="None" AllowsTransparency="True" AllowDrop="False"
         ResizeMode="NoResize"  KeyDown="Window_KeyDown" Loaded="Window_Loaded"
-        Background="{x:Null}" Title="Customer Dates" MinWidth="1000" Width="1000" MinHeight="700" Height="700">
+        Background="{x:Null}" Title="Customer Dates" d:DesignHeight="500" d:DesignWidth="900">
 
     <Window.Resources>
         <FontFamily x:Key="cdfont">Arial</FontFamily>
-
-        <Style x:Key="ColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="BorderThickness" Value="0,0,1,1"/>
-            <Setter Property="Background" Value="Gainsboro"/>
-            <Setter Property="FontFamily" Value="Eagle"/>
-            <Setter Property="Padding" Value="3,1,0,0"/>
-            <Setter Property="FontFamily" Value="{StaticResource cdfont}"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="Height" Value="23"/>
-        </Style>
-
         <Thickness x:Key="Pdng">2,2.5,0,0</Thickness>
-
-
-
-
-
-
-
-        <ControlTemplate x:Key="MenuItemsStandardStyle" TargetType="{x:Type Button}">
-            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsDefaulted" Value="True">
-                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="#FF665CFF"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="#FFFFFFFF"/>
-                    <Setter Property="BorderThickness" TargetName="border" Value="2,0,0,0"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="#FF000000"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="#FFFFFFFF"/>
-                </Trigger>
-                <Trigger Property="ToggleButton.IsChecked" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-
-
-
-
     </Window.Resources>
     <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White">
 
@@ -146,9 +98,9 @@
                     <GradientStop Color="#FF008F97"/>
                 </LinearGradientBrush>
             </Canvas.Background>
-            <Label Margin="0" Padding="0,0,0,0" Height="16" x:Name="Status" Content="Starting..." Width="660" FontSize="14" Foreground="White" FontFamily="{StaticResource cdfont}" Canvas.Top="2" Canvas.Left="2"/>
+            <Label Margin="0" Padding="0,0,0,0" Height="16" x:Name="OperationsStatus" Content="Starting..." Width="660" FontSize="14" Foreground="White" FontFamily="{StaticResource cdfont}" Canvas.Top="2" Canvas.Left="2"/>
         </Canvas>
-        <Grid Name="Viewgrid" HorizontalAlignment="Stretch"  Margin="0,33,0,20" VerticalAlignment="Stretch" />
+        <Grid Name="Viewgrid" HorizontalAlignment="Stretch"  Margin="0,33,0,20" VerticalAlignment="Stretch"/>
 
     </Grid>
 </Window>

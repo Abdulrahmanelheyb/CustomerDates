@@ -20,11 +20,24 @@ namespace ObjectLayer
         public string DeviceCompany { get; set; }
         public string Model { get; set; }
         public int Price { get; set; }
-        public string Status { get; set; }
+        public StatusType Status { get; set; }
         public DateTime Date { get;  set; }
         public enum StatusType { Repairing, Completed, Failed }
-       
 
-     }
+        public int SumDevicePartsPrice()
+        {
+            int result = 0;
+            foreach (Hardware Hpart in Hardwares)
+            {
+                result += Hpart.Price;
+            }
+            foreach (Software Spart in Softwares)
+            {
+                result += Spart.Price;
+            }
+
+            return result;
+        }
+    }
 }
 

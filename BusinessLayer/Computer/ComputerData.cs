@@ -16,7 +16,7 @@ namespace BusinessLayer
         {
             
         }
-
+        #region Chacking Data
         private static bool CheckComputer(Computer computer)
         {
             bool result = false;
@@ -53,10 +53,10 @@ namespace BusinessLayer
                     throw new Exception("Please enter model");
                 }
 
-                if (computer.Price <=-1 )
+                if (computer.Price <= -1)
                 {
                     //throw new Exception("Please enter price");
-                   // the check is need get only int for get correct values
+                    // the check is need get only int for get correct values
                 }
 
                 if (computer.Date == default)
@@ -77,35 +77,17 @@ namespace BusinessLayer
             }
             return result;
         }
-
-        public static bool InsertComputer(Computer computer)
-        {
-            bool result = false;
-            if (CheckComputer(computer) == true)
-            {
-               UniqueCode.GetCode(computer);
-               result = Insert.InsertDevice(computer);
-            }
-            return result;
-        }
-
-        public static bool LoadComputer()
-        {
-            bool rlt = Load.LoadComputers();
-            return rlt;
-        }
-
         public static void CheckHardware(Hardware hardware)
         {
             try
             {
-                if (string.IsNullOrEmpty(hardware.InformationProvioslyEnteredCode) &&
-                    string.IsNullOrWhiteSpace(hardware.InformationProvioslyEnteredCode))
+                if (string.IsNullOrEmpty(hardware.DeviceInformationCode) &&
+                    string.IsNullOrWhiteSpace(hardware.DeviceInformationCode))
                 {
                     throw new Exception("ERROR | Code is not correct !");
                 }
 
-                if(string.IsNullOrEmpty(hardware.Parttype) && string.IsNullOrWhiteSpace(hardware.Parttype))
+                if (string.IsNullOrEmpty(hardware.Parttype) && string.IsNullOrWhiteSpace(hardware.Parttype))
                 {
                     throw new Exception("ERROR | Parttype is not correct !");
                 }
@@ -129,15 +111,14 @@ namespace BusinessLayer
             {
                 throw new ApplicationException("ERROR | Data fields in hardware \n");
             }
-            
-        }
 
+        }
         public static void CheckSoftware(Software software)
         {
             try
             {
-                if (string.IsNullOrEmpty(software.InformationProvioslyEnteredCode) &&
-                    string.IsNullOrWhiteSpace(software.InformationProvioslyEnteredCode))
+                if (string.IsNullOrEmpty(software.DeviceInformationCode) &&
+                    string.IsNullOrWhiteSpace(software.DeviceInformationCode))
                 {
                     throw new Exception("ERROR | Code is not correct !");
                 }
@@ -167,5 +148,36 @@ namespace BusinessLayer
                 throw new ApplicationException("ERROR | Data fields in software \n");
             }
         }
+        #endregion
+
+
+        public static bool InsertComputer(Computer computer)
+        {
+            bool result = false;
+            if (CheckComputer(computer) == true)
+            {
+               UniqueCode.GetCode(computer);
+               result = Insert.InsertDevice(computer);
+            }
+            return result;
+        }
+
+        public static bool DeleteComputer(Computer computer)
+        {
+            return Delete.Delete_Device(computer);
+        }
+
+        public static List<Computer> Computers
+        {
+            get
+            {
+                Load.LoadComputers();
+                return Computer.Computers;
+            }
+        }
+
+
+
+
     }
 }

@@ -288,9 +288,6 @@
                 <Setter Property="BorderThickness" TargetName="border" Value="0,0,0,2"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
-                <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
-                <Setter Property="Foreground" Value="#FF838383"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

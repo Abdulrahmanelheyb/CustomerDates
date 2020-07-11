@@ -3,13 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:UserControls="clr-namespace:CustomerDates.DeviceControls" x:Class="CustomerDates.DeviceControls.InsertComputerMG"
+        xmlns:ComputerServices="clr-namespace:CustomerDates.ViewModel.ComputerServices"
+    xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:UserControls="clr-namespace:CustomerDates.DeviceControls" x:Class="CustomerDates.DeviceControls.Computers.InsertComputerMG"
         mc:Ignorable="d" 
         Title="NewDevice" Height="484" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" IsTabStop="False" WindowStyle="None" AllowsTransparency="True" Background="{StaticResource darkblue}" BorderThickness="0,3" Loaded="Window_Loaded" KeyDown="Window_KeyDown" BorderBrush="#FF332E80">
     <Window.Resources>
         <FontFamily x:Key="cdfont">Arial</FontFamily>
         <Thickness x:Key="Pdng">2,2.5,0,0</Thickness>
         <System:Double x:Key="cub">19</System:Double>
+        <ComputerServices:ComputerDataCommands x:Key="InsertCommand"/>
     </Window.Resources>
 
     <Grid x:Name="MainGrid" Margin="0,-3,0,-3.4">
@@ -30,7 +32,7 @@
             </Button.Background>
         </Button>
         <Border HorizontalAlignment="Left" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1,0" Margin="0,25,0,53" Width="300" Background="#FF1C1492">
-            <Grid Height="395" VerticalAlignment="Top" Width="299" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="69" Margin="0.2,0,-0.8,0">
+            <Grid Height="395" x:Name="datagrid" VerticalAlignment="Top" Width="299" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="69" Margin="0.2,0,-0.8,0">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -86,7 +88,7 @@
 
             </Grid>
         </Border>
-        <Button Content="Execute"  Width="300" x:Name="Excute_btn" Click="Excute_btn_Click" Height="29" FontFamily="{StaticResource cdfont}" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" BorderBrush="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="Hand" Template="{DynamicResource ExecuteButtonStyle}" Margin="0,0,0,25" Padding="-2,3,-43,-7">
+        <Button Content="Execute" Width="300" x:Name="Excute_btn" Click="Excute_btn_Click" Height="29" FontFamily="{StaticResource cdfont}" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" BorderBrush="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="Hand" Template="{DynamicResource ExecuteButtonStyle}" Margin="0,0,0,25" Padding="-2,3,-43,-7">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <LinearGradientBrush.RelativeTransform>
@@ -109,7 +111,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Content="Issue" HorizontalAlignment="Left" Margin="10,0,0,0" Padding="0,0,0,1" VerticalAlignment="Top" Height="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="440" Foreground="White" />
+                <Label Grid.Column="0" x:Name="OperationStatus" Content="Issue" HorizontalAlignment="Left" Margin="10,0,0,0" Padding="0,0,0,1" VerticalAlignment="Top" Height="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="440" Foreground="White" />
             </Grid>
         </Border>
 

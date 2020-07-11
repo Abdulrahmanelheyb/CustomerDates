@@ -21,14 +21,14 @@ namespace DataManagement
                 con.Open();
                 if(con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("UPDATE Computers SET Infopren_Code = @Infopren_Code," +
+                    cmd = new SQLiteCommand("UPDATE Computers SET DeviceInformationCode = @DeviceInformationCode," +
                         "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
                         "CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
                         "CD_Price=@CD_Price,CD_Date=@CD_Date," +
                         "CD_Status=@CD_Status " +
-                        "WHERE Infopren_Code='" +Computer.DeviceInformationCode + "'", con);
+                        "WHERE DeviceInformationCode='" +Computer.DeviceInformationCode + "'", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Computer.DeviceInformationCode);
+                    cmd.Parameters.AddWithValue("@DeviceInformationCode", Computer.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Computer.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Computer.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Computer.CustomerPhoneNumber);
@@ -59,14 +59,14 @@ namespace DataManagement
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("UPDATE Laptops SET Infopren_Code = @Infopren_Code," +
+                    cmd = new SQLiteCommand("UPDATE Laptops SET DeviceInformationCode = @DeviceInformationCode," +
                         "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
                         "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
                         "CD_Price=@CD_Price,CD_Date=@CD_Date," +
                         "CD_Status=@CD_Status " +
-                        "WHERE Infopren_Code='" + Laptop.DeviceInformationCode + "'", con);
+                        "WHERE DeviceInformationCode='" + Laptop.DeviceInformationCode + "'", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Laptop.DeviceInformationCode);
+                    cmd.Parameters.AddWithValue("@DeviceInformationCode", Laptop.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Laptop.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Laptop.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Laptop.CustomerPhoneNumber);
@@ -98,14 +98,14 @@ namespace DataManagement
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("UPDATE Mobiles SET Infopren_Code = @Infopren_Code," +
+                    cmd = new SQLiteCommand("UPDATE Mobiles SET DeviceInformationCode = @DeviceInformationCode," +
                         "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
                         "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
                         "CD_Price=@CD_Price,CD_Date=@CD_Date," +
                         "CD_Status=@CD_Status " +
-                        "WHERE Infopren_Code='" + Mobile.DeviceInformationCode + "'", con);
+                        "WHERE DeviceInformationCode='" + Mobile.DeviceInformationCode + "'", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Mobile.DeviceInformationCode);
+                    cmd.Parameters.AddWithValue("@DeviceInformationCode", Mobile.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Mobile.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Mobile.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Mobile.CustomerPhoneNumber);
@@ -137,14 +137,14 @@ namespace DataManagement
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("UPDATE Tablets SET Infopren_Code = @Infopren_Code," +
+                    cmd = new SQLiteCommand("UPDATE Tablets SET DeviceInformationCode = @DeviceInformationCode," +
                         "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
                         "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
                         "CD_Price=@CD_Price,CD_Date=@CD_Date," +
                         "CD_Status=@CD_Status " +
-                        "WHERE Infopren_Code='" + Tablet.DeviceInformationCode + "'", con);
+                        "WHERE DeviceInformationCode='" + Tablet.DeviceInformationCode + "'", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Tablet.DeviceInformationCode);
+                    cmd.Parameters.AddWithValue("@DeviceInformationCode", Tablet.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Tablet.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Tablet.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Tablet.CustomerPhoneNumber);
@@ -175,14 +175,14 @@ namespace DataManagement
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    cmd = new SQLiteCommand("UPDATE Otherdevices SET Infopren_Code = @Infopren_Code," +
+                    cmd = new SQLiteCommand("UPDATE Otherdevices SET DeviceInformationCode = @DeviceInformationCode," +
                         "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
                         "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
                         "CD_Price=@CD_Price,CD_Date=@CD_Date," +
                         "CD_Status=@CD_Status " +
-                        "WHERE Infopren_Code='" + OtherDevice.DeviceInformationCode + "'", con);
+                        "WHERE DeviceInformationCode='" + OtherDevice.DeviceInformationCode + "'", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", OtherDevice.DeviceInformationCode);
+                    cmd.Parameters.AddWithValue("@DeviceInformationCode", OtherDevice.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", OtherDevice.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", OtherDevice.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", OtherDevice.CustomerPhoneNumber);

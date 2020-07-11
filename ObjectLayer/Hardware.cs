@@ -12,7 +12,7 @@ namespace ObjectLayer
     public class Hardware
     {
         public int ID { get; set; }
-        public string InformationProvioslyEnteredCode { get; set; }
+        public string DeviceInformationCode { get; set; }
         public string Parttype { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }

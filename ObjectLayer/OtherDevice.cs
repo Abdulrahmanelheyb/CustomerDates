@@ -17,20 +17,6 @@ namespace ObjectLayer
 
         public string Externals { get; set; }
 
-        public static int SumOtherDevicePartsPrice()
-        {
-            int result = 0;
-            foreach(Hardware Hpart in Hardwares)
-            {
-                result += Hpart.Price;
-            }
-            foreach(Software Spart in Softwares)
-            {
-                result += Spart.Price;
-            }
-
-            return result;
-        }
 
         
 

@@ -15,8 +15,6 @@ namespace DataManagement
 
         private static SQLiteConnection con = new SQLiteConnection(SharedFields.DBPath);
         private static SQLiteCommand cmd;
-        private static SQLiteDataAdapter daad;
-        private static SQLiteDataReader dare;
         
         public static bool InsertDevice(Computer Computer)
         {
@@ -27,12 +25,12 @@ namespace DataManagement
                 if(con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("INSERT INTO Computers " +
-                        " (Infopren_Code,Serial_Number,CD_Name,CD_Phone,CD_Device_company,CD_Model," +
+                        " (DeviceInformationCode,Serial_Number,CD_Name,CD_Phone,CD_Device_company,CD_Model," +
                         "CD_Price,CD_Date,CD_Status)" +
-                        " VALUES (@Infopren_Code,@Serial_Number,@CD_Name,@CD_Phone,@CD_Device_company," +
+                        " VALUES (@DeviceInformationCode,@Serial_Number,@CD_Name,@CD_Phone,@CD_Device_company," +
                         "@CD_Model,@CD_Price,@CD_Date,@CD_Status)", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Computer.DeviceInformationCode);
+                    cmd.Parameters.AddWithValue("@DeviceInformationCode", Computer.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Computer.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Computer.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Computer.CustomerPhoneNumber);
@@ -68,12 +66,12 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("INSERT INTO Laptops " +
-                        " (Infopren_Code,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
+                        " (DeviceInformationCode,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
                         "CD_Price,CD_Date,CD_Status)" +
-                        " VALUES (@Infopren_Code,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
+                        " VALUES (@DeviceInformationCode,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
                         "@CD_Model,@CD_Price,@CD_Date,@CD_Status)", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Laptop.DeviceInformationCode);
+                    cmd.Parameters.AddWithValue("@DeviceInformationCode", Laptop.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Laptop.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Laptop.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Laptop.CustomerPhoneNumber);
@@ -107,12 +105,12 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("INSERT INTO Mobiles " +
-                        " (Infopren_Code,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
+                        " (DeviceInformationCode,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
                         "CD_Price,CD_Date,CD_Status)" +
-                        " VALUES (@Infopren_Code,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
+                        " VALUES (@DeviceInformationCode,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
                         "@CD_Model,@CD_Price,@CD_Date,@CD_Status)", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Mobile.DeviceInformationCode);
+                    cmd.Parameters.AddWithValue("@DeviceInformationCode", Mobile.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Mobile.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Mobile.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Mobile.CustomerPhoneNumber);
@@ -146,12 +144,12 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("INSERT INTO Tablets " +
-                        " (Infopren_Code,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
+                        " (DeviceInformationCode,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
                         "CD_Price,CD_Date,CD_Status)" +
-                        " VALUES (@Infopren_Code,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
+                        " VALUES (@DeviceInformationCode,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
                         "@CD_Model,@CD_Price,@CD_Date,@CD_Status)", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", Tablet.DeviceInformationCode);
+                    cmd.Parameters.AddWithValue("@DeviceInformationCode", Tablet.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", Tablet.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Tablet.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Tablet.CustomerPhoneNumber);
@@ -184,12 +182,12 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("INSERT INTO Otherdevices " +
-                        " (Infopren_Code,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
+                        " (DeviceInformationCode,Serial_Number,CD_Name,CD_Phone,CD_Externals,CD_Device_company,CD_Model," +
                         "CD_Price,CD_Date,CD_Status)" +
-                        " VALUES (@Infopren_Code,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
+                        " VALUES (@DeviceInformationCode,@Serial_Number,@CD_Name,@CD_Phone,@CD_Externals,@CD_Device_company," +
                         "@CD_Model,@CD_Price,@CD_Date,@CD_Status)", con);
 
-                    cmd.Parameters.AddWithValue("@Infopren_Code", OtherDevice.DeviceInformationCode);
+                    cmd.Parameters.AddWithValue("@DeviceInformationCode", OtherDevice.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@Serial_Number", OtherDevice.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", OtherDevice.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", OtherDevice.CustomerPhoneNumber);

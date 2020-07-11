@@ -1,5 +1,5 @@
-﻿using BusinessLayer;
-using CustomerDates.Classes;
+﻿using CustomerDates;
+using CustomerDates.ViewModel.ComputerServices;
 using ObjectLayer;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace CustomerDates.DeviceControls
+namespace CustomerDates.DeviceControls.Laptops
 {
     // Don't forget add print fuatures for give code to customer.
     /// </summary>
@@ -126,25 +126,36 @@ namespace CustomerDates.DeviceControls
         #endregion
         private void Excute_btn_Click(object sender, RoutedEventArgs e)
         {
-            ComputerUI computerUI = new ComputerUI();
-            computerUI.CustomerName = NameTextBox.Text;
-            computerUI.CustomerPhoneNumber = PhoneNumberTextBox.Text;
-            computerUI.DeviceCompany = DeviceCompanyTextBox.Text;
-            computerUI.Model = ModelTextBox.Text;
-            computerUI.SerialNumber = SerialNumberTextBox.Text;
-            computerUI.Date = DateTime.Now;
+            Laptop laptop = new Laptop();
+            laptop.CustomerName = NameTextBox.Text;
+            laptop.CustomerPhoneNumber = PhoneNumberTextBox.Text;
+            laptop.DeviceCompany = DeviceCompanyTextBox.Text;
+            laptop.Model = ModelTextBox.Text;
+            laptop.SerialNumber = SerialNumberTextBox.Text;
+            laptop.Date = DateTime.Now;
             foreach (ToggleButton toggleButton in statustoggles)
             {
                 if (toggleButton.IsChecked == true)
                 {
-                    computerUI.Status = (string)toggleButton.Content;
+                    if ((string)toggleButton.Content == Device.StatusType.Repairing.ToString())
+                    {
+                        laptop.Status = Device.StatusType.Repairing;
+                    }
+                    if ((string)toggleButton.Content == Device.StatusType.Completed.ToString())
+                    {
+                        laptop.Status = Device.StatusType.Completed;
+                    }
+                    if ((string)toggleButton.Content == Device.StatusType.Failed.ToString())
+                    {
+                        laptop.Status = Device.StatusType.Failed;
+                    }
                 }
             }
 
             try
             {
-                computerUI.Price = Computer.SumComputerPartsPrice();
-                ComputerData.InsertComputer(computerUI);
+                laptop.Price = laptop.SumDevicePartsPrice();
+                //ComputerData.InsertComputer(laptop);
             }
             catch (Exception ex)
             {

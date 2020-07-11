@@ -63,7 +63,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ManifestCertificateThumbprint>6F26F127A13CCFCA4D05A1E1C64A6DED762102B9</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BC18AB4640029059A3E30BD448B831A2EEBC0FEA</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>CustomerDates_TemporaryKey.pfx</ManifestKeyFile>
@@ -131,14 +131,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command.cs" />
     <Compile Include="DeviceControls\Computers\InsertComputerMG.xaml.cs">
       <DependentUpon>InsertComputerMG.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DeviceControls\Laptops\UpdateLaptopMG.xaml.cs">
+      <DependentUpon>UpdateLaptopMG.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindowAlterMethods.cs" />
-    <Compile Include="ObjectsUI\ComputerUI.cs" />
-    <Compile Include="ObjectsUI\LaptopUI.cs" />
-    <Compile Include="ObjectsUI\MobileUI.cs" />
-    <Compile Include="ObjectsUI\TabletUI.cs" />
     <Compile Include="DeviceControls\Computers\UpdateComputerMG.xaml.cs">
       <DependentUpon>UpdateComputerMG.xaml</DependentUpon>
     </Compile>
@@ -166,13 +166,21 @@
     <Compile Include="DeviceControls\Computers\ComputersManager.xaml.cs">
       <DependentUpon>ComputersManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\ReportDevice.xaml.cs">
+    <Compile Include="ViewModel\ComputerServices\ComputerData.cs" />
+    <Compile Include="ViewModel\ComputerServices\ComputerDataCommands.cs" />
+    <Compile Include="ViewModel\CustomerDatesServices\CheckLogin.cs" />
+    <Compile Include="ViewModel\UniqueCode.cs" />
+    <Compile Include="View\ReportDevice.xaml.cs">
       <DependentUpon>ReportDevice.xaml</DependentUpon>
     </Compile>
     <Compile Include="DeviceControls\DeviceRow.xaml.cs">
       <DependentUpon>DeviceRow.xaml</DependentUpon>
     </Compile>
     <Page Include="DeviceControls\Computers\InsertComputerMG.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DeviceControls\Laptops\UpdateLaptopMG.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -232,11 +240,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LoadScreen.xaml">
+    <Page Include="View\LoadScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Login.xaml">
+    <Page Include="View\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -248,17 +256,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Windows\LoadScreen.xaml.cs">
+    <Compile Include="View\LoadScreen.xaml.cs">
       <DependentUpon>LoadScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Login.xaml.cs">
+    <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\ReportDevice.xaml">
+    <Page Include="View\ReportDevice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -432,15 +440,20 @@
     <Resource Include="Resources\Assets\About.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
-      <Project>{b5b9dfba-8c05-47a9-b15d-b4f77ca77ebe}</Project>
-      <Name>BusinessLayer</Name>
+    <Folder Include="ViewModel\Laptop\" />
+    <Folder Include="ViewModel\Mobile\" />
+    <Folder Include="ViewModel\OtherDevice\" />
+    <Folder Include="ViewModel\Tablet\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataManagement\DataManagement.csproj">
+      <Project>{8ecf62ce-3b98-4702-bb7b-62a2f0b13d44}</Project>
+      <Name>DataManagement</Name>
     </ProjectReference>
     <ProjectReference Include="..\ObjectLayer\ObjectLayer.csproj">
       <Project>{46c5e114-b24b-407d-9b62-9b2703c93657}</Project>
       <Name>ObjectLayer</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

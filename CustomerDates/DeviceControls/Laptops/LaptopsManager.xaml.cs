@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomerDates.DeviceControls
+namespace CustomerDates.DeviceControls.Laptops
 {
     /// <summary>
     /// Interaction logic for Computers.xaml
@@ -34,13 +34,33 @@ namespace CustomerDates.DeviceControls
             if (SearchPanel.Visibility ==Visibility.Visible)
             {
                 SearchPanel.Visibility = Visibility.Collapsed;
-                LaptopsListBox.Margin = new Thickness(33, 0, 0, 0);
+                DeviceListBox.Margin = new Thickness(33, 0, 0, 0);
             }
             else
             {
                 SearchPanel.Visibility = Visibility.Visible;
-                LaptopsListBox.Margin = new Thickness(33,33, 0, 0);
+                DeviceListBox.Margin = new Thickness(33,33, 0, 0);
             }
+        }
+
+        private void InsertButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

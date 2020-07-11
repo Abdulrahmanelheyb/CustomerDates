@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 
 
 namespace ObjectLayer
@@ -14,31 +15,24 @@ namespace ObjectLayer
         {
             
         }
-        public static List<Computer> Computers = new List<Computer>();
-
-        public static int SumComputerPartsPrice()
-        {
-            int result = 0;
-            foreach (Hardware Hpart in Hardwares)
-            {
-                result += Hpart.Price;
-            }
-            foreach (Software Spart in Softwares)
-            {
-                result += Spart.Price;
-            }
-            
-            return result;
-        }
+        public static ObservableCollection<Computer> Computers = new ObservableCollection<Computer>();
 
         
-
-        public override string ToString()
+        public static ObservableCollection<Computer> ComputersProperty
         {
-            string DEVID = DeviceInformationCode;
-            return DEVID;
+            get
+            {
+                return Computers;
+            }
+            set
+            {
+                ComputersProperty = Computers;
+            }
+        }
+        
+       void test()
+        {
             
         }
-
     }
 }

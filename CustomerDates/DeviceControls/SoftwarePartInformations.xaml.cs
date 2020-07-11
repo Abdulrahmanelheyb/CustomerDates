@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -24,6 +24,34 @@ namespace CustomerDates.DeviceControls
         {
             InitializeComponent();
         }
+
+        #region SetDevice
+        public bool SetDevice(Computer computer)
+        {
+            if (computer is null) { return false; }
+            return (string.IsNullOrEmpty(computer.DeviceInformationCode) == false) ? true : false;
+        }
+        public bool SetDevice(Laptop laptop)
+        {
+            if (laptop is null) { return false; }
+            return (string.IsNullOrEmpty(laptop.DeviceInformationCode) == false) ? true : false;
+        }
+        public bool SetDevice(Mobile mobile)
+        {
+            if (mobile is null) { return false; }
+            return (string.IsNullOrEmpty(mobile.DeviceInformationCode) == false) ? true : false;
+        }
+        public bool SetDevice(Tablet tablet)
+        {
+            if (tablet is null) { return false; }
+            return (string.IsNullOrEmpty(tablet.DeviceInformationCode) == false) ? true : false;
+        }
+        public bool SetDevice(OtherDevice otherdevice)
+        {
+            if (otherdevice is null) { return false; }
+            return (string.IsNullOrEmpty(otherdevice.DeviceInformationCode) == false) ? true : false;
+        }
+        #endregion
 
         private void Repairing_Checked(object sender, RoutedEventArgs e)
         {

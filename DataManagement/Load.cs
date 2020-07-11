@@ -17,7 +17,6 @@ namespace DataManagement
         public static bool LoadComputers()
         {
             bool loadresult = false;
-            Computer computer;
             Computer.Computers.Clear();
             try
             {
@@ -29,8 +28,8 @@ namespace DataManagement
                     dare = cmd.ExecuteReader();
                     while (dare.Read())
                     {
-                        
-                        computer = new Computer();
+
+                        Computer computer = new Computer();
                         computer.DeviceInformationCode = dare.GetString(0);
                         if (dare.IsDBNull(1) == false)
                         {
@@ -42,9 +41,23 @@ namespace DataManagement
                         computer.Model = dare.GetString(5);
                         computer.Price = dare.GetInt32(6);
                         computer.Date = dare.GetDateTime(7);
-                        computer.Status = dare.GetString(8);
+                        if (dare.GetString(8) == Device.StatusType.Repairing.ToString())
+                        {
+                            computer.Status = Device.StatusType.Repairing;
+                        }
+                        else if (dare.GetString(8) == Device.StatusType.Completed.ToString())
+                        {
+                            computer.Status = Device.StatusType.Completed;
+                        }
+                        else if (dare.GetString(8) == Device.StatusType.Failed.ToString())
+                        {
+                            computer.Status = Device.StatusType.Failed;
+                        }
+
                         Computer.Computers.Add(computer);
+
                     }
+
                     con.Close();
                     loadresult = true;
                 }
@@ -52,7 +65,7 @@ namespace DataManagement
             }
             catch(Exception ex)
             {
-                throw;
+                throw ex;
             }
             return loadresult;
         }
@@ -81,7 +94,18 @@ namespace DataManagement
                         laptop.Model = dare.GetString(6);
                         laptop.Price = dare.GetInt32(7);
                         laptop.Date = dare.GetDateTime(8);
-                        laptop.Status = dare.GetString(9);
+                        if (dare.GetString(9) == Device.StatusType.Repairing.ToString())
+                        {
+                            laptop.Status = Device.StatusType.Repairing;
+                        }
+                        else if (dare.GetString(9) == Device.StatusType.Completed.ToString())
+                        {
+                            laptop.Status = Device.StatusType.Completed;
+                        }
+                        else if (dare.GetString(9) == Device.StatusType.Failed.ToString())
+                        {
+                            laptop.Status = Device.StatusType.Failed;
+                        }
                         Laptop.Laptops.Add(laptop);
                     }
                     con.Close();
@@ -119,7 +143,18 @@ namespace DataManagement
                         mobile.Model = dare.GetString(6);
                         mobile.Price = dare.GetInt32(7);
                         mobile.Date = dare.GetDateTime(8);
-                        mobile.Status = dare.GetString(9);
+                        if (dare.GetString(9) == Device.StatusType.Repairing.ToString())
+                        {
+                            mobile.Status = Device.StatusType.Repairing;
+                        }
+                        else if (dare.GetString(9) == Device.StatusType.Completed.ToString())
+                        {
+                            mobile.Status = Device.StatusType.Completed;
+                        }
+                        else if (dare.GetString(9) == Device.StatusType.Failed.ToString())
+                        {
+                            mobile.Status = Device.StatusType.Failed;
+                        }
                         Mobile.Mobiles.Add(mobile);
                     }
                     con.Close();
@@ -157,7 +192,18 @@ namespace DataManagement
                         tablet.Model = dare.GetString(6);
                         tablet.Price = dare.GetInt32(7);
                         tablet.Date = dare.GetDateTime(8);
-                        tablet.Status = dare.GetString(9);
+                        if (dare.GetString(9) == Device.StatusType.Repairing.ToString())
+                        {
+                            tablet.Status = Device.StatusType.Repairing;
+                        }
+                        else if (dare.GetString(9) == Device.StatusType.Completed.ToString())
+                        {
+                            tablet.Status = Device.StatusType.Completed;
+                        }
+                        else if (dare.GetString(9) == Device.StatusType.Failed.ToString())
+                        {
+                            tablet.Status = Device.StatusType.Failed;
+                        }
                         Tablet.Tablets.Add(tablet);
                     }
                     con.Close();
@@ -195,7 +241,18 @@ namespace DataManagement
                         otherdevice.Model = dare.GetString(6);
                         otherdevice.Price = dare.GetInt32(7);
                         otherdevice.Date = dare.GetDateTime(8);
-                        otherdevice.Status = dare.GetString(9);
+                        if (dare.GetString(9) == Device.StatusType.Repairing.ToString())
+                        {
+                            otherdevice.Status = Device.StatusType.Repairing;
+                        }
+                        else if (dare.GetString(9) == Device.StatusType.Completed.ToString())
+                        {
+                            otherdevice.Status = Device.StatusType.Completed;
+                        }
+                        else if (dare.GetString(9) == Device.StatusType.Failed.ToString())
+                        {
+                            otherdevice.Status = Device.StatusType.Failed;
+                        }
                         OtherDevice.OtherDevices.Add(otherdevice);
                     }
                     con.Close();

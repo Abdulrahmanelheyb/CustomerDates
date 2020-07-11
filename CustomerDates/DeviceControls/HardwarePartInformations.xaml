@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
-             mc:Ignorable="d" Width="580.8" Height="374">
+             mc:Ignorable="d" Width="580.8" Height="374" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <FontFamily x:Key="cdfont">Arial</FontFamily>
         <Thickness x:Key="Pdng">2,2.5,0,0</Thickness>
