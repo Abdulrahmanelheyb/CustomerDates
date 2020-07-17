@@ -111,10 +111,6 @@ namespace CustomerDates.DeviceControls.Computers
                 MessageBox.Show("Please Select Property Type For Search");
             }
         }
-
-        private void SearchValueTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
+        
     }
 }

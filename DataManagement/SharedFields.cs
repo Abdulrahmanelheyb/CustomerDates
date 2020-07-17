@@ -10,5 +10,7 @@ namespace DataManagement
     public class SharedFields
     {
         public const string DBPath = @"Data Source = Data\CustomerDates.sl3;Version=3;";
+        public static SQLiteConnection con = new SQLiteConnection(SharedFields.DBPath);
+        
     }
 }

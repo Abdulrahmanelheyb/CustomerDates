@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="ViewModel\ComputerServices\ComputerData.cs" />
     <Compile Include="ViewModel\CustomerDatesServices\CheckLogin.cs" />
+    <Compile Include="ViewModel\LaptopServices\LaptopData.cs" />
     <Compile Include="ViewModel\UniqueCode.cs" />
     <Compile Include="View\ReportDevice.xaml.cs">
       <DependentUpon>ReportDevice.xaml</DependentUpon>
@@ -414,7 +415,6 @@
     <Resource Include="Resources\Assets\About.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\Laptop\" />
     <Folder Include="ViewModel\Mobile\" />
     <Folder Include="ViewModel\OtherDevice\" />
     <Folder Include="ViewModel\Tablet\" />

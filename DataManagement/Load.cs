@@ -11,20 +11,20 @@ namespace DataManagement
 {
     public class Load
     {
-        private static SQLiteConnection con = new SQLiteConnection(SharedFields.DBPath);
         private static SQLiteCommand cmd;
         private static SQLiteDataReader dare = null;
+        private static SQLiteDataAdapter daad = null;
         public static bool LoadComputers()
         {
             bool loadresult = false;
             Computer.Computers.Clear();
             try
             {
-                con.Open();
-                if(con.State == ConnectionState.Open)
+                SharedFields.con.Open();
+                if(SharedFields.con.State == ConnectionState.Open)
                 {
 
-                    cmd = new SQLiteCommand("SELECT * FROM  Computers", con);
+                    cmd = new SQLiteCommand("SELECT * FROM  Computers", SharedFields.con);
                     dare = cmd.ExecuteReader();
                     while (dare.Read())
                     {
@@ -67,7 +67,7 @@ namespace DataManagement
 
                     }
 
-                    con.Close();
+                    SharedFields.con.Close();
                     loadresult = true;
                 }
                 
@@ -81,46 +81,16 @@ namespace DataManagement
         public static bool LoadLaptops()
         {
             bool loadresult = false;
-            Laptop.Laptops.Clear();
-            Laptop laptop;
             try
             {
-                con.Open();
-                if (con.State == ConnectionState.Open)
+                SharedFields.con.Open();
+                if (SharedFields.con.State == ConnectionState.Open)
                 {
-
-                    cmd = new SQLiteCommand("SELECT * FROM  Laptops", con);
-                    dare = cmd.ExecuteReader();
-                    while (dare.Read())
-                    {
-                        laptop = new Laptop();
-                        laptop.DeviceInformationCode = dare.GetString(0);
-                        laptop.SerialNumber = dare.GetString(1);
-                        laptop.CustomerName = dare.GetString(2);
-                        laptop.CustomerPhoneNumber = dare.GetString(3);
-                        laptop.Externals = dare.GetString(4);
-                        laptop.DeviceCompany = dare.GetString(5);
-                        laptop.Model = dare.GetString(6);
-                        laptop.Price = dare.GetInt32(7);
-                        laptop.Date = dare.GetDateTime(8);
-                        if (dare.GetString(9) == Device.StatusType.Repairing.ToString())
-                        {
-                            laptop.Status = Device.StatusType.Repairing;
-                        }
-                        else if (dare.GetString(9) == Device.StatusType.Completed.ToString())
-                        {
-                            laptop.Status = Device.StatusType.Completed;
-                        }
-                        else if (dare.GetString(9) == Device.StatusType.Failed.ToString())
-                        {
-                            laptop.Status = Device.StatusType.Failed;
-                        }
-                        laptop.Hardwares = dare.GetString(9);
-                        laptop.Softwares = dare.GetString(10);
-
-                        Laptop.Laptops.Add(laptop);
-                    }
-                    con.Close();
+                    cmd = new SQLiteCommand("SELECT * FROM  Laptops", SharedFields.con);
+                    daad = new SQLiteDataAdapter(cmd);
+                    Laptop.Laptops.Clear();
+                    daad.Fill(Laptop.Laptops);
+                    SharedFields.con.Close();
                     loadresult = true;
                 }
             }
@@ -137,11 +107,11 @@ namespace DataManagement
             Mobile mobile;
             try
             {
-                con.Open();
-                if (con.State == ConnectionState.Open)
+                SharedFields.con.Open();
+                if (SharedFields.con.State == ConnectionState.Open)
                 {
 
-                    cmd = new SQLiteCommand("SELECT * FROM  Mobiles", con);
+                    cmd = new SQLiteCommand("SELECT * FROM  Mobiles", SharedFields.con);
                     dare = cmd.ExecuteReader();
                     while (dare.Read())
                     {
@@ -172,7 +142,7 @@ namespace DataManagement
 
                         Mobile.Mobiles.Add(mobile);
                     }
-                    con.Close();
+                    SharedFields.con.Close();
                     loadresult = true;
                 }
             }
@@ -189,11 +159,11 @@ namespace DataManagement
             Tablet tablet;
             try
             {
-                con.Open();
-                if (con.State == ConnectionState.Open)
+                SharedFields.con.Open();
+                if (SharedFields.con.State == ConnectionState.Open)
                 {
 
-                    cmd = new SQLiteCommand("SELECT * FROM  Tablets", con);
+                    cmd = new SQLiteCommand("SELECT * FROM  Tablets", SharedFields.con);
                     dare = cmd.ExecuteReader();
                     while (dare.Read())
                     {
@@ -224,7 +194,7 @@ namespace DataManagement
 
                         Tablet.Tablets.Add(tablet);
                     }
-                    con.Close();
+                    SharedFields.con.Close();
                     loadresult = true;
                 }
             }
@@ -241,11 +211,11 @@ namespace DataManagement
             OtherDevice otherdevice;
             try
             {
-                con.Open();
-                if (con.State == ConnectionState.Open)
+                SharedFields.con.Open();
+                if (SharedFields.con.State == ConnectionState.Open)
                 {
 
-                    cmd = new SQLiteCommand("SELECT * FROM  Otherdevices", con);
+                    cmd = new SQLiteCommand("SELECT * FROM  Otherdevices", SharedFields.con);
                     dare = cmd.ExecuteReader();
                     while (dare.Read())
                     {
@@ -276,7 +246,7 @@ namespace DataManagement
 
                         OtherDevice.OtherDevices.Add(otherdevice);
                     }
-                    con.Close();
+                    SharedFields.con.Close();
                     loadresult = true;
                 }
             }

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CustomerDates.ViewModel;
+using CustomerDates.ViewModel.LaptopServices;
 
 namespace CustomerDates.DeviceControls.Laptops
 {
@@ -23,6 +25,7 @@ namespace CustomerDates.DeviceControls.Laptops
         public LaptopsManager()
         {
             InitializeComponent();
+            LaptopData.LoadLaptop();
         }
 
         public static string UCGetName()
@@ -34,12 +37,12 @@ namespace CustomerDates.DeviceControls.Laptops
             if (SearchPanel.Visibility ==Visibility.Visible)
             {
                 SearchPanel.Visibility = Visibility.Collapsed;
-                DeviceListBox.Margin = new Thickness(33, 0, 0, 0);
+                LaptopDataGrid.Margin = new Thickness(33, 0, 0, 20);
             }
             else
             {
                 SearchPanel.Visibility = Visibility.Visible;
-                DeviceListBox.Margin = new Thickness(33,33, 0, 0);
+                LaptopDataGrid.Margin = new Thickness(33,33, 0, 20);
             }
         }
 
@@ -59,6 +62,11 @@ namespace CustomerDates.DeviceControls.Laptops
         }
 
         private void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
