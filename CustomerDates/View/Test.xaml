@@ -1,0 +1,20 @@
+﻿<Window x:Class="CustomerDates.View.Test"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CustomerDates.View"
+        mc:Ignorable="d"
+        Title="Test" Height="450" Width="800" Background="Black">
+    <Window.Resources>
+    </Window.Resources>
+    <Grid Background="#FF1C1492">
+        <Button Content="Button" HorizontalAlignment="Left" Margin="52,47,0,0" VerticalAlignment="Top" Width="65" Foreground="White" Background="{x:Null}" BorderBrush="White" BorderThickness="0" Template="{DynamicResource ButtonTemplate}"/>
+        <CheckBox Content="CheckBox" Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" Margin="52,77,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="52,97,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox HorizontalAlignment="Left" Template="{StaticResource ComboBoxTemplate}" Margin="52,123,0,0" VerticalAlignment="Top" Width="120" Foreground="White" BorderBrush="White" Background="{x:Null}" BorderThickness="0,0,0,1"/>
+        <TextBox HorizontalAlignment="Left" Template="{StaticResource TextBoxTemplate}" Height="23" Margin="52,151,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Foreground="White"/>
+        <ToggleButton  Height="20" Width="50" Background="{x:Null}" BorderBrush="White" Template="{StaticResource ToggleButtonTemplate}" Margin="52,190,691.6,210">
+        </ToggleButton>
+    </Grid>
+</Window>

@@ -22,21 +22,23 @@ namespace DataManagement
                 if(con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("UPDATE Computers SET DeviceInformationCode = @DeviceInformationCode," +
-                        "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
-                        "CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
-                        "CD_Price=@CD_Price,CD_Date=@CD_Date," +
-                        "CD_Status=@CD_Status " +
+                        "SerialNumber=@SerialNumber,CustomerName=@CustomerName,PhoneNumber=@PhoneNumber," +
+                        "DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
+                        "TotalPrice=@TotalPrice,RegisterDate=@RegisterDate," +
+                        "DeviceStatus=@DeviceStatus,Hardwares=@Hardwares,Softwares=@Softwares " +
                         "WHERE DeviceInformationCode='" +Computer.DeviceInformationCode + "'", con);
 
                     cmd.Parameters.AddWithValue("@DeviceInformationCode", Computer.DeviceInformationCode);
-                    cmd.Parameters.AddWithValue("@Serial_Number", Computer.SerialNumber);
-                    cmd.Parameters.AddWithValue("@CD_Name", Computer.CustomerName);
-                    cmd.Parameters.AddWithValue("@CD_Phone", Computer.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@CD_Device_company", Computer.DeviceCompany);
-                    cmd.Parameters.AddWithValue("@CD_Model", Computer.Model);
-                    cmd.Parameters.AddWithValue("@CD_Price", Computer.Price);
-                    cmd.Parameters.AddWithValue("@CD_Date", Computer.Date);
-                    cmd.Parameters.AddWithValue("@CD_Status", Computer.Status);
+                    cmd.Parameters.AddWithValue("@SerialNumber", Computer.SerialNumber);
+                    cmd.Parameters.AddWithValue("@CustomerName", Computer.CustomerName);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", Computer.CustomerPhoneNumber);
+                    cmd.Parameters.AddWithValue("@DeviceCompany", Computer.DeviceCompany);
+                    cmd.Parameters.AddWithValue("@DeviceModel", Computer.Model);
+                    cmd.Parameters.AddWithValue("@TotalPrice", Computer.Price);
+                    cmd.Parameters.AddWithValue("@RegisterDate", Computer.Date);
+                    cmd.Parameters.AddWithValue("@DeviceStatus", Computer.Status);
+                    cmd.Parameters.AddWithValue("@Hardwares",Computer.Hardwares);
+                    cmd.Parameters.AddWithValue("@Softwares", Computer.Softwares);
                     cmd.ExecuteNonQuery();
                     updateresult = true;
                     con.Close();
@@ -50,7 +52,6 @@ namespace DataManagement
 
             return updateresult;
         }
-
         public static bool UpdateDevice(Laptop Laptop)
         {
             bool updateresult = false;
@@ -60,22 +61,24 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("UPDATE Laptops SET DeviceInformationCode = @DeviceInformationCode," +
-                        "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
-                        "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
-                        "CD_Price=@CD_Price,CD_Date=@CD_Date," +
-                        "CD_Status=@CD_Status " +
+                        "SerialNumber=@SerialNumber,CustomerName=@CustomerName,PhoneNumber=@PhoneNumber," +
+                        "DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
+                        "TotalPrice=@TotalPrice,RegisterDate=@RegisterDate," +
+                        "DeviceStatus=@DeviceStatus,Hardwares=@Hardwares,Softwares=@Softwares " +
                         "WHERE DeviceInformationCode='" + Laptop.DeviceInformationCode + "'", con);
 
                     cmd.Parameters.AddWithValue("@DeviceInformationCode", Laptop.DeviceInformationCode);
-                    cmd.Parameters.AddWithValue("@Serial_Number", Laptop.SerialNumber);
-                    cmd.Parameters.AddWithValue("@CD_Name", Laptop.CustomerName);
-                    cmd.Parameters.AddWithValue("@CD_Phone", Laptop.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@CD_Externals", Laptop.Externals);
-                    cmd.Parameters.AddWithValue("@CD_Device_company", Laptop.DeviceCompany);
-                    cmd.Parameters.AddWithValue("@CD_Model", Laptop.Model);
-                    cmd.Parameters.AddWithValue("@CD_Price", Laptop.Price);
-                    cmd.Parameters.AddWithValue("@CD_Date", Laptop.Date);
-                    cmd.Parameters.AddWithValue("@CD_Status", Laptop.Status);
+                    cmd.Parameters.AddWithValue("@SerialNumber", Laptop.SerialNumber);
+                    cmd.Parameters.AddWithValue("@CustomerName", Laptop.CustomerName);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", Laptop.CustomerPhoneNumber);
+                    cmd.Parameters.AddWithValue("@AdditionalExternals", Laptop.Externals);
+                    cmd.Parameters.AddWithValue("@DeviceCompany", Laptop.DeviceCompany);
+                    cmd.Parameters.AddWithValue("@DeviceModel", Laptop.Model);
+                    cmd.Parameters.AddWithValue("@TotalPrice", Laptop.Price);
+                    cmd.Parameters.AddWithValue("@RegisterDate", Laptop.Date);
+                    cmd.Parameters.AddWithValue("@DeviceStatus", Laptop.Status);
+                    cmd.Parameters.AddWithValue("@Hardwares",Laptop.Hardwares);
+                    cmd.Parameters.AddWithValue("@Softwares",Laptop.Softwares);
                     cmd.ExecuteNonQuery();
                     updateresult = true;
                     con.Close();
@@ -89,7 +92,6 @@ namespace DataManagement
 
             return updateresult;
         }
-
         public static bool UpdateDevice(Mobile Mobile)
         {
             bool updateresult = false;
@@ -99,22 +101,24 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("UPDATE Mobiles SET DeviceInformationCode = @DeviceInformationCode," +
-                        "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
-                        "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
-                        "CD_Price=@CD_Price,CD_Date=@CD_Date," +
-                        "CD_Status=@CD_Status " +
+                        "SerialNumber=@SerialNumber,CustomerName=@CustomerName,PhoneNumber=@PhoneNumber," +
+                        "DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
+                        "TotalPrice=@TotalPrice,RegisterDate=@RegisterDate," +
+                        "DeviceStatus=@DeviceStatus,Hardwares=@Hardwares,Softwares=@Softwares " +
                         "WHERE DeviceInformationCode='" + Mobile.DeviceInformationCode + "'", con);
 
                     cmd.Parameters.AddWithValue("@DeviceInformationCode", Mobile.DeviceInformationCode);
-                    cmd.Parameters.AddWithValue("@Serial_Number", Mobile.SerialNumber);
-                    cmd.Parameters.AddWithValue("@CD_Name", Mobile.CustomerName);
-                    cmd.Parameters.AddWithValue("@CD_Phone", Mobile.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@CD_Externals", Mobile.Externals);
-                    cmd.Parameters.AddWithValue("@CD_Device_company", Mobile.DeviceCompany);
-                    cmd.Parameters.AddWithValue("@CD_Model", Mobile.Model);
-                    cmd.Parameters.AddWithValue("@CD_Price", Mobile.Price);
-                    cmd.Parameters.AddWithValue("@CD_Date", Mobile.Date);
-                    cmd.Parameters.AddWithValue("@CD_Status", Mobile.Status);
+                    cmd.Parameters.AddWithValue("@SerialNumber", Mobile.SerialNumber);
+                    cmd.Parameters.AddWithValue("@CustomerName", Mobile.CustomerName);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", Mobile.CustomerPhoneNumber);
+                    cmd.Parameters.AddWithValue("@AdditionalExternals", Mobile.Externals);
+                    cmd.Parameters.AddWithValue("@DeviceCompany", Mobile.DeviceCompany);
+                    cmd.Parameters.AddWithValue("@DeviceModel", Mobile.Model);
+                    cmd.Parameters.AddWithValue("@TotalPrice", Mobile.Price);
+                    cmd.Parameters.AddWithValue("@RegisterDate", Mobile.Date);
+                    cmd.Parameters.AddWithValue("@DeviceStatus", Mobile.Status);
+                    cmd.Parameters.AddWithValue("@Hardwares",Mobile.Hardwares);
+                    cmd.Parameters.AddWithValue("@Softwares",Mobile.Softwares);
                     cmd.ExecuteNonQuery();
                     updateresult = true;
                     con.Close();
@@ -128,7 +132,6 @@ namespace DataManagement
 
             return updateresult;
         }
-
         public static bool UpdateDevice(Tablet Tablet)
         {
             bool updateresult = false;
@@ -138,22 +141,24 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("UPDATE Tablets SET DeviceInformationCode = @DeviceInformationCode," +
-                        "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
-                        "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
-                        "CD_Price=@CD_Price,CD_Date=@CD_Date," +
-                        "CD_Status=@CD_Status " +
+                        "SerialNumber=@SerialNumber,CustomerName=@CustomerName,PhoneNumber=@PhoneNumber," +
+                        "DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
+                        "TotalPrice=@TotalPrice,RegisterDate=@RegisterDate," +
+                        "DeviceStatus=@DeviceStatus,Hardwares=@Hardwares,Softwares=@Softwares " +
                         "WHERE DeviceInformationCode='" + Tablet.DeviceInformationCode + "'", con);
 
                     cmd.Parameters.AddWithValue("@DeviceInformationCode", Tablet.DeviceInformationCode);
-                    cmd.Parameters.AddWithValue("@Serial_Number", Tablet.SerialNumber);
-                    cmd.Parameters.AddWithValue("@CD_Name", Tablet.CustomerName);
-                    cmd.Parameters.AddWithValue("@CD_Phone", Tablet.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@CD_Externals", Tablet.Externals);
-                    cmd.Parameters.AddWithValue("@CD_Device_company", Tablet.DeviceCompany);
-                    cmd.Parameters.AddWithValue("@CD_Model", Tablet.Model);
-                    cmd.Parameters.AddWithValue("@CD_Price", Tablet.Price);
-                    cmd.Parameters.AddWithValue("@CD_Date", Tablet.Date);
-                    cmd.Parameters.AddWithValue("@CD_Status", Tablet.Status);
+                    cmd.Parameters.AddWithValue("@SerialNumber", Tablet.SerialNumber);
+                    cmd.Parameters.AddWithValue("@CustomerName", Tablet.CustomerName);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", Tablet.CustomerPhoneNumber);
+                    cmd.Parameters.AddWithValue("@AdditionalExternals", Tablet.Externals);
+                    cmd.Parameters.AddWithValue("@DeviceCompany", Tablet.DeviceCompany);
+                    cmd.Parameters.AddWithValue("@DeviceModel", Tablet.Model);
+                    cmd.Parameters.AddWithValue("@TotalPrice", Tablet.Price);
+                    cmd.Parameters.AddWithValue("@RegisterDate", Tablet.Date);
+                    cmd.Parameters.AddWithValue("@DeviceStatus", Tablet.Status);
+                    cmd.Parameters.AddWithValue("@Hardwares",Tablet.Hardwares);
+                    cmd.Parameters.AddWithValue("@Softwares",Tablet.Softwares);
                     cmd.ExecuteNonQuery();
                     updateresult = true;
                     con.Close();
@@ -176,22 +181,24 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("UPDATE Otherdevices SET DeviceInformationCode = @DeviceInformationCode," +
-                        "Serial_Number=@Serial_Number,CD_Name=@CD_Name,CD_Phone=@CD_Phone," +
-                        "CD_Externals=@CD_Externals,CD_Device_company=@CD_Device_company,CD_Model=@CD_Model," +
-                        "CD_Price=@CD_Price,CD_Date=@CD_Date," +
-                        "CD_Status=@CD_Status " +
+                        "SerialNumber=@SerialNumber,CustomerName=@CustomerName,PhoneNumber=@PhoneNumber," +
+                        "DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
+                        "TotalPrice=@TotalPrice,RegisterDate=@RegisterDate," +
+                        "DeviceStatus=@DeviceStatus,Hardwares=@Hardwares,Softwares=@Softwares " +
                         "WHERE DeviceInformationCode='" + OtherDevice.DeviceInformationCode + "'", con);
 
                     cmd.Parameters.AddWithValue("@DeviceInformationCode", OtherDevice.DeviceInformationCode);
-                    cmd.Parameters.AddWithValue("@Serial_Number", OtherDevice.SerialNumber);
-                    cmd.Parameters.AddWithValue("@CD_Name", OtherDevice.CustomerName);
-                    cmd.Parameters.AddWithValue("@CD_Phone", OtherDevice.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@CD_Externals", OtherDevice.Externals);
-                    cmd.Parameters.AddWithValue("@CD_Device_company", OtherDevice.DeviceCompany);
-                    cmd.Parameters.AddWithValue("@CD_Model", OtherDevice.Model);
-                    cmd.Parameters.AddWithValue("@CD_Price", OtherDevice.Price);
-                    cmd.Parameters.AddWithValue("@CD_Date", OtherDevice.Date);
-                    cmd.Parameters.AddWithValue("@CD_Status", OtherDevice.Status);
+                    cmd.Parameters.AddWithValue("@SerialNumber", OtherDevice.SerialNumber);
+                    cmd.Parameters.AddWithValue("@CustomerName", OtherDevice.CustomerName);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", OtherDevice.CustomerPhoneNumber);
+                    cmd.Parameters.AddWithValue("@AdditionalExternals", OtherDevice.Externals);
+                    cmd.Parameters.AddWithValue("@DeviceCompany", OtherDevice.DeviceCompany);
+                    cmd.Parameters.AddWithValue("@DeviceModel", OtherDevice.Model);
+                    cmd.Parameters.AddWithValue("@TotalPrice", OtherDevice.Price);
+                    cmd.Parameters.AddWithValue("@RegisterDate", OtherDevice.Date);
+                    cmd.Parameters.AddWithValue("@DeviceStatus", OtherDevice.Status);
+                    cmd.Parameters.AddWithValue("@Hardwares", OtherDevice.Hardwares);
+                    cmd.Parameters.AddWithValue("@Softwares", OtherDevice.Softwares);
                     cmd.ExecuteNonQuery();
                     updateresult = true;
                     con.Close();

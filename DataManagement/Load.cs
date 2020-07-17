@@ -36,7 +36,7 @@ namespace DataManagement
                             computer.SerialNumber = dare.GetString(1).ToString();
                         }
                         computer.CustomerName = dare.GetString(2);
-                        computer.CustomerPhoneNumber = dare.GetInt64(3).ToString();
+                        computer.CustomerPhoneNumber = dare.GetString(3);
                         computer.DeviceCompany = dare.GetString(4);
                         computer.Model = dare.GetString(5);
                         computer.Price = dare.GetInt32(6);
@@ -52,6 +52,15 @@ namespace DataManagement
                         else if (dare.GetString(8) == Device.StatusType.Failed.ToString())
                         {
                             computer.Status = Device.StatusType.Failed;
+                        }
+                        if (dare.IsDBNull(9) == false)
+                        {
+                            computer.Hardwares = dare.GetString(9);
+
+                        }
+                        if (dare.IsDBNull(10) == false)
+                        {
+                            computer.Softwares = dare.GetString(10);
                         }
 
                         Computer.Computers.Add(computer);
@@ -106,6 +115,9 @@ namespace DataManagement
                         {
                             laptop.Status = Device.StatusType.Failed;
                         }
+                        laptop.Hardwares = dare.GetString(9);
+                        laptop.Softwares = dare.GetString(10);
+
                         Laptop.Laptops.Add(laptop);
                     }
                     con.Close();
@@ -155,6 +167,9 @@ namespace DataManagement
                         {
                             mobile.Status = Device.StatusType.Failed;
                         }
+                        mobile.Hardwares = dare.GetString(9);
+                        mobile.Softwares = dare.GetString(10);
+
                         Mobile.Mobiles.Add(mobile);
                     }
                     con.Close();
@@ -204,6 +219,9 @@ namespace DataManagement
                         {
                             tablet.Status = Device.StatusType.Failed;
                         }
+                        tablet.Hardwares = dare.GetString(9);
+                        tablet.Softwares = dare.GetString(10);
+
                         Tablet.Tablets.Add(tablet);
                     }
                     con.Close();
@@ -253,6 +271,9 @@ namespace DataManagement
                         {
                             otherdevice.Status = Device.StatusType.Failed;
                         }
+                        otherdevice.Hardwares = dare.GetString(9);
+                        otherdevice.Softwares = dare.GetString(10);
+
                         OtherDevice.OtherDevices.Add(otherdevice);
                     }
                     con.Close();

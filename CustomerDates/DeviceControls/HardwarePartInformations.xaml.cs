@@ -23,6 +23,7 @@ namespace CustomerDates.DeviceControls
         public HardwarePartInformations()
         {
             InitializeComponent();
+            datagrid.DataContext = Hardware.Hardwares;
         }
 
         #region SetDevice
@@ -55,8 +56,16 @@ namespace CustomerDates.DeviceControls
 
         public void ResetControls()
         {
-            
+            parttypecbx.SelectedIndex = -1;
+            descriptiontbx.Text = "";
+            pricetbx.Text = "";
+            Completed.IsChecked = false;
+            Repairing.IsChecked = false;
+            Failed.IsChecked = false;
+            datagrid.ItemsSource = null;
         }
+
+
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -81,6 +90,9 @@ namespace CustomerDates.DeviceControls
             Completed.IsChecked = false;
         }
 
-        
+        private void AddPartInfo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

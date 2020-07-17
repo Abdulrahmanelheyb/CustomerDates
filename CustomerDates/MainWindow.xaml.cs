@@ -128,36 +128,87 @@ namespace CustomerDates
         private void Computers_Click(object sender, RoutedEventArgs e)
         {
             ComputersManager uccomputers = new ComputersManager();
-            OperationsStatus.Content = ComputersManager.UCGetName();
             SetUserControl(Viewgrid,uccomputers);
-            
+            ComputersList.Background = Brushes.White;
+            ComputersList.Foreground = Brushes.Black;
+
+            LaptopsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            LaptopsList.Foreground = Brushes.White;
+            MobilesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            MobilesList.Foreground = Brushes.White;
+            TabletsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            TabletsList.Foreground = Brushes.White;
+            OtherDevicesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            OtherDevicesList.Foreground = Brushes.White;
+
         }
         private void Laptops_Click(object sender, RoutedEventArgs e)
         {
             LaptopsManager uclaptops = new LaptopsManager();
-            OperationsStatus.Content = LaptopsManager.UCGetName();
             SetUserControl(Viewgrid, uclaptops);
+            LaptopsList.Background = Brushes.White;
+            LaptopsList.Foreground = Brushes.Black;
+
+            ComputersList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            ComputersList.Foreground = Brushes.White;
+            MobilesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            MobilesList.Foreground = Brushes.White;
+            TabletsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            TabletsList.Foreground = Brushes.White;
+            OtherDevicesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            OtherDevicesList.Foreground = Brushes.White;
+
         }
 
         private void Mobiles_Click(object sender, RoutedEventArgs e)
         {
             MobilesManager ucmobiles = new MobilesManager();
-            OperationsStatus.Content = MobilesManager.UCGetName();
             SetUserControl(Viewgrid, ucmobiles);
+            MobilesList.Background = Brushes.White;
+            MobilesList.Foreground = Brushes.Black;
+
+            ComputersList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            ComputersList.Foreground = Brushes.White;
+            LaptopsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            LaptopsList.Foreground = Brushes.White;
+            TabletsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            TabletsList.Foreground = Brushes.White;
+            OtherDevicesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            OtherDevicesList.Foreground = Brushes.White;
         }
 
         private void Tablets_Click(object sender, RoutedEventArgs e)
         {
             TabletsManager uctablets = new TabletsManager();
-            OperationsStatus.Content = TabletsManager.UCGetName();
             SetUserControl(Viewgrid, uctablets);
+            TabletsList.Background = Brushes.White;
+            TabletsList.Foreground = Brushes.Black;
+
+            ComputersList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            ComputersList.Foreground = Brushes.White;
+            LaptopsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            LaptopsList.Foreground = Brushes.White;
+            MobilesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            MobilesList.Foreground = Brushes.White;
+            OtherDevicesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            OtherDevicesList.Foreground = Brushes.White;
         }
 
         private void OtherDevices_Click(object sender, RoutedEventArgs e)
         {
             OtherDevicesManager ucotherdevices = new OtherDevicesManager();
-            OperationsStatus.Content = OtherDevicesManager.UCGetName();
             SetUserControl(Viewgrid, ucotherdevices);
+            OtherDevicesList.Background = Brushes.White;
+            OtherDevicesList.Foreground = Brushes.Black;
+
+            ComputersList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            ComputersList.Foreground = Brushes.White;
+            LaptopsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            LaptopsList.Foreground = Brushes.White;
+            MobilesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            MobilesList.Foreground = Brushes.White;
+            TabletsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            TabletsList.Foreground = Brushes.White;
         }
 
 

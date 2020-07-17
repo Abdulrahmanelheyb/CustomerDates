@@ -8,6 +8,7 @@ namespace ObjectLayer
 {
     public class Software
     {
+        public static List<Software> Softwares = new List<Software>();
         public int ID { get; set; }
         public string DeviceInformationCode { get; set; }
         public string Parttype { get; set; }

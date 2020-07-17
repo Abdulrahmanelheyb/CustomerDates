@@ -19,7 +19,7 @@
         <Border VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="Black" BorderBrush="#FF00AEFF" BorderThickness="0" Height="33" Margin="33,0,0,0">
             <StackPanel x:Name="SearchPanel" Orientation="Horizontal" Tag="SearchTopDockPanel" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Stretch">
                 <TextBlock Text="Property Type :" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                <ComboBox x:Name="SearchPropertyComboBox" FontFamily="{StaticResource cdfont}" Background="White" BorderThickness="0,0,0,1" Template="{DynamicResource SearchComboBox}" Foreground="Black" Width="210" Margin="10,5,0,4.8">
+                <ComboBox x:Name="SearchPropertyComboBox" FontFamily="{StaticResource cdfont}" Background="{x:Null}" BorderThickness="0,0,0,1" Template="{DynamicResource ComboBoxTemplate}" Foreground="Black" Width="210" Margin="10,5,0,4.8">
                     <ComboBoxItem Tag="Name" Content="Customer Name"/>
                     <ComboBoxItem Tag="PhoneNumber" Content="Customer Phone Number"/>
                     <ComboBoxItem Tag="DeviceCompany" Content="Device Company"/>
@@ -32,7 +32,7 @@
                 </ComboBox>
                 <TextBlock Text="Value :" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 <TextBox x:Name="SearchValueTextBox" TextChanged="SearchValueTextBox_TextChanged" HorizontalAlignment="Left" Background="{x:Null}"  FontFamily="{StaticResource cdfont}" Foreground="White" Padding="3,0,0,0" VerticalContentAlignment="Center" VerticalAlignment="Center" BorderBrush="White" BorderThickness="0,0,0,1" CaretBrush="White" Margin="10,4,0,4" Grid.ColumnSpan="3" Width="251" Height="21"/>
-                <Button x:Name="SearchButton" HorizontalAlignment="Left" Template="{DynamicResource SearchButtonTemplate}" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="10,6,10,0" RenderTransformOrigin="0.5,0.505" VerticalAlignment="Top" Click="SearchButton_Click" >
+                <Button x:Name="SearchButton" HorizontalAlignment="Left" Template="{StaticResource ButtonTemplate}" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="10,6,10,0" RenderTransformOrigin="0.5,0.505" VerticalAlignment="Top" Click="SearchButton_Click" >
                     <Button.Background>
                         <ImageBrush ImageSource="/CustomerDates;component/Resources/Assets/Search Blue.png"/>
                     </Button.Background>
@@ -41,27 +41,27 @@
         </Border>
         <Border VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="Black" BorderBrush="#FF00AEFF" BorderThickness="0,0,2,0" Margin="0,0,0,-0.4" Width="33">
             <StackPanel Tag="LeftDockPanel" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="Transparent" Width="31" Margin="0,20">
-                <Button x:Name="InsertButton" Template="{DynamicResource DeviceToolsInsertButton}" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="0,0,0,0" Grid.Row="0" Click="InsertButton_Click">
+                <Button x:Name="InsertButton" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="0,0,0,0" Grid.Row="0" Click="InsertButton_Click" Template="{DynamicResource AddButtonTemplate}">
                     <Button.Background>
                         <ImageBrush ImageSource="/CustomerDates;component/Resources/Assets/Add White.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="UpdateButton" Template="{DynamicResource DeviceToolsUpdateButton}" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="0,25,0,0" Grid.Row="0" Click="UpdateButton_Click">
+                <Button x:Name="UpdateButton" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="0,25,0,0" Grid.Row="0" Click="UpdateButton_Click" Template="{DynamicResource UpdateButtonTemplate}">
                     <Button.Background>
                         <ImageBrush ImageSource="/CustomerDates;component/Resources/Assets/Update White.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="DeleteButton" Template="{DynamicResource DeviceToolsDeleteButton}" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="0,25,0,0" Grid.Row="0" Click="DeleteButton_Click">
+                <Button x:Name="DeleteButton" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="0,25,0,0" Grid.Row="0" Click="DeleteButton_Click" Template="{DynamicResource DeleteButtonTemplate}">
                     <Button.Background>
                         <ImageBrush ImageSource="/CustomerDates;component/Resources/Assets/Delete ICON White.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="ReportButton" Template="{DynamicResource DeviceToolsReportButton}" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="0,25,0,0" Grid.Row="0" Click="ReportButton_Click">
+                <Button x:Name="ReportButton" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="0,25,0,0" Grid.Row="0" Click="ReportButton_Click" Template="{DynamicResource PreviewButtonTemplate}">
                     <Button.Background>
                         <ImageBrush ImageSource="/CustomerDates;component/Resources/Assets/View White.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="SearchIO" HorizontalAlignment="Center" Template="{DynamicResource DeviceToolsSearchButton}" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="0,25,0,0" Click="SearchIO_Click">
+                <Button x:Name="SearchIO" HorizontalAlignment="Center" Width="{StaticResource size}" Height="{StaticResource size}" BorderThickness="0" BorderBrush="{x:Null}" Margin="0,25,0,0" Click="SearchIO_Click" Template="{DynamicResource SearchButtonTemplate}">
                     <Button.Background>
                         <ImageBrush ImageSource="/CustomerDates;component/Resources/Assets/Search White.png"/>
                     </Button.Background>
@@ -69,8 +69,8 @@
             </StackPanel>
 
         </Border>
-        <Grid x:Name="ListGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="33,33,0,0">
-            <ListBox x:Name="DeviceListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Margin="0" Background="#FF00184B" BorderBrush="#FF00AEFF" ItemsSource="{Binding ComputersProperty}" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch">
+        <Grid x:Name="ListGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="33,33,0,19.6">
+            <ListBox x:Name="DeviceListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" Margin="0,0,0,20" Background="#FF00184B" BorderBrush="#FF00AEFF" ItemsSource="{Binding ComputersProperty}" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch">
 
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -142,6 +142,27 @@
 
             </ListBox>
 
+        </Grid>
+        <Grid x:Name="Statusbar" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="33,0,0,0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform Angle="86" CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF4C00A8" Offset="1"/>
+                    <GradientStop Color="#FF008F97"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Margin="0" Padding="5,0,0,0" VerticalContentAlignment="Center" x:Name="OperationsStatus" Content="Issue" FontSize="14" Foreground="White" FontFamily="{StaticResource cdfont}"/>
         </Grid>
 
     </Grid>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomerDates.UserControls
+namespace CustomerDates.View
 {
     /// <summary>
-    /// Interaction logic for ListItem.xaml
+    /// Interaction logic for Test.xaml
     /// </summary>
-    public partial class DeviceRow : ListBoxItem
+    public partial class Test : Window
     {
-        public DeviceRow()
+        public Test()
         {
             InitializeComponent();
         }
-        
     }
 }

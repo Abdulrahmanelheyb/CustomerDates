@@ -131,19 +131,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Command.cs" />
     <Compile Include="DeviceControls\Computers\InsertComputerMG.xaml.cs">
       <DependentUpon>InsertComputerMG.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeviceControls\Laptops\UpdateLaptopMG.xaml.cs">
-      <DependentUpon>UpdateLaptopMG.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="DeviceControls\Laptops\LaptopsManager.xaml.cs" />
     <Compile Include="MainWindowAlterMethods.cs" />
     <Compile Include="DeviceControls\Computers\UpdateComputerMG.xaml.cs">
       <DependentUpon>UpdateComputerMG.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DeviceControls\Laptops\InsertLaptopMG.xaml.cs">
-      <DependentUpon>InsertLaptopMG.xaml</DependentUpon>
     </Compile>
     <Compile Include="DeviceControls\HardwarePartInformations.xaml.cs">
       <DependentUpon>HardwarePartInformations.xaml</DependentUpon>
@@ -160,55 +154,31 @@
     <Compile Include="DeviceControls\Mobiles\MobilesManager.xaml.cs">
       <DependentUpon>MobilesManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeviceControls\Laptops\LaptopsManager.xaml.cs">
-      <DependentUpon>LaptopsManager.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DeviceControls\Computers\ComputersManager.xaml.cs">
       <DependentUpon>ComputersManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ComputerServices\ComputerData.cs" />
-    <Compile Include="ViewModel\ComputerServices\ComputerDataCommands.cs" />
     <Compile Include="ViewModel\CustomerDatesServices\CheckLogin.cs" />
     <Compile Include="ViewModel\UniqueCode.cs" />
     <Compile Include="View\ReportDevice.xaml.cs">
       <DependentUpon>ReportDevice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeviceControls\DeviceRow.xaml.cs">
-      <DependentUpon>DeviceRow.xaml</DependentUpon>
+    <Compile Include="View\Test.xaml.cs">
+      <DependentUpon>Test.xaml</DependentUpon>
     </Compile>
     <Page Include="DeviceControls\Computers\InsertComputerMG.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DeviceControls\Laptops\UpdateLaptopMG.xaml">
+    <Page Include="DeviceControls\Laptops\LaptopsManager.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\DeviceManagerDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\DeviceToolsResourceDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\HardwareSoftwareUCDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\UC_DeviceDicitionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\MainWindowResourceDictionary.xaml">
+    <Page Include="Resources\ApplicationControlsTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeviceControls\Computers\UpdateComputerMG.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="DeviceControls\Laptops\InsertLaptopMG.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -232,11 +202,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DeviceControls\Laptops\LaptopsManager.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="DeviceControls\Computers\ComputersManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\DevicesManagerControlsTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\MainWindowControlsTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -270,7 +244,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DeviceControls\DeviceRow.xaml">
+    <Page Include="View\Test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

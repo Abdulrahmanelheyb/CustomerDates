@@ -39,19 +39,19 @@ namespace CustomerDates
             {
                 Gchars += device.CustomerName[device.CustomerName.Length - 1].ToString() + device.CustomerName[device.CustomerName.Length - 2].ToString();
             }
-            else { throw new Exception(""); }
+            else { throw new Exception("The Name Length Under Limit"); }
 
             if (string.IsNullOrEmpty(device.CustomerPhoneNumber) == false && string.IsNullOrWhiteSpace(device.CustomerPhoneNumber) ==false && device.CustomerPhoneNumber.Length >= 11)
             {
                 Gchars = Gchars + device.CustomerPhoneNumber[ device.CustomerPhoneNumber.Length -1].ToString() + device.CustomerPhoneNumber[device.CustomerPhoneNumber.Length - 2].ToString() + device.CustomerPhoneNumber[device.CustomerPhoneNumber.Length -3].ToString() + device.CustomerPhoneNumber[device.CustomerPhoneNumber.Length -4].ToString();
             }
-            else { throw new Exception(""); }
+            else { throw new Exception("The Phone Number Under Limit"); }
 
             if (string.IsNullOrEmpty(device.Model) == false && string.IsNullOrWhiteSpace(device.Model) == false && device.Model.Length >= 4)
             {
                 Gchars += device.Model[device.Model.Length -1].ToString() + device.Model[device.Model.Length -2].ToString();
             }
-            else { throw new Exception(""); }
+            else { throw new Exception("The Model Length Under Limit"); }
 
             if (string.IsNullOrEmpty(device.SerialNumber) == false && string.IsNullOrWhiteSpace(device.SerialNumber) == false)
             {
@@ -92,7 +92,7 @@ namespace CustomerDates
                 if(last != null)
                 device.DeviceInformationCode = last.ToUpper();
             }
-            else { throw new Exception(""); }
+            else { throw new Exception("Code Is Empty!"); }
             return rlt;
         }
     }

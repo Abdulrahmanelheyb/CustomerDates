@@ -30,11 +30,16 @@ namespace CustomerDates.DeviceControls.Computers
             ComputerData.LoadComputer();
             SearchPanel.Visibility = Visibility.Collapsed;
             ListGrid.Margin = new Thickness(33, 0, 0, 0);
+            SetStatus(UCGetName());
         }
 
         public static string UCGetName()
         {
             return "Computers";
+        }
+        private void SetStatus(string s)
+        {
+            OperationsStatus.Content = s;
         }
         
         private void SearchIO_Click(object sender, RoutedEventArgs e)
@@ -61,6 +66,10 @@ namespace CustomerDates.DeviceControls.Computers
             {
                 update.SetComputerData(Computer.Computers[DeviceListBox.SelectedIndex]);
                 update.Show();
+            }
+            else
+            {
+                SetStatus("Please Select Device To Update");
             }
         }
 

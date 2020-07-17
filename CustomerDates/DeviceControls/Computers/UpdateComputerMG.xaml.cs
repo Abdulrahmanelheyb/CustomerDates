@@ -3,12 +3,17 @@ using ObjectLayer;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Xml;
 
 namespace CustomerDates.DeviceControls
 {
@@ -22,8 +27,11 @@ namespace CustomerDates.DeviceControls
             InitializeComponent();
             statustogglelistcreator();
         }
+
+
+        #region Basics
         List<ToggleButton> statustoggles = new List<ToggleButton>();
-        private DateTime date ;
+        private DateTime date;
         private void statustogglelistcreator()
         {
             statustoggles.Add(Repairing);
@@ -38,6 +46,7 @@ namespace CustomerDates.DeviceControls
             DeviceCompanyTextBox.Text = computer.DeviceCompany;
             ModelTextBox.Text = computer.Model;
             SerialNumberTextBox.Text = computer.SerialNumber;
+            ReadHardwaresXml(computer);
             date = computer.Date;
             if (computer.Status == Device.StatusType.Repairing)
             {
@@ -55,21 +64,39 @@ namespace CustomerDates.DeviceControls
             CodeTextBox.Text = computer.DeviceInformationCode;
         }
 
+        private void Repairing_Checked(object sender, RoutedEventArgs e)
+        {
+            Completed.IsChecked = false;
+            Failed.IsChecked = false;
+        }
+
+        private void Completed_Checked(object sender, RoutedEventArgs e)
+        {
+            Repairing.IsChecked = false;
+            Failed.IsChecked = false;
+        }
+
+        private void Failed_Checked(object sender, RoutedEventArgs e)
+        {
+            Repairing.IsChecked = false;
+            Completed.IsChecked = false;
+        }
+
         #region Window Events >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
-        
-        
+
+
         #region Windows Default Events >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         private void NDbtnexit_Click(object sender, RoutedEventArgs e)
         {
-            
+
             this.Close();
-            
-            
+
+
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -99,6 +126,8 @@ namespace CustomerDates.DeviceControls
 
         #endregion
         #endregion
+        #endregion
+
         private void Excute_btn_Click(object sender, RoutedEventArgs e)
         {
             Computer computer = new Computer();
@@ -109,6 +138,8 @@ namespace CustomerDates.DeviceControls
             computer.SerialNumber = SerialNumberTextBox.Text;
             computer.Date = date;
             computer.DeviceInformationCode = CodeTextBox.Text;
+            computer.Hardwares = WriteHardwaresXml();
+            computer.Softwares = WriteSoftwaresXml();
             computer.Price = computer.SumDevicePartsPrice();
             foreach (ToggleButton toggleButton in statustoggles)
             {
@@ -139,56 +170,249 @@ namespace CustomerDates.DeviceControls
                 MessageBox.Show("ERROR | UPDATE\n" + ex.Message);
             }
             ComputerData.LoadComputer();
-        }
-
-        private void Repairing_Checked(object sender, RoutedEventArgs e)
-        {
-            Completed.IsChecked = false;
-            Failed.IsChecked = false;
-        }
-
-        private void Completed_Checked(object sender, RoutedEventArgs e)
-        {
-            Repairing.IsChecked = false;
-            Failed.IsChecked = false;
-        }
-
-        private void Failed_Checked(object sender, RoutedEventArgs e)
-        {
-            Repairing.IsChecked = false;
-            Completed.IsChecked = false;
-        }
-
-        private void hardwaretab_Click(object sender, RoutedEventArgs e)
-        {
-            SolidColorBrush colorBrush = new SolidColorBrush(Color.FromRgb(51, 46, 128));
-            if(Softwareuc.Visibility == Visibility.Visible)
+            foreach (Computer item in Computer.Computers)
             {
-                Softwareuc.Visibility = Visibility.Hidden;
-                softwaretab.Background = colorBrush;
-                softwaretab.Foreground = Brushes.White;
+                if (item.DeviceInformationCode == CodeTextBox.Text)
+                {
+                    PriceTextBox.Text = item.Price.ToString();
+                }
             }
-            Hardwareuc.Visibility = Visibility.Visible;
-            hardwaretab.Background = Brushes.White;
-            hardwaretab.Foreground = Brushes.Black;
         }
 
-        private void softwaretab_Click(object sender, RoutedEventArgs e)
+        #region Device Technics
+        private void DeviceTechnics_Checked(object sender, RoutedEventArgs e)
         {
-            SolidColorBrush colorBrush = new SolidColorBrush(Color.FromRgb(51, 46, 128));
-            if (Hardwareuc.Visibility == Visibility.Visible)
+            CheckBox Controller = ((CheckBox)sender);
+            Grid gridcontrol = (Grid)DeviceTechnicsInfoGrid.FindName(Controller.Name + "Grid");
+            if (gridcontrol != null)
             {
-                Hardwareuc.Visibility = Visibility.Hidden;
-                hardwaretab.Background = colorBrush;
-                hardwaretab.Foreground = Brushes.White;
+                gridcontrol.IsEnabled = true;
             }
-
-            Softwareuc.Visibility = Visibility.Visible;
-            softwaretab.Background = Brushes.White;
-            softwaretab.Foreground = Brushes.Black;
-            
-
-
         }
+        private void DeviceTechnics_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox Controller = ((CheckBox)sender);
+            Grid gridcontrol = (Grid)DeviceTechnicsInfoGrid.FindName(Controller.Name + "Grid");
+            if (gridcontrol != null)
+            {
+                gridcontrol.IsEnabled = false;
+            }
+        }
+
+        private void StatusEllipse_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Ellipse controller = ((Ellipse)sender);
+
+            if (controller.Fill == Brushes.Red || controller.Fill == Brushes.White)
+            {
+                controller.Fill = Brushes.Yellow;
+                controller.Tag = "Repairing";
+                return;
+            }
+            if (controller.Fill == Brushes.Yellow)
+            {
+                controller.Fill = Brushes.Lime;
+                controller.Tag = "Completed";
+                return;
+            }
+            if (controller.Fill == Brushes.Lime)
+            {
+                controller.Fill = Brushes.Red;
+                controller.Tag = "Failed";
+                return;
+            }
+        }
+        #region Hardware
+        private void Hardware_Click(object sender, RoutedEventArgs e)
+        {
+            SoftwareGrid.Visibility = Visibility.Hidden;
+            Software.Background = new SolidColorBrush(Color.FromRgb(28, 20, 146));
+            Software.Foreground = Brushes.White;
+
+            HardwareGrid.Visibility = Visibility.Visible;
+            Hardware.Background = Brushes.White;
+            Hardware.Foreground = Brushes.Black;
+        }
+        public string WriteHardwaresXml()
+        {
+            StringBuilder hardwarexml = new StringBuilder();
+            XmlWriter writer = XmlWriter.Create(new StringWriter(hardwarexml));
+            writer.WriteStartDocument();
+            writer.WriteStartElement("Hardwares");
+            int index = 1;
+            while (index != HardwareGrid.Children.Count)
+            {
+                if (HardwareGrid.Children[index] is CheckBox)
+                {
+                    CheckBox chkbox = (CheckBox)HardwareGrid.Children[index];
+                    if (chkbox.IsChecked == true)
+                    {
+                        writer.WriteStartElement(chkbox.Name);
+                        writer.WriteAttributeString("Availability", chkbox.IsChecked.ToString());
+                        TextBox description = (TextBox)HardwareGrid.FindName(chkbox.Name + "Description");
+                        writer.WriteAttributeString("Description", description.Text);
+                        TextBox price = (TextBox)HardwareGrid.FindName(chkbox.Name + "Price");
+                        writer.WriteAttributeString("Price", price.Text);
+                        Ellipse ellipse = (Ellipse)HardwareGrid.FindName(chkbox.Name + "Status");
+                        writer.WriteAttributeString("Status", ellipse.Tag.ToString());
+                        writer.WriteEndElement();
+                    }
+                    else
+                    {
+                        writer.WriteStartElement(chkbox.Name);
+                        writer.WriteAttributeString("Availability", chkbox.IsChecked.ToString());
+                        writer.WriteEndElement();
+                    }
+                }
+                index++;
+            }
+            writer.WriteEndElement();
+            writer.WriteEndDocument();
+            writer.Flush();
+            writer.Close();
+            return hardwarexml.ToString();
+        }
+        public void ReadHardwaresXml(Computer computer)
+        {
+            if (computer.Hardwares == null)
+            {
+                return;
+            }
+            XmlReader reader = XmlReader.Create(new StringReader(computer.Hardwares));
+            while (reader.Read())
+            {
+                CheckBox chkbox = null;
+                if (reader.Name != "xml" && reader.Name != "Hardwares")
+                {
+                    chkbox = (CheckBox)HardwareGrid.FindName(reader.Name);
+                    chkbox.IsChecked = Convert.ToBoolean(reader.GetAttribute("Availability"));
+                    if (chkbox.IsChecked == true)
+                    {
+                        TextBox description = (TextBox)HardwareGrid.FindName(chkbox.Name + "Description");
+                        description.Text = reader.GetAttribute("Description");
+
+                        TextBox price = (TextBox)HardwareGrid.FindName(chkbox.Name + "Price");
+                        price.Text = reader.GetAttribute("Price");
+
+                        Ellipse status = (Ellipse)HardwareGrid.FindName(chkbox.Name + "Status");
+                        if (reader.GetAttribute("Status") == "Repairing")
+                        {
+                            status.Fill = Brushes.Yellow;
+                            status.Tag = "Repairing";
+                        }
+                        if (reader.GetAttribute("Status") == "Completed")
+                        {
+                            status.Fill = Brushes.Lime;
+                            status.Tag = "Completed";
+                        }
+                        if (reader.GetAttribute("Status") == "Failed")
+                        {
+                            status.Fill = Brushes.Red;
+                            status.Tag = "Failed";
+                        }
+                    }
+                }
+                
+
+            }
+        }
+        #endregion
+
+        #region Software
+        private void Software_Click(object sender, RoutedEventArgs e)
+        {
+            HardwareGrid.Visibility = Visibility.Hidden;
+            Hardware.Background = new SolidColorBrush(Color.FromRgb(28, 20, 146));
+            Hardware.Foreground = Brushes.White;
+
+            SoftwareGrid.Visibility = Visibility.Visible;
+            Software.Background = Brushes.White;
+            Software.Foreground = Brushes.Black;
+        }
+        public string WriteSoftwaresXml()
+        {
+            StringBuilder softwarexml = new StringBuilder();
+            XmlWriter writer = XmlWriter.Create(new StringWriter(softwarexml));
+            writer.WriteStartDocument();
+            writer.WriteStartElement("Softwares");
+            int index = 1;
+            while (index != SoftwareGrid.Children.Count)
+            {
+                if (SoftwareGrid.Children[index] is CheckBox)
+                {
+                    CheckBox chkbox = (CheckBox)SoftwareGrid.Children[index];
+                    if (chkbox.IsChecked == true)
+                    {
+                        writer.WriteStartElement(chkbox.Name);
+                        writer.WriteAttributeString("Availability", chkbox.IsChecked.ToString());
+                        TextBox description = (TextBox)HardwareGrid.FindName(chkbox.Name + "Description");
+                        writer.WriteAttributeString("Description", description.Text);
+                        TextBox price = (TextBox)HardwareGrid.FindName(chkbox.Name + "Price");
+                        writer.WriteAttributeString("Price", price.Text);
+                        Ellipse ellipse = (Ellipse)HardwareGrid.FindName(chkbox.Name + "Status");
+                        writer.WriteAttributeString("Status", ellipse.Tag.ToString());
+                        writer.WriteEndElement();
+                    }
+                    else
+                    {
+                        writer.WriteStartElement(chkbox.Name);
+                        writer.WriteAttributeString("Availability", chkbox.IsChecked.ToString());
+                        writer.WriteEndElement();
+                    }
+                }
+                index++;
+            }
+            writer.WriteEndElement();
+            writer.WriteEndDocument();
+            writer.Flush();
+            writer.Close();
+            return softwarexml.ToString();
+        }
+        public void ReadSoftwaresXml(Computer computer)
+        {
+            if (computer.Softwares == null)
+            {
+                return;
+            }
+            XmlReader reader = XmlReader.Create(new StringReader(computer.Hardwares));
+            while (reader.Read())
+            {
+                CheckBox chkbox = null;
+                if (reader.Name != "xml" && reader.Name != "Hardwares")
+                {
+                    chkbox = (CheckBox)SoftwareGrid.FindName(reader.Name);
+                    chkbox.IsChecked = Convert.ToBoolean(reader.GetAttribute("Availability"));
+                    if (chkbox.IsChecked == true)
+                    {
+                        TextBox description = (TextBox)SoftwareGrid.FindName(chkbox.Name + "Description");
+                        description.Text = reader.GetAttribute("Description");
+
+                        TextBox price = (TextBox)SoftwareGrid.FindName(chkbox.Name + "Price");
+                        price.Text = reader.GetAttribute("Price");
+
+                        Ellipse status = (Ellipse)HardwareGrid.FindName(chkbox.Name + "Status");
+                        if (reader.GetAttribute("Status") == "Repairing")
+                        {
+                            status.Fill = Brushes.Yellow;
+                            status.Tag = "Repairing";
+                        }
+                        if (reader.GetAttribute("Status") == "Completed")
+                        {
+                            status.Fill = Brushes.Lime;
+                            status.Tag = "Completed";
+                        }
+                        if (reader.GetAttribute("Status") == "Failed")
+                        {
+                            status.Fill = Brushes.Red;
+                            status.Tag = "Failed";
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
+        #endregion
+
+
     }
 }

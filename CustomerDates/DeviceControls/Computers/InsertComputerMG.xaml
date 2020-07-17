@@ -6,34 +6,275 @@
         xmlns:ComputerServices="clr-namespace:CustomerDates.ViewModel.ComputerServices"
     xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:UserControls="clr-namespace:CustomerDates.DeviceControls" x:Class="CustomerDates.DeviceControls.Computers.InsertComputerMG"
         mc:Ignorable="d" 
-        Title="NewDevice" Height="484" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" IsTabStop="False" WindowStyle="None" AllowsTransparency="True" Background="{StaticResource darkblue}" BorderThickness="0,3" Loaded="Window_Loaded" KeyDown="Window_KeyDown" BorderBrush="#FF332E80">
+        Title="NewDevice" Height="484" Width="962.6" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" IsTabStop="False" WindowStyle="None" AllowsTransparency="True" Background="#FF1C1492" BorderThickness="0,3" Loaded="Window_Loaded" KeyDown="Window_KeyDown" BorderBrush="#FF332E80">
     <Window.Resources>
         <FontFamily x:Key="cdfont">Arial</FontFamily>
         <Thickness x:Key="Pdng">2,2.5,0,0</Thickness>
         <System:Double x:Key="cub">19</System:Double>
-        <ComputerServices:ComputerDataCommands x:Key="InsertCommand"/>
     </Window.Resources>
 
     <Grid x:Name="MainGrid" Margin="0,-3,0,-3.4">
-        <Border HorizontalAlignment="Left" x:Name="recmove" Height="25" VerticalAlignment="Top" Width="901" MouseDown="Recmove_MouseDown" Cursor="Hand" Background="#FF665CFF"  BorderBrush="White" BorderThickness="0,0,0,1"/>
-        <Grid x:Name="shwaregrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="300,48,0,25" Background="White">
+        <Border HorizontalAlignment="Stretch" x:Name="recmove" Height="25" VerticalAlignment="Top" MouseDown="Recmove_MouseDown" Cursor="Hand" Background="#FF665CFF"  BorderBrush="White" BorderThickness="0,0,0,1">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Border HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="200" Background="Black" CornerRadius="0,12,12,0" BorderThickness="1,1,0,0" BorderBrush="White">
+                    <TextBlock Text=" Add" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                </Border>
+                <Button Grid.Column="1" Content="" HorizontalAlignment="Right" x:Name="NDbtnexit" Margin="0,0,5,0" VerticalAlignment="Center" Width="15" Height="15" BorderBrush="{x:Null}" Click="NDbtnexit_Click" Cursor="Hand" Template="{StaticResource ExitButtonTemplate}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/CustomerDates;component/Resources/Assets\Exit Icon (Program).png" Stretch="UniformToFill"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Border>
 
-            <UserControls:HardwarePartInformations x:Name="Hardwareuc" HorizontalAlignment="Left" Margin="0,1,0,-23" VerticalAlignment="Top" Width="600" Height="433" Visibility="Hidden"/>
-            <UserControls:SoftwarePartInformations x:Name="Softwareuc" HorizontalAlignment="Left" Margin="0,1,0,-23" VerticalAlignment="Top" Width="600" Height="433" Visibility="Hidden"/>
+        <Grid x:Name="DeviceTechnicsInfoGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="285,25,0.4,25" Background="#FF00053F">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Name="Hardware" Grid.Column="0" Grid.Row="0" Margin="0,0,0.4,0" Content="Hardware" VerticalAlignment="Top" Template="{StaticResource ButtonTemplate}" HorizontalAlignment="Stretch" Background="#FF1C1492" Foreground="White" BorderBrush="White" BorderThickness="0,0,0,1" Height="23" Click="Hardware_Click"/>
+            <Button Name="Software" Grid.Column="1" Grid.Row="0" Margin="0.5,0,0,0" Content="Software" VerticalAlignment="Stretch" Template="{StaticResource ButtonTemplate}" HorizontalAlignment="Stretch" Background="#FF1C1492" Foreground="White" BorderBrush="White" BorderThickness="0,0,0,1" Click="Software_Click"/>
+            <Grid Name="HardwareGrid" Grid.Row="1" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="430"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Grid.ColumnSpan="4" Background="Black">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Part Name" Foreground="White" Margin="5,0,0,0"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Description" Foreground="White" Margin="5,0,0,0"/>
+                    <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Price" Foreground="White" Margin="0,0,0,0"/>
+                    <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Status" Foreground="White" Margin="0,0,0,0"/>
 
+                </Grid>
+                <!--Case-->
+                <CheckBox Name="Case" Grid.Row="1" Grid.Column="0"  Content="Case" Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="CaseGrid" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="CaseDescription" Grid.Column="0"  VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox Name="CasePrice"  Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse Name="CaseStatus" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+                </Grid>
+                <!--Motherboard-->
+                <CheckBox Name="Motherboard" Grid.Row="2" Grid.Column="0" Content="Motherboard"  Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="MotherboardGrid" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox  Name="MotherboardDescription"  Grid.Column="0" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox  Name="MotherboardPrice"  Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse  Name="MotherboardStatus" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+                </Grid>
+
+                <!--Power Supply-->
+                <CheckBox Name="PowerSupply" Grid.Row="3" Grid.Column="0" Content="Power Supply"  Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="PowerSupplyGrid" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox  Name="PowerSupplyDescription" Grid.Column="0" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox  Name="PowerSupplyPrice" Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse  Name="PowerSupplyStatus" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+                </Grid>
+
+                <!--Fan-->
+                <CheckBox Name="Fan" Grid.Row="4" Grid.Column="0" Content="Fan"  Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0"  Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="FanGrid" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="FanDescription" Grid.Column="0" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox Name="FanPrice"  Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse Name="FanStatus"  Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+                </Grid>
+
+                <!--Storage Disk-->
+                <CheckBox Name="StorageDisk" Grid.Row="5" Grid.Column="0" Content="Storage Disk"  Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="StorageDiskGrid" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="StorageDiskDescription" Grid.Column="0" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox Name="StorageDiskPrice" Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse Name="StorageDiskStatus" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+                </Grid>
+
+                <!--RAM-->
+                <CheckBox Name="RAM" Grid.Row="6" Grid.Column="0" Content="RAM" Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="RAMGrid" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="RAMDescription" Grid.Column="0" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox Name="RAMPrice" Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse Name="RAMStatus" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+
+                </Grid>
+
+                <!--Processor (CPU)-->
+                <CheckBox Name="ProcessorCPU" Grid.Row="7" Grid.Column="0" Content="Processor (CPU)"  Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="ProcessorCPUGrid" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="ProcessorCPUDescription" Grid.Column="0" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox Name="ProcessorCPUPrice" Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse Name="ProcessorCPUStatus" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+                </Grid>
+
+                <!--Graphic Card (GPU)-->
+                <CheckBox Name="GraphicCardGPU" Grid.Row="8" Grid.Column="0" Content="Graphic Card (GPU)"  Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="GraphicCardGPUGrid" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="GraphicCardGPUDescription" Grid.Column="0" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox Name="GraphicCardGPUPrice" Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse Name="GraphicCardGPUStatus" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+                </Grid>
+
+                <!--Sound Card-->
+                <CheckBox Name="SoundCard" Grid.Row="9" Grid.Column="0" Content="Sound Card"  Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="SoundCardGrid" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="SoundCardDescription" Grid.Column="0" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox Name="SoundCardPrice" Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse Name="SoundCardStatus" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+                </Grid>
+
+                <!--Sata Cable-->
+                <CheckBox Name="SataCable" Grid.Row="10" Grid.Column="0" Content="Sata Cable"  Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="SataCableGrid" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="SataCableDescription" Grid.Column="0" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox Name="SataCablePrice" Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse Name="SataCableStatus"  Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+                </Grid>
+
+                <!--CDROM-->
+                <CheckBox Name="CDROM" Grid.Row="11" Grid.Column="0" Content="CDROM"  Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="CDROMGrid" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="CDROMDescription"  Grid.Column="0" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox Name="CDROMPrice"  Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse Name="CDROMStatus"  Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+                </Grid>
+            </Grid>
+            <Grid Name="SoftwareGrid" Grid.Row="1" Grid.ColumnSpan="2" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="430"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--Header-->
+                <Grid Grid.Row="0" Grid.ColumnSpan="4" Background="Black">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Part Name" Foreground="White" Margin="5,0,0,0"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Description" Foreground="White" Margin="5,0,0,0"/>
+                    <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Price" Foreground="White" Margin="0,0,0,0"/>
+                    <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Status" Foreground="White" Margin="0,0,0,0"/>
+
+                </Grid>
+                <CheckBox Name="Format" Grid.Row="1" Grid.Column="0"  Content="Format" Template="{StaticResource CheckBoxTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Checked="DeviceTechnics_Checked" Unchecked="DeviceTechnics_Unchecked"/>
+                <Grid Name="FormatGrid" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" IsEnabled="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="FormatDescription" Grid.Column="0"  VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Margin="5,0,10,0" Padding="0,0,0,3"/>
+                    <TextBox Name="FormatPrice"  Grid.Column="1" VerticalAlignment="Center" Template="{StaticResource TextBoxTemplate}" CaretBrush="White" Foreground="White" Padding="0,0,0,3"/>
+                    <Ellipse Name="FormatStatus" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20" Fill="White" MouseLeftButtonDown="StatusEllipse_MouseLeftButtonDown"/>
+                </Grid>
+            </Grid>
         </Grid>
 
 
 
-        <Button Content="" HorizontalAlignment="Left" x:Name="NDbtnexit" Margin="880,5,0,0" VerticalAlignment="Top" Width="15" Height="15" BorderBrush="{x:Null}" Click="NDbtnexit_Click" Cursor="Hand" Template="{StaticResource DeviceMangerExitButtonStyle}">
 
-            <Button.Background>
-                <ImageBrush ImageSource="/CustomerDates;component/Resources/Assets\Exit Icon (Program).png" Stretch="UniformToFill"/>
-            </Button.Background>
-        </Button>
-        <Border HorizontalAlignment="Left" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1,0" Margin="0,25,0,53" Width="300" Background="#FF1C1492">
-            <Grid Height="395" x:Name="datagrid" VerticalAlignment="Top" Width="299" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="69" Margin="0.2,0,-0.8,0">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1,0" Margin="0,25" Width="285" Background="#FF1C1492">
+            <Grid Height="434" x:Name="datagrid" VerticalAlignment="Top" Width="284" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="69" Margin="0.2,0,-1,0">
                 <Grid.RowDefinitions>
+                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -48,38 +289,54 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="0"  VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Text="Name Surname" TextWrapping="Wrap" Foreground="White" Margin="0,0,5,0" Padding="0,0,0,0"/>
-                <TextBox x:Name="NameTextBox" Grid.Row="0" Grid.Column="1" Padding="0,2,0,0" HorizontalAlignment="Center" FontFamily="{StaticResource cdfont}" Foreground="White" Height="25" TextWrapping="NoWrap" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" BorderBrush="Red" BorderThickness="2,0,0,0" CaretBrush="White" Background="{x:Null}" Margin="0,0,0,0"/>
+                <TextBox x:Name="NameTextBox" Grid.Row="0" Grid.Column="1"  Padding="0,2,0,0" HorizontalAlignment="Stretch" FontFamily="{StaticResource cdfont}" Foreground="White" Height="25" TextWrapping="NoWrap" Template="{StaticResource TextBoxTemplate}" BorderBrush="Red" BorderThickness="2,0,0,0" CaretBrush="White" Background="{x:Null}" Margin="10,0"/>
 
                 <TextBlock Text="Phone Number" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Padding="0" Margin="0,0,5,0"/>
-                <TextBox x:Name="PhoneNumberTextBox"  Grid.Row="1" Grid.Column="1" Padding="0,2,0,0" FontFamily="{StaticResource cdfont}" Foreground="White" Height="25" TextWrapping="Wrap" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" MaxLength="11" MaxLines="1" BorderBrush="Red" BorderThickness="2,0,0,0" CaretBrush="White" Background="{x:Null}" Margin="0"/>
+                <TextBox x:Name="PhoneNumberTextBox"  Grid.Row="1" Grid.Column="1" Padding="0,2,0,0" FontFamily="{StaticResource cdfont}" Foreground="White" Height="25" TextWrapping="Wrap" Template="{StaticResource TextBoxTemplate}" MaxLength="11" MaxLines="1" BorderBrush="Red" BorderThickness="2,0,0,0" CaretBrush="White" Background="{x:Null}" Margin="10,0"/>
 
                 <TextBlock VerticalAlignment="Center" Grid.Column="0" HorizontalAlignment="Right" Grid.Row="2" Text="Device Company" Margin="0,0,5,0" Foreground="White"/>
-                <TextBox x:Name="DeviceCompanyTextBox" Grid.Column="1" CharacterCasing="Upper" Grid.Row="2" Padding="0,2,0,0" FontFamily="{StaticResource cdfont}" Foreground="White" Height="25" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" BorderBrush="Red" BorderThickness="2,0,0,0" CaretBrush="White" Background="{x:Null}" Margin="0"/>
+                <TextBox x:Name="DeviceCompanyTextBox" Grid.Column="1" CharacterCasing="Upper" Grid.Row="2" Padding="0,2,0,0" FontFamily="{StaticResource cdfont}" Foreground="White" Height="25" Template="{StaticResource TextBoxTemplate}" BorderBrush="Red" BorderThickness="2,0,0,0" CaretBrush="White" Background="{x:Null}" Margin="10,0"/>
 
                 <TextBlock VerticalAlignment="Center" Grid.Column="0" HorizontalAlignment="Right" Grid.Row="3" Text="Model" Margin="0,0,5,0" Foreground="White"/>
-                <TextBox x:Name="ModelTextBox" Grid.Row="3" Grid.Column="1" CharacterCasing="Upper" Padding="0,2,0,0" FontFamily="{StaticResource cdfont}" Height="25" Foreground="White" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" BorderBrush="#FFFF1B00" BorderThickness="2,0,0,0" CaretBrush="White" Background="{x:Null}" Margin="0"/>
+                <TextBox x:Name="ModelTextBox" Grid.Row="3" Grid.Column="1" CharacterCasing="Upper" Padding="0,2,0,0" FontFamily="{StaticResource cdfont}" Height="25" Foreground="White" Template="{StaticResource TextBoxTemplate}" BorderBrush="#FFFF1B00" BorderThickness="2,0,0,0" CaretBrush="White" Background="{x:Null}" Margin="10,0"/>
 
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Text="Serial Number" Grid.Row="4" Margin="0,0,5,0" Foreground="White"/>
-                <TextBox x:Name="SerialNumberTextBox"  Grid.Row="4" Grid.Column="1" CharacterCasing="Upper" Padding="0,2,0,0" FontFamily="{StaticResource cdfont}" Height="25" Foreground="White" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" MaxLength="11" MaxLines="1" BorderThickness="0" CaretBrush="White"/>
+                <TextBox x:Name="SerialNumberTextBox" HorizontalAlignment="Stretch" Margin="10,0" Grid.Row="4" Grid.Column="1" CharacterCasing="Upper" Padding="0,2,0,0" FontFamily="{StaticResource cdfont}" Height="25" Foreground="White" Template="{StaticResource TextBoxTemplate}" MaxLength="11" MaxLines="1" BorderThickness="0" CaretBrush="White"/>
 
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="5" Text="Status" Margin="0,0,5,0" Foreground="White"/>
-                <Border  Grid.Row="5" Width="182" Grid.Column="1" Height="25" BorderBrush="White" BorderThickness="0,0,0,1">
-                    <Grid HorizontalAlignment="Stretch" Margin="0,0,0.4,0">
+                <Border  Grid.Row="5" Grid.Column="1" Height="25" BorderBrush="White" BorderThickness="0,0,0,1" Margin="10,0">
+                    <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <ToggleButton x:Name="Repairing" Grid.Column="0" Content="Repairing"  HorizontalContentAlignment="Center" FontFamily="{StaticResource cdfont}" FontSize="10" VerticalContentAlignment="Center" Height="20" Margin="5,0" Background="{x:Null}" BorderBrush="Yellow" BorderThickness="0" Foreground="Yellow" Template="{StaticResource StatusButtonsStyle}" Checked="Repairing_Checked"/>
-                        <ToggleButton x:Name="Completed" Grid.Column="1" Content="Completed" HorizontalContentAlignment="Center" FontFamily="{StaticResource cdfont}" FontSize="10" VerticalContentAlignment="Center" Height="20" Margin="5,0" Template="{StaticResource StatusButtonsStyle}" Background="{x:Null}" BorderBrush="Lime" BorderThickness="0" Foreground="Lime" Checked="Completed_Checked"/>
-                        <ToggleButton x:Name="Failed" Grid.Column="2" Content="Failed" FontFamily="{StaticResource cdfont}" FontSize="10" VerticalContentAlignment="Center" Height="20" Margin="5,0" Template="{StaticResource StatusButtonsStyle}" Background="{x:Null}" BorderBrush="Red" BorderThickness="0" Foreground="Red" Padding="0" Checked="Failed_Checked"/>
+                        <ToggleButton x:Name="Repairing" Grid.Column="0" Content="Repairing"  HorizontalContentAlignment="Center" FontFamily="{StaticResource cdfont}" FontSize="10" VerticalContentAlignment="Center" Height="20" Margin="0,0" Background="#FF1C1492" BorderBrush="Yellow" Foreground="Yellow" Template="{StaticResource ToggleButtonTemplate}" Checked="Repairing_Checked" BorderThickness="0"/>
+                        <ToggleButton x:Name="Completed" Grid.Column="1" Content="Completed" HorizontalContentAlignment="Center" FontFamily="{StaticResource cdfont}" FontSize="10" VerticalContentAlignment="Center" Height="20" Margin="0,0" Template="{StaticResource ToggleButtonTemplate}" Background="#FF1C1492" BorderBrush="Lime" BorderThickness="0" Foreground="Lime" Checked="Completed_Checked"/>
+                        <ToggleButton x:Name="Failed" Grid.Column="2" Content="Failed" FontFamily="{StaticResource cdfont}" FontSize="10" VerticalContentAlignment="Center" Height="20" Margin="0,0" Template="{StaticResource ToggleButtonTemplate}" Background="#FF1C1492" BorderBrush="Red" BorderThickness="0" Foreground="Red" Padding="0" Checked="Failed_Checked"/>
                     </Grid>
                 </Border>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Text="Price" Grid.Row="6" Margin="0,0,5,0" Foreground="White"/>
-                <TextBox x:Name="PriceTextBox" Grid.Row="6" Grid.Column="1" IsReadOnly="True" IsReadOnlyCaretVisible="False" FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="{StaticResource cdfont}" Height="25" Foreground="White" Padding="0,0,10,3" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" BorderBrush="{x:Null}" BorderThickness="0"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="6" Text="Price" Margin="0,0,5,0" Foreground="White"/>
+                <TextBox x:Name="PriceTextBox" Grid.Row="6" Grid.Column="1" IsReadOnly="True" IsReadOnlyCaretVisible="False" FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="{StaticResource cdfont}" Height="25" Foreground="White" Padding="0,0,10,3" Template="{StaticResource TextBoxTemplate}" BorderBrush="{x:Null}" BorderThickness="0" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="7" Text="Code" Margin="0,0,5,0" Foreground="White"/>
+                <TextBox x:Name="CodeTextBox"  Grid.Row="7" Grid.Column="1" Foreground="White" Height="26" VerticalContentAlignment="Center"  FontSize="12" FontFamily="{StaticResource cdfont}" Padding="0,0,10,3" Template="{StaticResource TextBoxTemplate}" BorderBrush="{x:Null}" BorderThickness="0" IsReadOnly="True" HorizontalContentAlignment="Center" Margin="10,0,0,0" Width="133" HorizontalAlignment="Left"/>
+                <Button Grid.ColumnSpan="2" Grid.Row="9" Content="Execute" x:Name="Excute_btn" Click="Excute_btn_Click" Height="29" FontFamily="{StaticResource cdfont}" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" BorderBrush="White" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Cursor="Hand" Template="{DynamicResource ButtonTemplate}" Margin="0,0,0,0">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                    <RotateTransform Angle="62.447" CenterY="0.5" CenterX="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FF002D88" Offset="0"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
 
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Text="Code" Grid.Row="7" Margin="0,0,5,0" Foreground="White"/>
-                <TextBox x:Name="CodeTextBox"  Grid.Row="7" Grid.Column="1" Foreground="White" Height="26" VerticalContentAlignment="Center"  FontSize="12" FontFamily="{StaticResource cdfont}" Padding="0,0,10,3" Width="182" Template="{StaticResource DataFieldDefaultTemplate}" BorderBrush="{x:Null}" BorderThickness="0" IsReadOnly="True" HorizontalContentAlignment="Center"/>
+                </Button>
 
 
 
@@ -88,50 +345,15 @@
 
             </Grid>
         </Border>
-        <Button Content="Execute" Width="300" x:Name="Excute_btn" Click="Excute_btn_Click" Height="29" FontFamily="{StaticResource cdfont}" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" BorderBrush="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="Hand" Template="{DynamicResource ExecuteButtonStyle}" Margin="0,0,0,25" Padding="-2,3,-43,-7">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <LinearGradientBrush.RelativeTransform>
-                        <TransformGroup>
-                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                            <RotateTransform Angle="62.447" CenterY="0.5" CenterX="0.5"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </LinearGradientBrush.RelativeTransform>
-                    <GradientStop Color="#FF002D88" Offset="0"/>
-                    <GradientStop Color="Black" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-
-        </Button>
         <Border VerticalAlignment="Bottom" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="0" Height="25" Background="#FF665CFF">
-            <Grid HorizontalAlignment="Right" Height="25" VerticalAlignment="Bottom" Width="900" Margin="0,-0.8,0,-0.2">
+            <Grid HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Bottom">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="29*"/>
+                    <ColumnDefinition Width="10*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" x:Name="OperationStatus" Content="Issue" HorizontalAlignment="Left" Margin="10,0,0,0" Padding="0,0,0,1" VerticalAlignment="Top" Height="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="440" Foreground="White" />
+                <Label Grid.Column="0" x:Name="OperationStatus" Content="Issue" HorizontalAlignment="Stretch" Margin="10,0,1.8,0" Padding="0,0,0,1" VerticalAlignment="Top" Height="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" />
             </Grid>
         </Border>
-
-        <Grid  VerticalAlignment="Top"  HorizontalAlignment="Stretch" Height="23" Margin="300,25,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="hardwaretab" Grid.Column="0"  Content="Hardware Parts" HorizontalAlignment="Stretch" VerticalAlignment="Top" FontFamily="{StaticResource cdfont}" Height="23" BorderBrush="White" BorderThickness="0" Background="{Binding Mode=OneWay, Source={StaticResource darkblue}}" Template="{DynamicResource SoftwareHardwareButtonsTemplate}" Foreground="White" Cursor="Hand" Padding="1" Click="hardwaretab_Click" />
-
-            <Button x:Name="softwaretab" Grid.Column="1"  Content="Software Parts" HorizontalAlignment="Stretch" VerticalAlignment="Top" FontFamily="{StaticResource cdfont}" Height="23" BorderBrush="White" BorderThickness="0.5,0,1,0" Background="{Binding Mode=OneWay, Source={StaticResource darkblue}}" Foreground="White" Template="{DynamicResource SoftwareHardwareButtonsTemplate}" Cursor="Hand" Click="softwaretab_Click"/>
-        </Grid>
-
-
-
-
-
-
-
-
 
 
 

@@ -13,45 +13,27 @@
     <Window.Resources>
         <FontFamily x:Key="cdfont">Arial</FontFamily>
         <Thickness x:Key="Pdng">2,2.5,0,0</Thickness>
+
     </Window.Resources>
     <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White">
 
         <DockPanel x:Name="Topdock" Background="#FF050059" Height="33" VerticalAlignment="Top" HorizontalAlignment="Stretch" MouseDown="Topdock_MouseDown">
-            <Button HorizontalAlignment="Left" x:Name="Menubtn" VerticalAlignment="Top" Width="21" Height="20" Margin="7,6,0,0" BorderBrush="{x:Null}" BorderThickness="0" Cursor="Hand" >
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type ButtonBase}">
-                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="Button.IsDefaulted" Value="True">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" TargetName="border" >
-                                    <Setter.Value>
-                                        <ImageBrush ImageSource="Resources/Assets/Menu blue.png" Stretch="Uniform" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button HorizontalAlignment="Left" x:Name="Menubtn" VerticalAlignment="Top" Width="21" Height="20" Margin="7,6,0,0" BorderBrush="{x:Null}" BorderThickness="0" Cursor="Hand" Template="{DynamicResource MenuButtonTemplate}" >
                 <Button.Background>
                     <ImageBrush ImageSource="Resources/Assets/Menu.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button  HorizontalAlignment="Right" x:Name="MMbtnexit" Style="{DynamicResource ExitButtonStyle}" VerticalAlignment="Center" Width="15" Height="15" BorderBrush="{x:Null}" Click="MMbtnexit_Click" Cursor="Hand" Margin="0,0,10,0" DockPanel.Dock="Right">
+            <Button HorizontalAlignment="Right" x:Name="MMbtnexit" VerticalAlignment="Center" Width="15" Height="15" BorderBrush="{x:Null}" Click="MMbtnexit_Click" Cursor="Hand" Margin="0,0,10,0" DockPanel.Dock="Right" Template="{DynamicResource ExitButtonTemplate}">
                 <Button.Background>
-                    <ImageBrush ImageSource="Resources/Assets/Exit Icon (Program).png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="Resources/Assets/Exit Icon (Program).png"/>
                 </Button.Background>
             </Button>
-            <Button Width="15" Height="15" x:Name="Maximizebtn" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" Click="Maximizebtn_Click" BorderBrush="{x:Null}" Cursor="Hand" DockPanel.Dock="Right" Template="{DynamicResource MaximizeButtonStyle}" >
+            <Button Width="15" Height="15" x:Name="Maximizebtn" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" Click="Maximizebtn_Click" BorderBrush="{x:Null}" Cursor="Hand" DockPanel.Dock="Right" Template="{DynamicResource MaximizeButtonTemplate}" >
                 <Button.Background>
                     <ImageBrush ImageSource="Resources/Assets/Maximize.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button  HorizontalAlignment="Right" Click="Minimizebtn_Click" x:Name="Minimizebtn" Margin="0,0,10,0" VerticalAlignment="Center" Width="15" Height="15" BorderBrush="{x:Null}" BorderThickness="0" Cursor="Hand" DockPanel.Dock="Right" Template="{DynamicResource MinimizeButtonStyle}">
+            <Button  HorizontalAlignment="Right" Click="Minimizebtn_Click" x:Name="Minimizebtn" Margin="0,0,10,0" VerticalAlignment="Center" Width="15" Height="15" BorderBrush="{x:Null}" BorderThickness="0" Cursor="Hand" DockPanel.Dock="Right" Template="{DynamicResource MinimizeButtonTemplate}">
                 <Button.Background>
                     <ImageBrush ImageSource="Resources/Assets/Minimize icon.png" Stretch="Uniform"/>
                 </Button.Background>
@@ -67,40 +49,27 @@
                 </Separator.RenderTransform>
 
             </Separator>
-            <Button x:Name="homebtn" HorizontalAlignment="Left" Width="20" BorderBrush="{x:Null}" BorderThickness="0" Height="20" VerticalAlignment="Center" Cursor="Hand" Template="{DynamicResource HomeButton}" Margin="0,0,0,0" >
+            <Button x:Name="homebtn" HorizontalAlignment="Left" Width="20" BorderBrush="{x:Null}" BorderThickness="0" Height="20" VerticalAlignment="Center" Cursor="Hand" Margin="0,0,0,0" Template="{DynamicResource HomeButtonTemplate}" >
                 <Button.Background>
                     <ImageBrush ImageSource="Resources/Assets/homebtn.png"/>
                 </Button.Background>
             </Button>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Computers"  x:Name="ComputersList" HorizontalAlignment="Center" Width="130" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="{StaticResource cdfont}" FontSize="14" BorderThickness="2,0,0,0" Cursor="Hand" Margin="50,0,0,-0.2" Click="Computers_Click" Template="{DynamicResource DeviceListSwitchButtons}"/>
-                <Button Content="Laptops" x:Name="LaptopsList"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="{StaticResource cdfont}" FontSize="14" Height="33" BorderThickness="2,0,0,0" Cursor="Hand" Template="{DynamicResource DeviceListSwitchButtons}" Click="Laptops_Click" />
-                <Button Content="Mobiles" x:Name="MobilesList" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="{StaticResource cdfont}" FontSize="14" Height="33" BorderThickness="2,0,0,0" Cursor="Hand" Template="{DynamicResource DeviceListSwitchButtons}" Click="Mobiles_Click" />
-                <Button Content="Tablets" x:Name="TabletsList"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="{StaticResource cdfont}" FontSize="14" Height="33" BorderThickness="2,0,0,0" Cursor="Hand" Template="{DynamicResource DeviceListSwitchButtons}" Click="Tablets_Click" />
-                <Button Content="Other Devices" x:Name="OtherDevicesList"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="{StaticResource cdfont}" FontSize="14" Height="31" BorderThickness="2,0,0,0" Cursor="Hand" Template="{DynamicResource DeviceListSwitchButtons}" Click="OtherDevices_Click" Margin="0,0,50,0"/>
-            </StackPanel>
-
+            <Grid HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Computers" Grid.Column="0" x:Name="ComputersList" HorizontalAlignment="Center" Foreground="White" BorderBrush="{x:Null}" Background="#FF050059" FontFamily="{StaticResource cdfont}" FontSize="14" BorderThickness="1" Cursor="Hand" Height="33" Click="Computers_Click" Width="120" Template="{StaticResource DeviceListButtonsTemplate}"/>
+                <Button Content="Laptops" Grid.Column="1" x:Name="LaptopsList"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Foreground="White" BorderBrush="{x:Null}" Background="#FF050059" FontFamily="{StaticResource cdfont}" FontSize="14" Height="33" BorderThickness="1"  Cursor="Hand" Template="{StaticResource DeviceListButtonsTemplate}" Click="Laptops_Click" />
+                <Button Content="Mobiles" Grid.Column="2" x:Name="MobilesList" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Foreground="White" BorderBrush="{x:Null}" Background="#FF050059" FontFamily="{StaticResource cdfont}" FontSize="14" Height="33" BorderThickness="1" Cursor="Hand" Template="{StaticResource DeviceListButtonsTemplate}" Click="Mobiles_Click" />
+                <Button Content="Tablets" Grid.Column="3" x:Name="TabletsList"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Foreground="White" BorderBrush="{x:Null}" Background="#FF050059" FontFamily="{StaticResource cdfont}" FontSize="14" Height="33" BorderThickness="1" Cursor="Hand" Template="{StaticResource DeviceListButtonsTemplate}" Click="Tablets_Click" />
+                <Button Content="Other Devices" Grid.Column="4" x:Name="OtherDevicesList"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="120" Foreground="White" BorderBrush="{x:Null}" Background="#FF050059" FontFamily="{StaticResource cdfont}" FontSize="14" BorderThickness="1" Cursor="Hand" Template="{StaticResource DeviceListButtonsTemplate}" Click="OtherDevices_Click" Margin="0.4,0,0,0"/>
+            </Grid>
         </DockPanel>
-
-
-        <Canvas x:Name="Statusbar" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,0,0,-0.4">
-            <Canvas.Background>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <LinearGradientBrush.RelativeTransform>
-                        <TransformGroup>
-                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                            <RotateTransform Angle="86" CenterY="0.5" CenterX="0.5"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </LinearGradientBrush.RelativeTransform>
-                    <GradientStop Color="#FF4C00A8" Offset="1"/>
-                    <GradientStop Color="#FF008F97"/>
-                </LinearGradientBrush>
-            </Canvas.Background>
-            <Label Margin="0" Padding="0,0,0,0" Height="16" x:Name="OperationsStatus" Content="Starting..." Width="660" FontSize="14" Foreground="White" FontFamily="{StaticResource cdfont}" Canvas.Top="2" Canvas.Left="2"/>
-        </Canvas>
-        <Grid Name="Viewgrid" HorizontalAlignment="Stretch"  Margin="0,33,0,20" VerticalAlignment="Stretch"/>
+        <Grid Name="Viewgrid" HorizontalAlignment="Stretch"  Margin="0,33,0,0" VerticalAlignment="Stretch"/>
 
     </Grid>
 </Window>

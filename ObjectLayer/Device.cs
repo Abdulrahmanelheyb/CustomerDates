@@ -1,18 +1,18 @@
 ﻿using ObjectLayer;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace ObjectLayer
 {
       public class Device
      {
-        public static List<Hardware> Hardwares = new List<Hardware>();
-        public static List<Software> Softwares = new List<Software>();
-        public static List<string> HardwaresTypes = new List<string>();
-        public static List<string> SoftwaresTypes = new List<string>();
+        
+        
         public string DeviceInformationCode { get; set; }
         public string CustomerName { get; set; }
         public string CustomerPhoneNumber { get; set; }
@@ -22,21 +22,38 @@ namespace ObjectLayer
         public int Price { get; set; }
         public StatusType Status { get; set; }
         public DateTime Date { get;  set; }
+        public string Hardwares { get; set; }
+        public string Softwares { get; set; }
         public enum StatusType { Repairing, Completed, Failed }
+
 
         public int SumDevicePartsPrice()
         {
-            int result = 0;
-            foreach (Hardware Hpart in Hardwares)
+            int hardwareprice = 0;
+            int softwareprice = 0;
+            XmlReader reader = XmlReader.Create(new StringReader(Hardwares));
+            while (reader.Read())
             {
-                result += Hpart.Price;
+                if (reader.Name != "xml" && reader.Name != "Hardwares")
+                {
+                    if (reader.GetAttribute("Availability") == "True")
+                    {
+                       hardwareprice += int.Parse(reader.GetAttribute("Price"));
+                    }
+                }
             }
-            foreach (Software Spart in Softwares)
+            reader = XmlReader.Create(new StringReader(Softwares));
+            while (reader.Read())
             {
-                result += Spart.Price;
+                if (reader.Name != "xml" && reader.Name != "Softwares")
+                {
+                    if (reader.GetAttribute("Availability") == "True")
+                    {
+                        softwareprice += int.Parse(reader.GetAttribute("Price"));
+                    }
+                }
             }
-
-            return result;
+            return hardwareprice + softwareprice;
         }
     }
 }

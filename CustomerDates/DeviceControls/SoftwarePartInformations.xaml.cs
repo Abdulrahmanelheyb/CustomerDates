@@ -53,6 +53,17 @@ namespace CustomerDates.DeviceControls
         }
         #endregion
 
+        public void ResetControls()
+        {
+            parttypecbx.SelectedIndex = -1;
+            descriptiontbx.Text = "";
+            pricetbx.Text = "";
+            Completed.IsChecked = false;
+            Repairing.IsChecked = false;
+            Failed.IsChecked = false;
+            datagrid.ItemsSource = null;
+        }
+
         private void Repairing_Checked(object sender, RoutedEventArgs e)
         {
             Completed.IsChecked = false;
