@@ -51,9 +51,10 @@ namespace CustomerDates.ViewModel.ComputerServices
             return result;
         }
 
-        public static bool DeleteComputer(Computer computer)
+        public static void DeleteComputer(Computer computer)
         {
-            return Delete.Delete_Device(computer);
+             Delete.Delete_Device(computer);
+             LoadComputer();
         }
 
         public static bool LoadComputer()

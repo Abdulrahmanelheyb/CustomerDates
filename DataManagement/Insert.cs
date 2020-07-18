@@ -69,16 +69,16 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("INSERT INTO Laptops " +
-                        " (DeviceInformationCode,SerialNumber,CustomerName,PhoneNumber,AdditionalExternals,DeviceCompany,DeviceModel," +
+                        " (DeviceInformationCode,SerialNumber,CustomerName,PhoneNumber,Extras,DeviceCompany,DeviceModel," +
                         "TotalPrice,RegisterDate,DeviceStatus,Hardwares,Softwares)" +
-                        " VALUES (@DeviceInformationCode,@SerialNumber,@CustomerName,@PhoneNumber,@AdditionalExternals,@DeviceCompany," +
+                        " VALUES (@DeviceInformationCode,@SerialNumber,@CustomerName,@PhoneNumber,@Extras,@DeviceCompany," +
                         "@DeviceModel,@TotalPrice,@RegisterDate,@DeviceStatus,@Hardwares,@Softwares)", con);
 
                     cmd.Parameters.AddWithValue("@DeviceInformationCode", Laptop.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@SerialNumber", Laptop.SerialNumber);
                     cmd.Parameters.AddWithValue("@CustomerName", Laptop.CustomerName);
                     cmd.Parameters.AddWithValue("@PhoneNumber", Laptop.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@AdditionalExternals", Laptop.Externals);
+                    cmd.Parameters.AddWithValue("@Extras", Laptop.Extras);
                     cmd.Parameters.AddWithValue("@DeviceCompany", Laptop.DeviceCompany);
                     cmd.Parameters.AddWithValue("@DeviceModel", Laptop.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", Laptop.Price);
@@ -109,16 +109,16 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("INSERT INTO Mobiles " +
-                        " (DeviceInformationCode,SerialNumber,CustomerName,PhoneNumber,AdditionalExternals,DeviceCompany,DeviceModel," +
+                        " (DeviceInformationCode,SerialNumber,CustomerName,PhoneNumber,Extras,DeviceCompany,DeviceModel," +
                         "TotalPrice,RegisterDate,DeviceStatus,Hardwares,Softwares)" +
-                        " VALUES (@DeviceInformationCode,@SerialNumber,@CustomerName,@PhoneNumber,@AdditionalExternals,@DeviceCompany," +
+                        " VALUES (@DeviceInformationCode,@SerialNumber,@CustomerName,@PhoneNumber,@Extras,@DeviceCompany," +
                         "@DeviceModel,@TotalPrice,@RegisterDate,@DeviceStatus,@Hardwares,@Softwares)", con);
 
                     cmd.Parameters.AddWithValue("@DeviceInformationCode", Mobile.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@SerialNumber", Mobile.SerialNumber);
                     cmd.Parameters.AddWithValue("@CustomerName", Mobile.CustomerName);
                     cmd.Parameters.AddWithValue("@PhoneNumber", Mobile.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@AdditionalExternals", Mobile.Externals);
+                    cmd.Parameters.AddWithValue("@Extras", Mobile.Extras);
                     cmd.Parameters.AddWithValue("@DeviceCompany", Mobile.DeviceCompany);
                     cmd.Parameters.AddWithValue("@DeviceModel", Mobile.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", Mobile.Price);
@@ -149,16 +149,16 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("INSERT INTO Tablets " +
-                        " (DeviceInformationCode,SerialNumber,CustomerName,PhoneNumber,AdditionalExternals,DeviceCompany,DeviceModel," +
+                        " (DeviceInformationCode,SerialNumber,CustomerName,PhoneNumber,Extras,DeviceCompany,DeviceModel," +
                         "TotalPrice,RegisterDate,DeviceStatus,Hardwares,Softwares)" +
-                        " VALUES (@DeviceInformationCode,@SerialNumber,@CustomerName,@PhoneNumber,@AdditionalExternals,@DeviceCompany," +
+                        " VALUES (@DeviceInformationCode,@SerialNumber,@CustomerName,@PhoneNumber,@Extras,@DeviceCompany," +
                         "@DeviceModel,@TotalPrice,@RegisterDate,@DeviceStatus,@Hardwares,@Softwares)", con);
 
                     cmd.Parameters.AddWithValue("@DeviceInformationCode", Tablet.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@SerialNumber", Tablet.SerialNumber);
                     cmd.Parameters.AddWithValue("@CustomerName", Tablet.CustomerName);
                     cmd.Parameters.AddWithValue("@PhoneNumber", Tablet.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@AdditionalExternals", Tablet.Externals);
+                    cmd.Parameters.AddWithValue("@Extras", Tablet.Extras);
                     cmd.Parameters.AddWithValue("@DeviceCompany", Tablet.DeviceCompany);
                     cmd.Parameters.AddWithValue("@DeviceModel", Tablet.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", Tablet.Price);
@@ -189,16 +189,16 @@ namespace DataManagement
                 if (con.State == ConnectionState.Open)
                 {
                     cmd = new SQLiteCommand("INSERT INTO Otherdevices " +
-                        " (DeviceInformationCode,SerialNumber,CustomerName,PhoneNumber,AdditionalExternals,DeviceCompany,DeviceModel," +
+                        " (DeviceInformationCode,SerialNumber,CustomerName,PhoneNumber,Extras,DeviceCompany,DeviceModel," +
                         "TotalPrice,RegisterDate,DeviceStatus,Hardwares,Softwares)" +
-                        " VALUES (@DeviceInformationCode,@SerialNumber,@CustomerName,@PhoneNumber,@AdditionalExternals,@DeviceCompany," +
+                        " VALUES (@DeviceInformationCode,@SerialNumber,@CustomerName,@PhoneNumber,@Extras,@DeviceCompany," +
                         "@DeviceModel,@TotalPrice,@RegisterDate,@DeviceStatus,@Hardwares,@Softwares)", con);
 
                     cmd.Parameters.AddWithValue("@DeviceInformationCode", OtherDevice.DeviceInformationCode);
                     cmd.Parameters.AddWithValue("@SerialNumber", OtherDevice.SerialNumber);
                     cmd.Parameters.AddWithValue("@CustomerName", OtherDevice.CustomerName);
                     cmd.Parameters.AddWithValue("@PhoneNumber", OtherDevice.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@AdditionalExternals", OtherDevice.Externals);
+                    cmd.Parameters.AddWithValue("@Extras", OtherDevice.Extras);
                     cmd.Parameters.AddWithValue("@DeviceCompany", OtherDevice.DeviceCompany);
                     cmd.Parameters.AddWithValue("@DeviceModel", OtherDevice.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", OtherDevice.Price);

@@ -65,18 +65,22 @@
             </StackPanel>
 
         </Border>
-        <DataGrid Name="LaptopDataGrid" IsReadOnly="True" HeadersVisibility="Column" ItemsSource="{Binding LaptopsProperty}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AutoGenerateColumns="False" RowStyle="{StaticResource DataGridRowStyle}" CellStyle="{StaticResource DataGridCellStyle}" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" Margin="33,33,0,20" RowDetailsVisibilityMode="Collapsed" Background="#FF050052" BorderBrush="{x:Null}" BorderThickness="0" GridLinesVisibility="Vertical" VerticalGridLinesBrush="White">
+        <DataGrid Name="LaptopDataGrid" IsReadOnly="True" HeadersVisibility="Column" ItemsSource="{Binding LaptopsProperty}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AutoGenerateColumns="False" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" RowStyle="{StaticResource DataGridRowStyle}" CellStyle="{StaticResource DataGridCellStyle}"  Margin="33,33,0,20" RowDetailsVisibilityMode="Collapsed" Background="#FF050052" BorderBrush="{x:Null}" BorderThickness="0" GridLinesVisibility="Vertical" VerticalGridLinesBrush="White">
             <DataGrid.DataContext>
                 <Laptop:Laptop/>
             </DataGrid.DataContext>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Customer Name" Binding="{Binding CustomerName}" MinWidth="130"/>
+                <DataGridTextColumn Header="Customer Name" Binding="{Binding CustomerName}" MinWidth="150"/>
                 <DataGridTextColumn Header="Phone Number" MinWidth="130" Binding="{Binding PhoneNumber}"/>
                 <DataGridTextColumn Header="Device Company" Binding="{Binding DeviceCompany}" MinWidth="130"/>
                 <DataGridTextColumn Header="Device Model" Binding="{Binding DeviceModel}" MinWidth="120"/>
+                <DataGridTextColumn Header="Code" Binding="{Binding DeviceInformationCode}" MinWidth="110"/>
+                <DataGridTextColumn Header="Register Date" Binding="{Binding RegisterDate}" MinWidth="150" Width="*"/>
                 <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}" MinWidth="90"/>
-                <DataGridTextColumn Header="Register Date" Binding="{Binding RegisterDate}" MinWidth="145" Width="*"/>
-                <DataGridTextColumn Header="Device Status" MinWidth="100">
+                <DataGridTextColumn Header="Extras" Binding="{Binding Extras}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Hardwares" Binding="{Binding Hardwares}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Softwares" Binding="{Binding Softwares}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Status" Width="45">
                     <DataGridTextColumn.CellStyle>
                         <Style TargetType="DataGridCell">
                             <Style.Triggers>

@@ -15,7 +15,7 @@ namespace ObjectLayer
         public static List<OtherDevice> OtherDevices = new List<OtherDevice>();
         public static List<string> ExternalsTypes = new List<string>();
 
-        public string Externals { get; set; }
+        public string Extras { get; set; }
 
 
         

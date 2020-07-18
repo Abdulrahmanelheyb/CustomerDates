@@ -104,7 +104,7 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@Serial_Number", Laptop.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Laptop.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Laptop.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@CD_Externals", Laptop.Externals);
+                    cmd.Parameters.AddWithValue("@CD_Externals", Laptop.Extras);
                     cmd.Parameters.AddWithValue("@CD_Device_company", Laptop.DeviceCompany);
                     cmd.Parameters.AddWithValue("@CD_Model", Laptop.Model);
                     cmd.Parameters.AddWithValue("@CD_Price", Laptop.Price);
@@ -153,7 +153,7 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@Serial_Number", Mobile.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Mobile.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Mobile.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@CD_Externals", Mobile.Externals);
+                    cmd.Parameters.AddWithValue("@CD_Externals", Mobile.Extras);
                     cmd.Parameters.AddWithValue("@CD_Device_company", Mobile.DeviceCompany);
                     cmd.Parameters.AddWithValue("@CD_Model", Mobile.Model);
                     cmd.Parameters.AddWithValue("@CD_Price", Mobile.Price);
@@ -202,7 +202,7 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@Serial_Number", Tablet.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", Tablet.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", Tablet.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@CD_Externals", Tablet.Externals);
+                    cmd.Parameters.AddWithValue("@CD_Externals", Tablet.Extras);
                     cmd.Parameters.AddWithValue("@CD_Device_company", Tablet.DeviceCompany);
                     cmd.Parameters.AddWithValue("@CD_Model", Tablet.Model);
                     cmd.Parameters.AddWithValue("@CD_Price", Tablet.Price);
@@ -250,7 +250,7 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@Serial_Number", OtherDevice.SerialNumber);
                     cmd.Parameters.AddWithValue("@CD_Name", OtherDevice.CustomerName);
                     cmd.Parameters.AddWithValue("@CD_Phone", OtherDevice.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@CD_Externals", OtherDevice.Externals);
+                    cmd.Parameters.AddWithValue("@CD_Externals", OtherDevice.Extras);
                     cmd.Parameters.AddWithValue("@CD_Device_company", OtherDevice.DeviceCompany);
                     cmd.Parameters.AddWithValue("@CD_Model", OtherDevice.Model);
                     cmd.Parameters.AddWithValue("@CD_Price", OtherDevice.Price);

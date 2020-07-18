@@ -1,6 +1,9 @@
-﻿using CustomerDates.ViewModel.ComputerServices;
+﻿using CustomerDates;
+using CustomerDates.ViewModel.ComputerServices;
+using CustomerDates.ViewModel.LaptopServices;
 using ObjectLayer;
 using System;
+using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -10,65 +13,42 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 using System.Xml;
 
-namespace CustomerDates.DeviceControls
+namespace CustomerDates.DeviceControls.Laptops
 {
     // Don't forget add print fuatures for give code to customer.
     /// </summary>
     ///SolidColorBrush((Color)ColorConverter.ConvertFormString("#0000FF"));
-    public partial class UpdateComputerMG : Window
+    public partial class InsertLaptopView : Window
     {
-        public UpdateComputerMG()
+        private Laptop laptop;
+        public InsertLaptopView()
         {
             InitializeComponent();
             statustogglelistcreator();
+            HardwareGrid.Visibility = Visibility.Hidden;
+            SoftwareGrid.Visibility = Visibility.Hidden;
         }
-        private Computer PrimaryComputer = null;
-        public UpdateComputerMG(Computer computer)
-        {
-            PrimaryComputer = computer;
-            NameTextBox.Text = computer.CustomerName;
-            PhoneNumberTextBox.Text = computer.CustomerPhoneNumber;
-            DeviceCompanyTextBox.Text = computer.DeviceCompany;
-            ModelTextBox.Text = computer.Model;
-            SerialNumberTextBox.Text = computer.SerialNumber;
-            ReadHardwaresXml(computer);
-            if (computer.Status == Device.StatusType.Repairing)
-            {
-                Repairing.IsChecked = true;
-            }
-            if (computer.Status == Device.StatusType.Completed)
-            {
-                Completed.IsChecked = true;
-            }
-            if (computer.Status == Device.StatusType.Failed)
-            {
-                Failed.IsChecked = true;
-            }
-            PriceTextBox.Text = computer.Price.ToString();
-            CodeTextBox.Text = computer.DeviceInformationCode;
-        }
-
-
-        #region Basics
         List<ToggleButton> statustoggles = new List<ToggleButton>();
-       
+
+        
+
+        private void SetStatus(string massage)
+        {
+            OperationStatus.Content = massage;
+        }
+
         private void statustogglelistcreator()
         {
+
             statustoggles.Add(Repairing);
             statustoggles.Add(Completed);
             statustoggles.Add(Failed);
         }
 
-        public void SetComputerData(Computer computer)
-        {
-
-        }
-
+        #region Basics
         private void Repairing_Checked(object sender, RoutedEventArgs e)
         {
             Completed.IsChecked = false;
@@ -87,10 +67,12 @@ namespace CustomerDates.DeviceControls
             Completed.IsChecked = false;
         }
 
+        
+        #endregion
         #region Window Events >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
 
@@ -118,6 +100,10 @@ namespace CustomerDates.DeviceControls
                 Failed.IsChecked = false;
                 PriceTextBox.Text = null;
                 CodeTextBox.Text = null;
+                laptop = null;
+                
+                
+                //.....
             }
         }
         private void Recmove_MouseDown(object sender, MouseButtonEventArgs e)
@@ -131,57 +117,91 @@ namespace CustomerDates.DeviceControls
 
         #endregion
         #endregion
-        #endregion
-
         private void Excute_btn_Click(object sender, RoutedEventArgs e)
         {
-            PrimaryComputer.CustomerName = NameTextBox.Text;
-            PrimaryComputer.CustomerPhoneNumber = PhoneNumberTextBox.Text;
-            PrimaryComputer.DeviceCompany = DeviceCompanyTextBox.Text;
-            PrimaryComputer.Model = ModelTextBox.Text;
-            PrimaryComputer.SerialNumber = SerialNumberTextBox.Text;
-            PrimaryComputer.DeviceInformationCode = CodeTextBox.Text;
-            PrimaryComputer.Hardwares = WriteHardwaresXml();
-            PrimaryComputer.Softwares = WriteSoftwaresXml();
-            PrimaryComputer.Price = PrimaryComputer.SumDevicePartsPrice();
+            
+            if (laptop is null == false)
+            {
+                SetStatus("For Create New Laptop Please Press \"ESC\" To Empty Fields And Computer's Mold");
+                return;
+            }
+            laptop = new Laptop();
+            laptop.CustomerName = NameTextBox.Text;
+            laptop.CustomerPhoneNumber = PhoneNumberTextBox.Text;
+            laptop.DeviceCompany = DeviceCompanyTextBox.Text;
+            laptop.Model = ModelTextBox.Text;
+            laptop.SerialNumber = SerialNumberTextBox.Text;
+            laptop.Extras = WriteExtras();
+            laptop.Date = DateTime.Now;
+            laptop.Hardwares = WriteHardwaresXml();
+            laptop.Softwares = WriteSoftwaresXml();
             foreach (ToggleButton toggleButton in statustoggles)
             {
                 if (toggleButton.IsChecked == true)
                 {
                     if ((string)toggleButton.Content == Device.StatusType.Repairing.ToString())
                     {
-                        PrimaryComputer.Status = Device.StatusType.Repairing;
+                        laptop.Status = Device.StatusType.Repairing;
                     }
                     if ((string)toggleButton.Content == Device.StatusType.Completed.ToString())
                     {
-                        PrimaryComputer.Status = Device.StatusType.Completed;
+                        laptop.Status = Device.StatusType.Completed;
                     }
                     if ((string)toggleButton.Content == Device.StatusType.Failed.ToString())
                     {
-                        PrimaryComputer.Status = Device.StatusType.Failed;
+                        laptop.Status = Device.StatusType.Failed;
                     }
 
                 }
             }
+
             try
             {
-                OperationStatus.Content = (ComputerData.UpdateComputer(PrimaryComputer) == true) ? 
-                    OperationStatus.Content = "Update is Completed" : OperationStatus.Content = "Update is Failed !";
+                laptop.Price = laptop.SumDevicePartsPrice();
+                if (LaptopData.InsertLaptop(laptop) == true)
+                {
+                    OperationStatus.Content = "Insert is completed";
+                }
+                else
+                {
+                    OperationStatus.Content = "Insert is failed";
+                }
+                
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR | UPDATE\n" + ex.Message);
+                MessageBox.Show("ERROR |\n" + ex.Message);
+                OperationStatus.Content = "Insert is failed";
             }
-            ComputerData.LoadComputer();
-            foreach (Computer item in Computer.Computers)
-            {
-                if (item.DeviceInformationCode == CodeTextBox.Text)
-                {
-                    PriceTextBox.Text = item.Price.ToString();
-                }
-            }
+            LaptopData.LoadLaptop();
+            
         }
 
+        private string WriteExtras()
+        {
+            StringBuilder extras = new StringBuilder();
+            XmlWriter writer = XmlWriter.Create(new StringWriter(extras));
+            writer.WriteStartDocument();
+            writer.WriteStartElement("Extras");
+            for (int i = 0; i < Extras.Items.Count; i++)
+            {
+                if (Extras.Items[i] is CheckBox)
+                {
+                    CheckBox chkbox = (CheckBox)Extras.Items[i];
+                    if (chkbox.IsChecked == true)
+                    {
+                        writer.WriteStartElement(chkbox.Tag.ToString());
+                        writer.WriteAttributeString("Availability", chkbox.IsChecked.ToString());
+                        writer.WriteEndElement();
+                    }
+                }
+            }
+            writer.WriteEndElement();
+            writer.WriteEndDocument();
+            writer.Close();
+            return extras.ToString();
+        }
+        
         #region Device Technics
         private void DeviceTechnics_Checked(object sender, RoutedEventArgs e)
         {
@@ -196,8 +216,14 @@ namespace CustomerDates.DeviceControls
         {
             CheckBox Controller = ((CheckBox)sender);
             Grid gridcontrol = (Grid)DeviceTechnicsInfoGrid.FindName(Controller.Name + "Grid");
+            TextBox description = (TextBox)DeviceTechnicsInfoGrid.FindName(Controller.Name + "Description");
+            TextBox price = (TextBox)DeviceTechnicsInfoGrid.FindName(Controller.Name + "Price");
+            Ellipse status = (Ellipse)DeviceTechnicsInfoGrid.FindName(Controller.Name + "Status");
             if (gridcontrol != null)
             {
+                description.Text = "";
+                price.Text = "";
+                status.Fill = Brushes.White;
                 gridcontrol.IsEnabled = false;
             }
         }
@@ -236,6 +262,7 @@ namespace CustomerDates.DeviceControls
             Hardware.Background = Brushes.White;
             Hardware.Foreground = Brushes.Black;
         }
+
         public string WriteHardwaresXml()
         {
             StringBuilder hardwarexml = new StringBuilder();
@@ -255,7 +282,7 @@ namespace CustomerDates.DeviceControls
                         TextBox description = (TextBox)HardwareGrid.FindName(chkbox.Name + "Description");
                         writer.WriteAttributeString("Description", description.Text);
                         TextBox price = (TextBox)HardwareGrid.FindName(chkbox.Name + "Price");
-                        writer.WriteAttributeString("Price", price.Text);
+                        writer.WriteAttributeString("Price",price.Text);
                         Ellipse ellipse = (Ellipse)HardwareGrid.FindName(chkbox.Name + "Status");
                         writer.WriteAttributeString("Status", ellipse.Tag.ToString());
                         writer.WriteEndElement();
@@ -275,50 +302,6 @@ namespace CustomerDates.DeviceControls
             writer.Close();
             return hardwarexml.ToString();
         }
-        public void ReadHardwaresXml(Computer computer)
-        {
-            if (computer.Hardwares == null)
-            {
-                return;
-            }
-            XmlReader reader = XmlReader.Create(new StringReader(computer.Hardwares));
-            while (reader.Read())
-            {
-                CheckBox chkbox = null;
-                if (reader.Name != "xml" && reader.Name != "Hardwares")
-                {
-                    chkbox = (CheckBox)HardwareGrid.FindName(reader.Name);
-                    chkbox.IsChecked = Convert.ToBoolean(reader.GetAttribute("Availability"));
-                    if (chkbox.IsChecked == true)
-                    {
-                        TextBox description = (TextBox)HardwareGrid.FindName(chkbox.Name + "Description");
-                        description.Text = reader.GetAttribute("Description");
-
-                        TextBox price = (TextBox)HardwareGrid.FindName(chkbox.Name + "Price");
-                        price.Text = reader.GetAttribute("Price");
-
-                        Ellipse status = (Ellipse)HardwareGrid.FindName(chkbox.Name + "Status");
-                        if (reader.GetAttribute("Status") == "Repairing")
-                        {
-                            status.Fill = Brushes.Yellow;
-                            status.Tag = "Repairing";
-                        }
-                        if (reader.GetAttribute("Status") == "Completed")
-                        {
-                            status.Fill = Brushes.Lime;
-                            status.Tag = "Completed";
-                        }
-                        if (reader.GetAttribute("Status") == "Failed")
-                        {
-                            status.Fill = Brushes.Red;
-                            status.Tag = "Failed";
-                        }
-                    }
-                }
-                
-
-            }
-        }
         #endregion
 
         #region Software
@@ -332,6 +315,7 @@ namespace CustomerDates.DeviceControls
             Software.Background = Brushes.White;
             Software.Foreground = Brushes.Black;
         }
+
         public string WriteSoftwaresXml()
         {
             StringBuilder softwarexml = new StringBuilder();
@@ -371,50 +355,11 @@ namespace CustomerDates.DeviceControls
             writer.Close();
             return softwarexml.ToString();
         }
-        public void ReadSoftwaresXml(Computer computer)
-        {
-            if (computer.Softwares == null)
-            {
-                return;
-            }
-            XmlReader reader = XmlReader.Create(new StringReader(computer.Hardwares));
-            while (reader.Read())
-            {
-                CheckBox chkbox = null;
-                if (reader.Name != "xml" && reader.Name != "Hardwares")
-                {
-                    chkbox = (CheckBox)SoftwareGrid.FindName(reader.Name);
-                    chkbox.IsChecked = Convert.ToBoolean(reader.GetAttribute("Availability"));
-                    if (chkbox.IsChecked == true)
-                    {
-                        TextBox description = (TextBox)SoftwareGrid.FindName(chkbox.Name + "Description");
-                        description.Text = reader.GetAttribute("Description");
 
-                        TextBox price = (TextBox)SoftwareGrid.FindName(chkbox.Name + "Price");
-                        price.Text = reader.GetAttribute("Price");
-
-                        Ellipse status = (Ellipse)HardwareGrid.FindName(chkbox.Name + "Status");
-                        if (reader.GetAttribute("Status") == "Repairing")
-                        {
-                            status.Fill = Brushes.Yellow;
-                            status.Tag = "Repairing";
-                        }
-                        if (reader.GetAttribute("Status") == "Completed")
-                        {
-                            status.Fill = Brushes.Lime;
-                            status.Tag = "Completed";
-                        }
-                        if (reader.GetAttribute("Status") == "Failed")
-                        {
-                            status.Fill = Brushes.Red;
-                            status.Tag = "Failed";
-                        }
-                    }
-                }
-            }
-        }
         #endregion
         #endregion
+
+
 
 
     }

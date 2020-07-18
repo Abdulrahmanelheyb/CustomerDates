@@ -62,7 +62,7 @@ namespace DataManagement
                 {
                     cmd = new SQLiteCommand("UPDATE Laptops SET DeviceInformationCode = @DeviceInformationCode," +
                         "SerialNumber=@SerialNumber,CustomerName=@CustomerName,PhoneNumber=@PhoneNumber," +
-                        "DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
+                        "Extras=@Extras,DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
                         "TotalPrice=@TotalPrice,RegisterDate=@RegisterDate," +
                         "DeviceStatus=@DeviceStatus,Hardwares=@Hardwares,Softwares=@Softwares " +
                         "WHERE DeviceInformationCode='" + Laptop.DeviceInformationCode + "'", con);
@@ -71,7 +71,7 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@SerialNumber", Laptop.SerialNumber);
                     cmd.Parameters.AddWithValue("@CustomerName", Laptop.CustomerName);
                     cmd.Parameters.AddWithValue("@PhoneNumber", Laptop.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@AdditionalExternals", Laptop.Externals);
+                    cmd.Parameters.AddWithValue("@Extras", Laptop.Extras);
                     cmd.Parameters.AddWithValue("@DeviceCompany", Laptop.DeviceCompany);
                     cmd.Parameters.AddWithValue("@DeviceModel", Laptop.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", Laptop.Price);
@@ -102,7 +102,7 @@ namespace DataManagement
                 {
                     cmd = new SQLiteCommand("UPDATE Mobiles SET DeviceInformationCode = @DeviceInformationCode," +
                         "SerialNumber=@SerialNumber,CustomerName=@CustomerName,PhoneNumber=@PhoneNumber," +
-                        "DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
+                        "Extras=@Extras,DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
                         "TotalPrice=@TotalPrice,RegisterDate=@RegisterDate," +
                         "DeviceStatus=@DeviceStatus,Hardwares=@Hardwares,Softwares=@Softwares " +
                         "WHERE DeviceInformationCode='" + Mobile.DeviceInformationCode + "'", con);
@@ -111,7 +111,7 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@SerialNumber", Mobile.SerialNumber);
                     cmd.Parameters.AddWithValue("@CustomerName", Mobile.CustomerName);
                     cmd.Parameters.AddWithValue("@PhoneNumber", Mobile.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@AdditionalExternals", Mobile.Externals);
+                    cmd.Parameters.AddWithValue("@Extras", Mobile.Extras);
                     cmd.Parameters.AddWithValue("@DeviceCompany", Mobile.DeviceCompany);
                     cmd.Parameters.AddWithValue("@DeviceModel", Mobile.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", Mobile.Price);
@@ -142,7 +142,7 @@ namespace DataManagement
                 {
                     cmd = new SQLiteCommand("UPDATE Tablets SET DeviceInformationCode = @DeviceInformationCode," +
                         "SerialNumber=@SerialNumber,CustomerName=@CustomerName,PhoneNumber=@PhoneNumber," +
-                        "DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
+                        "Extras=@Extras,DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
                         "TotalPrice=@TotalPrice,RegisterDate=@RegisterDate," +
                         "DeviceStatus=@DeviceStatus,Hardwares=@Hardwares,Softwares=@Softwares " +
                         "WHERE DeviceInformationCode='" + Tablet.DeviceInformationCode + "'", con);
@@ -151,7 +151,7 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@SerialNumber", Tablet.SerialNumber);
                     cmd.Parameters.AddWithValue("@CustomerName", Tablet.CustomerName);
                     cmd.Parameters.AddWithValue("@PhoneNumber", Tablet.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@AdditionalExternals", Tablet.Externals);
+                    cmd.Parameters.AddWithValue("@Extras", Tablet.Extras);
                     cmd.Parameters.AddWithValue("@DeviceCompany", Tablet.DeviceCompany);
                     cmd.Parameters.AddWithValue("@DeviceModel", Tablet.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", Tablet.Price);
@@ -182,7 +182,7 @@ namespace DataManagement
                 {
                     cmd = new SQLiteCommand("UPDATE Otherdevices SET DeviceInformationCode = @DeviceInformationCode," +
                         "SerialNumber=@SerialNumber,CustomerName=@CustomerName,PhoneNumber=@PhoneNumber," +
-                        "DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
+                        "Extras=@Extras,DeviceCompany=@DeviceCompany,DeviceModel=@DeviceModel," +
                         "TotalPrice=@TotalPrice,RegisterDate=@RegisterDate," +
                         "DeviceStatus=@DeviceStatus,Hardwares=@Hardwares,Softwares=@Softwares " +
                         "WHERE DeviceInformationCode='" + OtherDevice.DeviceInformationCode + "'", con);
@@ -191,7 +191,7 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@SerialNumber", OtherDevice.SerialNumber);
                     cmd.Parameters.AddWithValue("@CustomerName", OtherDevice.CustomerName);
                     cmd.Parameters.AddWithValue("@PhoneNumber", OtherDevice.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@AdditionalExternals", OtherDevice.Externals);
+                    cmd.Parameters.AddWithValue("@Extras", OtherDevice.Extras);
                     cmd.Parameters.AddWithValue("@DeviceCompany", OtherDevice.DeviceCompany);
                     cmd.Parameters.AddWithValue("@DeviceModel", OtherDevice.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", OtherDevice.Price);

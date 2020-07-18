@@ -78,7 +78,7 @@ namespace DataManagement
             }
             return loadresult;
         }
-        public static bool LoadLaptops()
+        public static bool LoadLaptop()
         {
             bool loadresult = false;
             try
@@ -120,7 +120,7 @@ namespace DataManagement
                         mobile.SerialNumber = dare.GetString(1);
                         mobile.CustomerName = dare.GetString(2);
                         mobile.CustomerPhoneNumber = dare.GetString(3);
-                        mobile.Externals = dare.GetString(4);
+                        mobile.Extras = dare.GetString(4);
                         mobile.DeviceCompany = dare.GetString(5);
                         mobile.Model = dare.GetString(6);
                         mobile.Price = dare.GetInt32(7);
@@ -172,7 +172,7 @@ namespace DataManagement
                         tablet.SerialNumber = dare.GetString(1);
                         tablet.CustomerName = dare.GetString(2);
                         tablet.CustomerPhoneNumber = dare.GetString(3);
-                        tablet.Externals = dare.GetString(4);
+                        tablet.Extras = dare.GetString(4);
                         tablet.DeviceCompany = dare.GetString(5);
                         tablet.Model = dare.GetString(6);
                         tablet.Price = dare.GetInt32(7);
@@ -224,7 +224,7 @@ namespace DataManagement
                         otherdevice.SerialNumber = dare.GetString(1);
                         otherdevice.CustomerName = dare.GetString(2);
                         otherdevice.CustomerPhoneNumber = dare.GetString(3);
-                        otherdevice.Externals = dare.GetString(4);
+                        otherdevice.Extras = dare.GetString(4);
                         otherdevice.DeviceCompany = dare.GetString(5);
                         otherdevice.Model = dare.GetString(6);
                         otherdevice.Price = dare.GetInt32(7);

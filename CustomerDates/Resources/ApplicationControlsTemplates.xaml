@@ -4,7 +4,7 @@
     <System:String x:Key="statustag">Status</System:String>
     <Style x:Key="ColumnHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="BorderBrush" Value="White"/>
-        <Setter Property="BorderThickness" Value="0,0,1,1"/>
+        <Setter Property="BorderThickness" Value="1,0,0,1"/>
         <Setter Property="Background" Value="#FF008F97"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontFamily" Value="Eagle"/>

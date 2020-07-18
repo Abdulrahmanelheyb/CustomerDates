@@ -134,6 +134,12 @@
     <Compile Include="DeviceControls\Computers\InsertComputerMG.xaml.cs">
       <DependentUpon>InsertComputerMG.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DeviceControls\Laptops\UpdateLaptopView.xaml.cs">
+      <DependentUpon>UpdateLaptopView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceControls\Laptops\InsertLaptopView.xaml.cs">
+      <DependentUpon>InsertLaptopView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DeviceControls\Laptops\LaptopsManager.xaml.cs" />
     <Compile Include="MainWindowAlterMethods.cs" />
     <Compile Include="DeviceControls\Computers\UpdateComputerMG.xaml.cs">
@@ -168,6 +174,14 @@
       <DependentUpon>Test.xaml</DependentUpon>
     </Compile>
     <Page Include="DeviceControls\Computers\InsertComputerMG.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DeviceControls\Laptops\UpdateLaptopView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DeviceControls\Laptops\InsertLaptopView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

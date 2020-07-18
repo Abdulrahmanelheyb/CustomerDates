@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CustomerDates.ViewModel;
 using CustomerDates.ViewModel.LaptopServices;
+using ObjectLayer;
 
 namespace CustomerDates.DeviceControls.Laptops
 {
@@ -48,12 +50,19 @@ namespace CustomerDates.DeviceControls.Laptops
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
         {
-
+            InsertLaptopView InsertLaptop = new InsertLaptopView();
+            InsertLaptop.ShowDialog();
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (LaptopDataGrid.SelectedIndex != -1)
+            {
+                
+                UpdateLaptopView UpdateLaptop = new UpdateLaptopView(Laptop.GetLaptop(LaptopDataGrid.SelectedIndex));
+                UpdateLaptop.Show();
+            }
+            
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

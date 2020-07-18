@@ -61,10 +61,9 @@ namespace CustomerDates.DeviceControls.Computers
         
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateComputerMG update = new UpdateComputerMG();
             if (DeviceListBox.SelectedIndex > -1)
             {
-                update.SetComputerData(Computer.Computers[DeviceListBox.SelectedIndex]);
+                UpdateComputerMG update = new UpdateComputerMG(Computer.Computers[DeviceListBox.SelectedIndex]);
                 update.Show();
             }
             else
@@ -77,11 +76,8 @@ namespace CustomerDates.DeviceControls.Computers
         {
             if (DeviceListBox.SelectedIndex >-1)
             {
-                if (ComputerData.DeleteComputer(Computer.Computers[DeviceListBox.SelectedIndex]) == true)
-                {
-                    ComputerData.LoadComputer();
-                }
-                
+                ComputerData.DeleteComputer(Computer.Computers[DeviceListBox.SelectedIndex]);
+                ComputerData.LoadComputer();
             }
             
         }

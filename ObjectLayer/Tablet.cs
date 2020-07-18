@@ -16,7 +16,7 @@ namespace ObjectLayer
         public static List<Tablet> Tablets = new List<Tablet>();
         public static List<string> ExternalsTypes = new List<string>();
 
-        public string Externals { get; set; }
+        public string Extras { get; set; }
 
     }
 }

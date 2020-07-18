@@ -15,9 +15,8 @@ namespace DataManagement
         private static SQLiteCommand cmd;
         
 
-        public static bool Delete_Device(Computer Computer)
+        public static void Delete_Device(Computer Computer)
         {
-            bool rlt = false;
             try
             {
                 con.Open();
@@ -27,14 +26,12 @@ namespace DataManagement
                         Computer.DeviceInformationCode + "'", con);
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    rlt = true;
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return rlt;
         }
         public static void Delete_Device(Laptop Laptop)
         {
