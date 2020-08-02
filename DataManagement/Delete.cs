@@ -13,8 +13,6 @@ namespace DataManagement
     {
         private static SQLiteConnection con = new SQLiteConnection(SharedFields.DBPath);
         private static SQLiteCommand cmd;
-        
-
         public static void Delete_Device(Computer Computer)
         {
             try

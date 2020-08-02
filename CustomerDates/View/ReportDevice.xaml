@@ -1,6 +1,7 @@
 ﻿<Window x:Class="CustomerDates.ReportDevice"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerDates"
@@ -10,289 +11,172 @@
 
         <FontFamily x:Key="cdfont">Arial</FontFamily>
         <Thickness x:Key="Pdng">2,2.5,0,0</Thickness>
-
-        <Style x:Key="ColumnHeaderStyle" TargetType="DataGridColumnHeader">
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="BorderThickness" Value="0,0,1,1"/>
-            <Setter Property="Background" Value="Gainsboro"/>
-            <Setter Property="FontFamily" Value="Eagle"/>
-            <Setter Property="Padding" Value="3,1,0,0"/>
-            <Setter Property="FontFamily" Value="{StaticResource cdfont}"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="Height" Value="23"/>
-        </Style>
-
-        <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Height" Value="23"/>
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#FF332E80"/>
-                    <Setter Property="Foreground" Value="White" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="DataGridCellStyle" TargetType="DataGridCell">
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="#FF332E80"/>
-                    <Setter Property="Foreground" Value="White"/>
-                </Trigger>
-            </Style.Triggers>
-            <Setter Property="BorderThickness" Value="0"/>
-        </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Background="White">
+        <Grid VerticalAlignment="Top" Height="247" Margin="0,33,0.2,0" Background="#FF050052">
+            <Grid Name="ContentGrid" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#FF193C77" Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Name="ExtrasRow"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="Customer Name" FontSize="10" Foreground="White" VerticalContentAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="1" Content="Phone Number" FontSize="10" Foreground="White" VerticalContentAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="2" Content="Device Company" FontSize="10" Foreground="White" VerticalContentAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="3" Content="Model Number" FontSize="10" Foreground="White" VerticalContentAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="4" Content="Serial Number" Canvas.Top="146" FontSize="10" Foreground="White" VerticalContentAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="5" Content="Code" Canvas.Top="170" FontSize="10" Foreground="White" VerticalContentAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="6" Content="Total Price" FontSize="10" Foreground="White" VerticalContentAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="7" Content="Extras" FontSize="10" Foreground="White" VerticalContentAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="8" Content="Device Date" FontSize="10" Foreground="White" VerticalContentAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="9" Content="Number Of Hardware" FontSize="10" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                <Label Grid.Column="0" Grid.Row="10" Content="Number Of Software" FontSize="10" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                <Border Grid.Column="1" Grid.RowSpan="11" Background="White"/>
 
+                <Label Grid.Column="2" VerticalContentAlignment="Center" Grid.Row="0" Name="NameLbl" Content="CN"  FontSize="10" Foreground="White"/>
+                <Label Grid.Column="2" VerticalContentAlignment="Center" Grid.Row="1" Name="PhoneNumberLbl" Content="PN" FontSize="10" Foreground="White"/>
+                <Label Grid.Column="2" VerticalContentAlignment="Center" Grid.Row="2" Name="DeviceCompanyLbl" Content="DC" FontSize="10" Foreground="White"/>
+                <Label Grid.Column="2" VerticalContentAlignment="Center" Grid.Row="3" Name="ModelLbl" Content="MN" FontSize="10" Foreground="White"/>
+                <Label Grid.Column="2" VerticalContentAlignment="Center" Grid.Row="4" Name="SerialNumberLbl" Content="SN" FontSize="10" Foreground="White"/>
+                <Label Grid.Column="2" VerticalContentAlignment="Center" Grid.Row="5" Name="DeviceInformationCodeLbl" Content="DIC" FontSize="10" Foreground="White"/>
+                <Label Grid.Column="2" VerticalContentAlignment="Center" Grid.Row="6" Name="PriceLbl" Content="TP" FontSize="10" Foreground="White"/>
+                <Label Grid.Column="2" VerticalContentAlignment="Center" Grid.Row="7" Name="ExtrasLbl" Content="EX" FontSize="10" Foreground="White"/>
+                <Label Grid.Column="2" VerticalContentAlignment="Center" Grid.Row="8" Name="DateLbl" Content="DT" FontSize="10" Foreground="White"/>
+                <Label Grid.Column="2" VerticalContentAlignment="Center" Grid.Row="9" Name="NumberOfHardwareLbl" Content="NOH" FontSize="10" Foreground="White"/>
+                <Label Grid.Column="2" VerticalContentAlignment="Center" Grid.Row="10" Name="NumberOfSoftwareLbl" Content="NOS" FontSize="10" Foreground="White"/>
 
-
-
-
-
-        <Canvas Name="Content_cvs" HorizontalAlignment="Left" Height="284" VerticalAlignment="Top" Width="643" Background="#FFF7F7F7" Margin="0,-4,0,0">
-
-            <Label Content="Customer Name" Canvas.Left="32" Canvas.Top="50" FontSize="10"/>
-            <Label Content="Phone Number" Canvas.Left="37" Canvas.Top="74" FontSize="10"/>
-            <Label Content="Device Company" Canvas.Left="29" Canvas.Top="98" FontSize="10"/>
-            <Label Content="Model Number" Canvas.Left="37" Canvas.Top="122" FontSize="10"/>
-            <Label Content="Serial Number" Canvas.Left="40" Canvas.Top="146" FontSize="10"/>
-            <Label Content="Infopren Code" Canvas.Left="40" Canvas.Top="170" FontSize="10"/>
-            <Label Content="Total Price" Canvas.Left="59" Canvas.Top="194" FontSize="10"/>
-            <Label Content="External Parts" Canvas.Left="45" Canvas.Top="242" FontSize="10"/>
-            <Label Content="Device Date" Canvas.Left="51" Canvas.Top="218" FontSize="10"/>
-            <Separator Height="2" Canvas.Left="10" Margin="0" Canvas.Top="74" Width="224" RenderTransformOrigin="0.5,0.5" Background="Black"/>
-            <Label Name="pr_name" Content="N" Canvas.Left="138" Canvas.Top="50" FontSize="10"/>
-            <Label Name="pr_phone" Content="PN" Canvas.Left="138" Canvas.Top="74" FontSize="10"/>
-            <Label Name="pr_devcomp" Content="DC" Canvas.Left="138" Canvas.Top="98" FontSize="10"/>
-            <Label Name="pr_model" Content="MN" Canvas.Left="138" Canvas.Top="122" FontSize="10"/>
-            <Label Name="pr_sn" Content="SN" Canvas.Left="138" Canvas.Top="146" FontSize="10"/>
-            <Label Name="pr_code" Content="IC" Canvas.Left="138" Canvas.Top="170" FontSize="10"/>
-            <Label Name="pr_price" Content="TP" Canvas.Left="138" Canvas.Top="194" FontSize="10"/>
-            <Label Name="pr_external" Content="EP" Canvas.Left="138" Canvas.Top="242" FontSize="10"/>
-            <Label Name="pr_date" Content="DT" Canvas.Left="138" Canvas.Top="218" FontSize="10"/>
-            <Separator Height="2" Canvas.Left="10" Margin="0" Canvas.Top="98" Width="224" RenderTransformOrigin="0.5,0.5" Background="Black"/>
-            <Separator Height="2" Canvas.Left="10" Margin="0" Canvas.Top="122" Width="224" RenderTransformOrigin="0.5,0.5" Background="Black"/>
-            <Separator Height="2" Canvas.Left="10" Margin="0" Canvas.Top="146" Width="224" RenderTransformOrigin="0.5,0.5" Background="Black"/>
-            <Separator Height="2" Canvas.Left="10" Margin="0" Canvas.Top="170" Width="224" RenderTransformOrigin="0.5,0.5" Background="Black"/>
-            <Separator Height="2" Canvas.Left="10" Margin="0" Canvas.Top="194" Width="224" RenderTransformOrigin="0.5,0.5" Background="Black"/>
-            <Separator Height="2" Canvas.Left="10" Margin="0" Canvas.Top="218" Width="224" RenderTransformOrigin="0.5,0.5" Background="Black"/>
-            <Separator Height="2" Canvas.Left="10" Margin="0" Canvas.Top="242" Width="224" RenderTransformOrigin="0.5,0.5" Background="Black"/>
-            <Separator Height="2" Canvas.Left="18" Margin="0" Canvas.Top="157" Width="216" RenderTransformOrigin="0.5,0.5" Background="Black">
-                <Separator.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="90"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Separator.RenderTransform>
-            </Separator>
-        </Canvas>
-        <Canvas x:Name="SHWare_cvs" HorizontalAlignment="Left" Height="432" VerticalAlignment="Top" Width="643" Margin="0,280,0,0" Background="#FF193C77">
-            <DataGrid Name="hardware_grd" IsReadOnly="True" Height="198" HeadersVisibility="Column" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" Canvas.Top="18" Width="643" FontSize="12" CellStyle="{StaticResource DataGridCellStyle}" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" RowStyle="{StaticResource DataGridRowStyle}" MouseRightButtonDown="grd_MouseRightButtonDown" BorderBrush="Black" BorderThickness="0,1,0,0">
+            </Grid>
+        </Grid>
+        <Grid x:Name="SHWare_cvs" HorizontalAlignment="Left" Height="432" VerticalAlignment="Top" Width="643" Margin="0,280,0,0" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23"/>
+                <RowDefinition/>
+                <RowDefinition Height="23"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Left" Content="Hardwares" Foreground="Black" Padding="0" Canvas.Left="10" Height="18" FontWeight="Bold" Margin="10,0,0,0"/>
+            <DataGrid Grid.Row="1" Name="HardwaresDataGrid" IsReadOnly="True" HeadersVisibility="Column" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" FontSize="12" CellStyle="{StaticResource DataGridCellStyle}" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" RowStyle="{DynamicResource DataGridRowStyle}" MouseRightButtonDown="grd_MouseRightButtonDown" BorderBrush="Black" BorderThickness="0,1,0,0" Background="#FF050052" GridLinesVisibility="None">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Parttype}" Header="Part Type" MinWidth="125">
+                    <DataGridTextColumn Binding="{Binding PartName}" Header="Part Type" MinWidth="125"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Header="Description" MinWidth="395"/>
+                    <DataGridTextColumn Binding="{Binding Price}" Header="Price" MinWidth="75"/>
+                    <DataGridTextColumn Binding="{Binding Status}" Width="*" Header="Status">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="Transparent"/>
                                 <Setter Property="Padding" Value="{StaticResource Pdng}"/>
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Description}" Header="Description" MinWidth="300">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Padding" Value="{StaticResource Pdng}"/>
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Price}" Header="Price" MinWidth="75">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Padding" Value="{StaticResource Pdng}"/>
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Status}" Width="*" Header="Status" MinWidth="121">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
                                 <Style.Triggers>
 
                                     <Trigger Property="Text" Value="Repairing">
                                         <Setter Property="Background" Value="Yellow"/>
-                                        <Setter Property="Foreground" Value="Black"/>
                                     </Trigger>
                                     <Trigger Property="Text" Value="Completed">
                                         <Setter Property="Background" Value="Lime"/>
-                                        <Setter Property="Foreground" Value="Black"/>
                                     </Trigger>
                                     <Trigger Property="Text" Value="Failed">
                                         <Setter Property="Background" Value="Red"/>
-                                        <Setter Property="Foreground" Value="White"/>
                                     </Trigger>
                                 </Style.Triggers>
-                                <Setter Property="Padding" Value="{StaticResource Pdng}"/>
+                                
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid Name="software_grd" IsReadOnly="True" Height="198" MouseRightButtonDown="grd_MouseRightButtonDown" HeadersVisibility="Column" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" Canvas.Top="234" Width="643" CellStyle="{StaticResource DataGridCellStyle}" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" RowStyle="{StaticResource DataGridRowStyle}" BorderBrush="Black" BorderThickness="0,1,0,0">
+            <Label Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Left" Content="Softwares" Foreground="Black" Padding="0" Height="18" FontWeight="Bold" Margin="10,0,0,0"/>
+            <DataGrid Grid.Row="3" Name="softwaresDataGrid" IsReadOnly="True" MouseRightButtonDown="grd_MouseRightButtonDown" HeadersVisibility="Column" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" CellStyle="{StaticResource DataGridCellStyle}" ColumnHeaderStyle="{StaticResource ColumnHeaderStyle}" RowStyle="{StaticResource DataGridRowStyle}" BorderBrush="Black" BorderThickness="0,1,0,0" Background="#FF050052" GridLinesVisibility="None">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Parttype}" Header="Part Type" MinWidth="125">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Padding" Value="{StaticResource Pdng}"/>
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Description}" Header="Description" MinWidth="300">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Padding" Value="{StaticResource Pdng}"/>
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Price}" Header="Price" MinWidth="75">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Padding" Value="{StaticResource Pdng}"/>
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Parttype}" Header="Part Type" MinWidth="125"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Header="Description" MinWidth="395"/>
+                    <DataGridTextColumn Binding="{Binding Price}" Header="Price" MinWidth="75"/>
                     <DataGridTextColumn Binding="{Binding Status}" Width="*" Header="Status" MinWidth="121">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="Transparent"/>
+                                <Setter Property="Padding" Value="{StaticResource Pdng}"/>
                                 <Style.Triggers>
-
                                     <Trigger Property="Text" Value="Repairing">
                                         <Setter Property="Background" Value="Yellow"/>
-                                        <Setter Property="Foreground" Value="Black"/>
                                     </Trigger>
                                     <Trigger Property="Text" Value="Completed">
                                         <Setter Property="Background" Value="Lime"/>
-                                        <Setter Property="Foreground" Value="Black"/>
                                     </Trigger>
                                     <Trigger Property="Text" Value="Failed">
                                         <Setter Property="Background" Value="Red"/>
-                                        <Setter Property="Foreground" Value="White"/>
                                     </Trigger>
                                 </Style.Triggers>
-                                <Setter Property="Padding" Value="{StaticResource Pdng}"/>
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Label Content="Hardware Parts" Foreground="White" Padding="0" Canvas.Left="10" Height="18" Width="81"/>
-            <Label Content="Software Parts" Foreground="White" Padding="0" Canvas.Left="10" Height="18" Width="81" Canvas.Top="216"/>
-        </Canvas>
-        <Canvas x:Name="Signture_cvs" HorizontalAlignment="Left" Height="84" VerticalAlignment="Top" Width="643" Margin="0,712,0,0" Background="#FFC2C2C2"/>
-        <Canvas Background="White" Margin="0,795,0.2,0">
-            <Border Background="White" Height="29" Width="170" BorderThickness="0,0,2,0" BorderBrush="Black"/>
-            <Image Height="28" Width="22" Canvas.Left="11" Source="/Resources/Assets/600x600.png" Canvas.Top="1"/>
-            <Label Canvas.Left="38" FontSize="15" FontFamily="{StaticResource cdfont}" Content="Customer Dates" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Black" Height="29"/>
-            <Label Name="RaportDate" Canvas.Left="170" FontSize="15"  Content="Date :" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="{StaticResource cdfont}" Foreground="Black" Height="29" Width="308"/>
-            <Label Name="Vrs" Canvas.Left="523" FontSize="15" Content="Version : 1.0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="{StaticResource cdfont}" Foreground="Black" Height="29" Width="120"/>
-        </Canvas>
-        <Border Background="#FF050059" Height="33" VerticalAlignment="Top" Margin="0,0,0.2,0"  x:Name="Recmenu" MouseDown="bormenu_MouseDown">
+        </Grid>
+        <Border x:Name="Signture_cvs" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="White" Margin="0,0,0.2,24" Height="89" RenderTransformOrigin="0.5,0.5" BorderThickness="0" BorderBrush="Black">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="23"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <Label Content="Customer Signature :" Grid.Row="0" Margin="10,0,0,0" Grid.Column="0" Padding="0" VerticalAlignment="Center"/>
+                <Border Grid.Column="0" Grid.Row="1" Margin="10,0,0,10" Background="#FFE8E8E8" CornerRadius="0,10,10,10" BorderBrush="#FFC7C7C7" BorderThickness="1"/>
+
+            </Grid>
+        </Border>
+        <Grid VerticalAlignment="Bottom" Margin="0,0,0.2,0" Height="24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Background="White" BorderThickness="0,0,2,0" BorderBrush="Black">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="/AppResources/Assets/600x600.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="21"/>
+                    <Label Grid.Column="1" FontFamily="{StaticResource cdfont}" Content="Customer Dates" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Black" HorizontalAlignment="Left"/>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" Background="#FFCECECE" BorderBrush="Black" BorderThickness="0,2,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="85"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Name="RaportDate" FontSize="10"  Content="{Binding Source={x:Static System:DateTime.Now},StringFormat='HH:mm:ss'}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="{StaticResource cdfont}" Foreground="Black"/>
+                    <Label Grid.Column="1" Name="Version" FontSize="10" Content="Version : 1.0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="Consolas" Foreground="Black"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <Border Background="#FF050059" Height="33" VerticalAlignment="Top" Margin="0,0,0,0"  x:Name="Recmenu" MouseDown="bormenu_MouseDown" BorderBrush="White" BorderThickness="0,0,0,1">
             <Label Content="Customer Dates Reporting Device" FontFamily="{StaticResource cdfont}" FontSize="15" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="3,0,0,0" VerticalAlignment="Top" Foreground="White" Height="33" Width="241"/>
         </Border>
-        <Button Content="" HorizontalAlignment="Right" x:Name="MMbtnexit" Style="{DynamicResource newdeviceexitstyle}" Margin="0,10,9.2,0" VerticalAlignment="Top" Width="15" Height="15" BorderBrush="{x:Null}" Click="MMbtnexit_Click" Cursor="Hand">
-            <Button.Resources>
-                <SolidColorBrush x:Key="Button.Static.Background" Color="#00000000"/>
-                <SolidColorBrush x:Key="Button.Static.Border" Color="#00000000"/>
-                <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#00000000"/>
-                <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#00000000"/>
-                <SolidColorBrush x:Key="Button.Pressed.Background" Color="#00000000"/>
-                <SolidColorBrush x:Key="Button.Pressed.Border" Color="#00000000"/>
-                <SolidColorBrush x:Key="Button.Disabled.Background" Color="#00000000"/>
-                <SolidColorBrush x:Key="Button.Disabled.Border" Color="#00000000"/>
-                <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#00000000"/>
-                <Style x:Key="newdeviceexitstyle" TargetType="{x:Type Button}">
-
-                    <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-                    <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                    <Setter Property="BorderThickness" Value="1"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                    <Setter Property="VerticalContentAlignment" Value="Center"/>
-                    <Setter Property="Padding" Value="1"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                                    <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsDefaulted" Value="true">
-                                        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                                    </Trigger>
-                                    <Trigger Property="IsMouseOver" Value="true">
-                                        <Setter Property="Background" TargetName="border">
-
-                                            <Setter.Value>
-                                                <ImageBrush ImageSource="/Resources/Assets/Exit Blue.png" />
-                                            </Setter.Value>
-
-                                        </Setter>
-                                        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
-                                    </Trigger>
-                                    <Trigger Property="IsPressed" Value="true">
-                                        <Setter Property="Background" TargetName="border">
-
-                                            <Setter.Value>
-                                                <ImageBrush ImageSource="/Resources/Assets/Exit Black.png" Stretch="Uniform" />
-                                            </Setter.Value>
-
-                                        </Setter>
-                                        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
-                                    </Trigger>
-                                    <Trigger Property="IsEnabled" Value="false">
-                                        <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                                        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                                        <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Resources>
+        <Button Content="" HorizontalAlignment="Right" x:Name="MMbtnexit" Margin="0,10,9.2,0" VerticalAlignment="Top" Width="15" Height="15" BorderBrush="{x:Null}" Click="MMbtnexit_Click" Cursor="Hand" Template="{DynamicResource ExitButtonTemplate}">
             <Button.Background>
-                <ImageBrush ImageSource="/Resources/Assets/Exit Icon (Program).png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="/AppResources/Assets/Exit Icon (Program).png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button  HorizontalAlignment="Right" Click="Minimizebtn_Click" x:Name="Minimizebtn" Margin="0,10,34.2,0" VerticalAlignment="Top" Width="15" Height="15" BorderBrush="{x:Null}" BorderThickness="0" Cursor="Hand">
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type ButtonBase}">
-                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                        <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="border">
-
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/Resources/Assets/Minimize icon blue.png" Stretch="Uniform"/>
-                                </Setter.Value>
-
-                            </Setter>
-
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" TargetName="border" >
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/Resources/Assets/Minimize icon.png" Stretch="Uniform"/>
-                                </Setter.Value>
-                            </Setter>
-
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Button.Template>
+        <Button  HorizontalAlignment="Right" Click="Minimizebtn_Click" x:Name="Minimizebtn" Margin="0,10,34.2,0" VerticalAlignment="Top" Width="15" Height="15" BorderBrush="{x:Null}" BorderThickness="0" Cursor="Hand" Template="{DynamicResource MinimizeButtonTemplate}">
             <Button.Background>
-                <ImageBrush ImageSource="/Resources/Assets/Minimize icon.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="/AppResources/Assets/Minimize icon.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
 

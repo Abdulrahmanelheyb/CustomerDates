@@ -36,7 +36,7 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@DeviceModel", Computer.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", Computer.Price);
                     cmd.Parameters.AddWithValue("@RegisterDate", Computer.Date);
-                    cmd.Parameters.AddWithValue("@DeviceStatus", Computer.Status);
+                    cmd.Parameters.AddWithValue("@DeviceStatus", Computer.Status.ToString());
                     cmd.Parameters.AddWithValue("@Hardwares",Computer.Hardwares);
                     cmd.Parameters.AddWithValue("@Softwares", Computer.Softwares);
                     cmd.ExecuteNonQuery();
@@ -44,10 +44,9 @@ namespace DataManagement
                     con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                
+                throw ex;
             }
 
             return updateresult;
@@ -76,7 +75,7 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@DeviceModel", Laptop.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", Laptop.Price);
                     cmd.Parameters.AddWithValue("@RegisterDate", Laptop.Date);
-                    cmd.Parameters.AddWithValue("@DeviceStatus", Laptop.Status);
+                    cmd.Parameters.AddWithValue("@DeviceStatus", Laptop.Status.ToString());
                     cmd.Parameters.AddWithValue("@Hardwares",Laptop.Hardwares);
                     cmd.Parameters.AddWithValue("@Softwares",Laptop.Softwares);
                     cmd.ExecuteNonQuery();
@@ -84,10 +83,9 @@ namespace DataManagement
                     con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                throw ex;
             }
 
             return updateresult;
@@ -116,7 +114,7 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@DeviceModel", Mobile.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", Mobile.Price);
                     cmd.Parameters.AddWithValue("@RegisterDate", Mobile.Date);
-                    cmd.Parameters.AddWithValue("@DeviceStatus", Mobile.Status);
+                    cmd.Parameters.AddWithValue("@DeviceStatus", Mobile.Status.ToString());
                     cmd.Parameters.AddWithValue("@Hardwares",Mobile.Hardwares);
                     cmd.Parameters.AddWithValue("@Softwares",Mobile.Softwares);
                     cmd.ExecuteNonQuery();
@@ -124,10 +122,9 @@ namespace DataManagement
                     con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                throw ex;
             }
 
             return updateresult;
@@ -151,12 +148,12 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@SerialNumber", Tablet.SerialNumber);
                     cmd.Parameters.AddWithValue("@CustomerName", Tablet.CustomerName);
                     cmd.Parameters.AddWithValue("@PhoneNumber", Tablet.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@Extras", Tablet.Extras);
+                    cmd.Parameters.AddWithValue("@Extras", (object)Tablet.Extras);
                     cmd.Parameters.AddWithValue("@DeviceCompany", Tablet.DeviceCompany);
                     cmd.Parameters.AddWithValue("@DeviceModel", Tablet.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", Tablet.Price);
                     cmd.Parameters.AddWithValue("@RegisterDate", Tablet.Date);
-                    cmd.Parameters.AddWithValue("@DeviceStatus", Tablet.Status);
+                    cmd.Parameters.AddWithValue("@DeviceStatus", Tablet.Status.ToString());
                     cmd.Parameters.AddWithValue("@Hardwares",Tablet.Hardwares);
                     cmd.Parameters.AddWithValue("@Softwares",Tablet.Softwares);
                     cmd.ExecuteNonQuery();
@@ -164,10 +161,9 @@ namespace DataManagement
                     con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                throw ex;
             }
 
             return updateresult;
@@ -191,12 +187,12 @@ namespace DataManagement
                     cmd.Parameters.AddWithValue("@SerialNumber", OtherDevice.SerialNumber);
                     cmd.Parameters.AddWithValue("@CustomerName", OtherDevice.CustomerName);
                     cmd.Parameters.AddWithValue("@PhoneNumber", OtherDevice.CustomerPhoneNumber);
-                    cmd.Parameters.AddWithValue("@Extras", OtherDevice.Extras);
+                    cmd.Parameters.AddWithValue("@Extras", (object)OtherDevice.Extras);
                     cmd.Parameters.AddWithValue("@DeviceCompany", OtherDevice.DeviceCompany);
                     cmd.Parameters.AddWithValue("@DeviceModel", OtherDevice.Model);
                     cmd.Parameters.AddWithValue("@TotalPrice", OtherDevice.Price);
-                    cmd.Parameters.AddWithValue("@RegisterDate", OtherDevice.Date);
-                    cmd.Parameters.AddWithValue("@DeviceStatus", OtherDevice.Status);
+                    cmd.Parameters.AddWithValue("@RegisterDate",OtherDevice.Date);
+                    cmd.Parameters.AddWithValue("@DeviceStatus", OtherDevice.Status.ToString());
                     cmd.Parameters.AddWithValue("@Hardwares", OtherDevice.Hardwares);
                     cmd.Parameters.AddWithValue("@Softwares", OtherDevice.Softwares);
                     cmd.ExecuteNonQuery();
@@ -204,10 +200,9 @@ namespace DataManagement
                     con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                throw ex;
             }
 
             return updateresult;

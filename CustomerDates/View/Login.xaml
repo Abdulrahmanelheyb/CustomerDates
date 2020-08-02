@@ -52,7 +52,7 @@
         </Grid>
         <Label Content="Customer Dates" HorizontalAlignment="Left" Margin="373,184,0,0" VerticalAlignment="Top" Height="57" Width="267" FontSize="36" Foreground="White"/>
         <Label Content="BY AE3" HorizontalAlignment="Left" Margin="629,219,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Image HorizontalAlignment="Left" Height="81" Margin="292,176,0,0" VerticalAlignment="Top" Width="76" Source="/Resources/Assets/176x176.png" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="81" Margin="292,176,0,0" VerticalAlignment="Top" Width="76" Source="/AppResources/Assets/176x176.png" Stretch="Fill"/>
         <Rectangle HorizontalAlignment="Left" Height="29" MouseDown="recmovelogin_MouseDown" Name="recmovelogin" VerticalAlignment="Top" Width="960" Fill="#FF050059" Cursor="Hand"/>
         <Button Content="" HorizontalAlignment="Left" x:Name="NDbtnexitlogin" Style="{DynamicResource newdeviceexitstyle}" Margin="938,6.5,0,0" VerticalAlignment="Top" Width="15" Height="15" BorderBrush="{x:Null}" Click="NDbtnexitlogin_Click" Cursor="Hand">
             <Button.Resources>
@@ -88,7 +88,7 @@
                                         <Setter Property="Background" TargetName="border">
 
                                             <Setter.Value>
-                                                <ImageBrush ImageSource="/Resources/Assets/Exit Blue.png" />
+                                                <ImageBrush ImageSource="/AppResources/Assets/Exit Blue.png" />
                                             </Setter.Value>
 
                                         </Setter>
@@ -98,7 +98,7 @@
                                         <Setter Property="Background" TargetName="border">
 
                                             <Setter.Value>
-                                                <ImageBrush ImageSource="/Resources/Assets/Exit Black.png" />
+                                                <ImageBrush ImageSource="/AppResources/Assets/Exit Black.png" />
                                             </Setter.Value>
 
                                         </Setter>
@@ -116,7 +116,7 @@
                 </Style>
             </Button.Resources>
             <Button.Background>
-                <ImageBrush ImageSource="/Resources/Assets/Exit Icon (Program).png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="/AppResources/Assets/Exit Icon (Program).png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
 

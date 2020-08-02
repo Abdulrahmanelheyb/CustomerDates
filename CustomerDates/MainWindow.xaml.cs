@@ -1,9 +1,4 @@
 ﻿using CustomerDates;
-using CustomerDates.DeviceControls.Computers;
-using CustomerDates.DeviceControls.Laptops;
-using CustomerDates.DeviceControls.Mobiles;
-using CustomerDates.DeviceControls.OtherDevices;
-using CustomerDates.DeviceControls.Tablets;
 using CustomerDates.DeviceControls;
 using ObjectLayer;
 using System;
@@ -127,7 +122,7 @@ namespace CustomerDates
 
         private void Computers_Click(object sender, RoutedEventArgs e)
         {
-            ComputersManager uccomputers = new ComputersManager();
+            CDevicesListAndControlsView uccomputers = new CDevicesListAndControlsView(CDevicesListAndControlsView.CDeviceType.Computer);
             SetUserControl(Viewgrid,uccomputers);
             ComputersList.Background = Brushes.White;
             ComputersList.Foreground = Brushes.Black;
@@ -144,7 +139,7 @@ namespace CustomerDates
         }
         private void Laptops_Click(object sender, RoutedEventArgs e)
         {
-            LaptopsManager uclaptops = new LaptopsManager();
+            CDevicesListAndControlsView uclaptops = new CDevicesListAndControlsView(CDevicesListAndControlsView.CDeviceType.Laptop);
             SetUserControl(Viewgrid, uclaptops);
             LaptopsList.Background = Brushes.White;
             LaptopsList.Foreground = Brushes.Black;
@@ -162,7 +157,7 @@ namespace CustomerDates
 
         private void Mobiles_Click(object sender, RoutedEventArgs e)
         {
-            MobilesManager ucmobiles = new MobilesManager();
+            CDevicesListAndControlsView ucmobiles = new CDevicesListAndControlsView(CDevicesListAndControlsView.CDeviceType.Mobile);
             SetUserControl(Viewgrid, ucmobiles);
             MobilesList.Background = Brushes.White;
             MobilesList.Foreground = Brushes.Black;
@@ -179,7 +174,7 @@ namespace CustomerDates
 
         private void Tablets_Click(object sender, RoutedEventArgs e)
         {
-            TabletsManager uctablets = new TabletsManager();
+            CDevicesListAndControlsView uctablets = new CDevicesListAndControlsView(CDevicesListAndControlsView.CDeviceType.Tablet);
             SetUserControl(Viewgrid, uctablets);
             TabletsList.Background = Brushes.White;
             TabletsList.Foreground = Brushes.Black;
@@ -196,7 +191,7 @@ namespace CustomerDates
 
         private void OtherDevices_Click(object sender, RoutedEventArgs e)
         {
-            OtherDevicesManager ucotherdevices = new OtherDevicesManager();
+            CDevicesListAndControlsView ucotherdevices = new CDevicesListAndControlsView(CDevicesListAndControlsView.CDeviceType.OtherDevice);
             SetUserControl(Viewgrid, ucotherdevices);
             OtherDevicesList.Background = Brushes.White;
             OtherDevicesList.Foreground = Brushes.Black;
@@ -213,13 +208,21 @@ namespace CustomerDates
 
 
 
-
-
-
-
-
         #endregion
 
-
+        private void homebtn_Click(object sender, RoutedEventArgs e)
+        {
+            ComputersList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            ComputersList.Foreground = Brushes.White;
+            LaptopsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            LaptopsList.Foreground = Brushes.White;
+            MobilesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            MobilesList.Foreground = Brushes.White;
+            TabletsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            TabletsList.Foreground = Brushes.White;
+            OtherDevicesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            OtherDevicesList.Foreground = Brushes.White;
+            Viewgrid.Children.Clear();
+        }
     }
 }

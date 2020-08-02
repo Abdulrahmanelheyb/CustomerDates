@@ -14,7 +14,7 @@ namespace ObjectLayer
 
         }
         public static DataTable Laptops = new DataTable();
-        public DataTable LaptopsProperty
+        public static DataTable LaptopsProperty
         {
             get
             {
@@ -25,25 +25,8 @@ namespace ObjectLayer
                 LaptopsProperty = Laptops;
             }
         }
-        public static List<string> ExternalsTypes = new List<string>();
 
         public string Extras { get; set; }
-
-        public void SetStatus(string StatusString)
-        {
-            if (StatusString == "Repairing")
-            {
-                Status = StatusType.Repairing;
-            }
-            if (StatusString == "Completed")
-            {
-                Status = StatusType.Completed;
-            }
-            if (StatusString == "Failed")
-            {
-                Status = StatusType.Failed;
-            }
-        }
 
         public static Laptop GetLaptop(int RowIndex)
         {
@@ -52,13 +35,13 @@ namespace ObjectLayer
             laptop.SerialNumber = Laptops.Rows[RowIndex][1].ToString();
             laptop.CustomerName = Laptops.Rows[RowIndex][2].ToString();
             laptop.CustomerPhoneNumber = Laptops.Rows[RowIndex][3].ToString();
-            laptop.DeviceCompany = Laptops.Rows[RowIndex][4].ToString();
-            laptop.Model = Laptops.Rows[RowIndex][5].ToString();
-            laptop.Price = int.Parse(Laptops.Rows[RowIndex][6].ToString());
-            laptop.Date = Convert.ToDateTime(Laptops.Rows[RowIndex][7].ToString());
-            laptop.SetStatus(Laptops.Rows[RowIndex][8].ToString());
-            laptop.Hardwares = Laptops.Rows[RowIndex][9].ToString();
-            laptop.Softwares = Laptops.Rows[RowIndex][10].ToString();
+            laptop.Extras = Laptops.Rows[RowIndex][4].ToString();
+            laptop.DeviceCompany = Laptops.Rows[RowIndex][5].ToString();
+            laptop.Model = Laptops.Rows[RowIndex][6].ToString();
+            laptop.Price = int.Parse(Laptops.Rows[RowIndex][7].ToString());
+            laptop.Date = Convert.ToDateTime(Laptops.Rows[RowIndex][8].ToString());
+            laptop.Hardwares = Laptops.Rows[RowIndex][10].ToString();
+            laptop.Softwares = Laptops.Rows[RowIndex][11].ToString();
             return laptop;
         }
     }

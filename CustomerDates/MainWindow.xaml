@@ -20,22 +20,22 @@
         <DockPanel x:Name="Topdock" Background="#FF050059" Height="33" VerticalAlignment="Top" HorizontalAlignment="Stretch" MouseDown="Topdock_MouseDown">
             <Button HorizontalAlignment="Left" x:Name="Menubtn" VerticalAlignment="Top" Width="21" Height="20" Margin="7,6,0,0" BorderBrush="{x:Null}" BorderThickness="0" Cursor="Hand" Template="{DynamicResource MenuButtonTemplate}" >
                 <Button.Background>
-                    <ImageBrush ImageSource="Resources/Assets/Menu.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="AppResources/Assets/Menu.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
             <Button HorizontalAlignment="Right" x:Name="MMbtnexit" VerticalAlignment="Center" Width="15" Height="15" BorderBrush="{x:Null}" Click="MMbtnexit_Click" Cursor="Hand" Margin="0,0,10,0" DockPanel.Dock="Right" Template="{DynamicResource ExitButtonTemplate}">
                 <Button.Background>
-                    <ImageBrush ImageSource="Resources/Assets/Exit Icon (Program).png"/>
+                    <ImageBrush ImageSource="AppResources/Assets/Exit Icon (Program).png"/>
                 </Button.Background>
             </Button>
             <Button Width="15" Height="15" x:Name="Maximizebtn" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" Click="Maximizebtn_Click" BorderBrush="{x:Null}" Cursor="Hand" DockPanel.Dock="Right" Template="{DynamicResource MaximizeButtonTemplate}" >
                 <Button.Background>
-                    <ImageBrush ImageSource="Resources/Assets/Maximize.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="AppResources/Assets/Maximize.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
             <Button  HorizontalAlignment="Right" Click="Minimizebtn_Click" x:Name="Minimizebtn" Margin="0,0,10,0" VerticalAlignment="Center" Width="15" Height="15" BorderBrush="{x:Null}" BorderThickness="0" Cursor="Hand" DockPanel.Dock="Right" Template="{DynamicResource MinimizeButtonTemplate}">
                 <Button.Background>
-                    <ImageBrush ImageSource="Resources/Assets/Minimize icon.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="AppResources/Assets/Minimize icon.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
             <Separator Height="1" Width="20" Background="#FF00A8FF" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
@@ -49,9 +49,9 @@
                 </Separator.RenderTransform>
 
             </Separator>
-            <Button x:Name="homebtn" HorizontalAlignment="Left" Width="20" BorderBrush="{x:Null}" BorderThickness="0" Height="20" VerticalAlignment="Center" Cursor="Hand" Margin="0,0,0,0" Template="{DynamicResource HomeButtonTemplate}" >
+            <Button x:Name="homebtn" HorizontalAlignment="Left" Width="20" BorderBrush="{x:Null}" BorderThickness="0" Height="20" VerticalAlignment="Center" Cursor="Hand" Margin="0,0,0,0" Template="{DynamicResource HomeButtonTemplate}" Click="homebtn_Click" >
                 <Button.Background>
-                    <ImageBrush ImageSource="Resources/Assets/homebtn.png"/>
+                    <ImageBrush ImageSource="AppResources/Assets/homebtn.png"/>
                 </Button.Background>
             </Button>
             <Grid HorizontalAlignment="Center">
@@ -69,8 +69,19 @@
                 <Button Content="Other Devices" Grid.Column="4" x:Name="OtherDevicesList"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="120" Foreground="White" BorderBrush="{x:Null}" Background="#FF050059" FontFamily="{StaticResource cdfont}" FontSize="14" BorderThickness="1" Cursor="Hand" Template="{StaticResource DeviceListButtonsTemplate}" Click="OtherDevices_Click" Margin="0.4,0,0,0"/>
             </Grid>
         </DockPanel>
-        <Grid Name="Viewgrid" HorizontalAlignment="Stretch"  Margin="0,33,0,0" VerticalAlignment="Stretch"/>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" HorizontalAlignment="Left" Width="100" Height="106" Margin="0,0,0,0" VerticalAlignment="Center" Source="AppResources/Assets/600x600.png" Opacity="0.78"/>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Customer Dates" FontSize="43" FontFamily="Roboto" FontWeight="Thin" Opacity="0.78" />
+            <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,60,0,0" Text="By AE3" FontSize="13" FontFamily="Roboto" FontWeight="Bold" Opacity="0.68" />
 
+        </Grid>
+        <Grid Name="Viewgrid" HorizontalAlignment="Stretch"  Margin="0,33,0,0" VerticalAlignment="Stretch">
+        </Grid>
     </Grid>
 </Window>
     

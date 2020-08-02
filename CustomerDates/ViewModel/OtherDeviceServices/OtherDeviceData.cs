@@ -1,47 +1,23 @@
-﻿using System;
+﻿using DataManagement;
+using ObjectLayer;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using ObjectLayer;
-using DataManagement;
-using System.Diagnostics.CodeAnalysis;
-using System.Data;
 
-namespace CustomerDates.ViewModel.ComputerServices
+namespace CustomerDates.ViewModel.OtherDeviceServices
 {
-    public class ComputerData
+    public class OtherDeviceData
     {
-        public ComputerData()
-        {
-            
-        }
-
-        public static bool InsertComputer(Computer computer)
+        public static bool InsertOtherDevice(OtherDevice otherdevice)
         {
             bool result = false;
             try
             {
-                UniqueCode.GetCode(computer);
-                result = Insert.InsertDevice(computer);
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            
-            return result;
-        }
-
-        public static bool UpdateComputer(Computer computer)
-        {
-            bool result = false;
-            try
-            {
-                result = Update.UpdateDevice(computer);
+                UniqueCode.GetCode(otherdevice);
+                result = Insert.InsertDevice(otherdevice);
             }
             catch (Exception ex)
             {
@@ -52,21 +28,36 @@ namespace CustomerDates.ViewModel.ComputerServices
             return result;
         }
 
-        public static void DeleteComputer(Computer computer)
+        public static bool UpdateOtherDevice(OtherDevice otherdevice)
         {
-             Delete.Delete_Device(computer);
-             LoadComputer();
+            bool result = false;
+            try
+            {
+                result = Update.UpdateDevice(otherdevice);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
         }
 
-        public static bool LoadComputer()
+        public static void DeleteOtherDevice(OtherDevice otherdevice)
         {
-            return Load.LoadComputers();
-
+            Delete.Delete_Device(otherdevice);
+            LoadOtherDevice();
         }
 
-        public static DataView SearchComputer(string Type, string Value)
+        public static bool LoadOtherDevice()
         {
-            DataView dv = Computer.Computers.DefaultView;
+            return Load.LoadOtherDevices();
+
+        }
+        public static DataView SearchOtherDevice(string Type, string Value)
+        {
+            DataView dv = OtherDevice.OtherDevices.DefaultView;
             if (Type == "Name")
             {
                 dv.RowFilter = "CustomerName LIKE '%" + Value + "%'";
@@ -93,9 +84,5 @@ namespace CustomerDates.ViewModel.ComputerServices
             }
             return dv;
         }
-        
-        
-
-
     }
 }

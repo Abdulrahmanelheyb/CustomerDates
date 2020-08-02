@@ -43,12 +43,10 @@
   <ItemGroup>
     <Compile Include="Computer.cs" />
     <Compile Include="Device.cs" />
-    <Compile Include="Hardware.cs" />
     <Compile Include="Laptop.cs" />
     <Compile Include="Mobile.cs" />
     <Compile Include="OtherDevice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Software.cs" />
     <Compile Include="Tablet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

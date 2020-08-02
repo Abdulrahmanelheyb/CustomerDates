@@ -1,47 +1,23 @@
-﻿using System;
+﻿using DataManagement;
+using ObjectLayer;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using ObjectLayer;
-using DataManagement;
-using System.Diagnostics.CodeAnalysis;
-using System.Data;
 
-namespace CustomerDates.ViewModel.ComputerServices
+namespace CustomerDates.ViewModel.MobileServices
 {
-    public class ComputerData
+    public class MobileData
     {
-        public ComputerData()
-        {
-            
-        }
-
-        public static bool InsertComputer(Computer computer)
+        public static bool InsertMobile(Mobile mobile)
         {
             bool result = false;
             try
             {
-                UniqueCode.GetCode(computer);
-                result = Insert.InsertDevice(computer);
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            
-            return result;
-        }
-
-        public static bool UpdateComputer(Computer computer)
-        {
-            bool result = false;
-            try
-            {
-                result = Update.UpdateDevice(computer);
+                UniqueCode.GetCode(mobile);
+                result = Insert.InsertDevice(mobile);
             }
             catch (Exception ex)
             {
@@ -52,21 +28,37 @@ namespace CustomerDates.ViewModel.ComputerServices
             return result;
         }
 
-        public static void DeleteComputer(Computer computer)
+        public static bool UpdateMobile(Mobile mobile)
         {
-             Delete.Delete_Device(computer);
-             LoadComputer();
+            bool result = false;
+            try
+            {
+                result = Update.UpdateDevice(mobile);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return result;
         }
 
-        public static bool LoadComputer()
+        public static void DeleteMobile(Mobile mobile)
         {
-            return Load.LoadComputers();
+            Delete.Delete_Device(mobile);
+            LoadMobile();
+        }
+
+        public static bool LoadMobile()
+        {
+            return Load.LoadMobiles();
 
         }
 
-        public static DataView SearchComputer(string Type, string Value)
+        public static DataView SearchMobile(string Type, string Value)
         {
-            DataView dv = Computer.Computers.DefaultView;
+            DataView dv = Mobile.Mobiles.DefaultView;
             if (Type == "Name")
             {
                 dv.RowFilter = "CustomerName LIKE '%" + Value + "%'";
@@ -93,9 +85,5 @@ namespace CustomerDates.ViewModel.ComputerServices
             }
             return dv;
         }
-        
-        
-
-
     }
 }
