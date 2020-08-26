@@ -85,6 +85,21 @@ namespace CustomerDates
 
         }
 
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MenuPanel.Visibility == Visibility.Collapsed)
+            {
+                MenuPanel.Visibility = Visibility.Visible;
+                MenuRectangle.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MenuPanel.Visibility = Visibility.Collapsed;
+                MenuRectangle.Visibility = Visibility.Collapsed;
+            }
+
+        }
+
         private void Minimizebtn_Click(object sender, RoutedEventArgs e)
         {
             if (this.WindowState == WindowState.Normal)
@@ -281,5 +296,6 @@ namespace CustomerDates
             ContactButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
             ContactButton.Foreground = Brushes.White;
         }
+
     }
 }

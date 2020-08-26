@@ -19,5 +19,10 @@ namespace CustomerDates
             Grid.Children.Clear();
             Grid.Children.Add(Usercontrol);
         }
+
+        //public void SetRequestedMenuTool(Grid grid,)
+        //{
+
+        //}
     }
 }
