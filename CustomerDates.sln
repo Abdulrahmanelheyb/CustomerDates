@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManagement", "DataManag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectLayer", "ObjectLayer\ObjectLayer.csproj", "{46C5E114-B24B-407D-9B62-9B2703C93657}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CDSetup", "CDSetup\CDSetup.vdproj", "{0BEC8F4D-D565-42AE-A7CD-DC1E0EB09EA4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,16 +83,6 @@ Global
 		{46C5E114-B24B-407D-9B62-9B2703C93657}.Release|x64.Build.0 = Release|Any CPU
 		{46C5E114-B24B-407D-9B62-9B2703C93657}.Release|x86.ActiveCfg = Release|Any CPU
 		{46C5E114-B24B-407D-9B62-9B2703C93657}.Release|x86.Build.0 = Release|Any CPU
-		{0BEC8F4D-D565-42AE-A7CD-DC1E0EB09EA4}.Debug|Any CPU.ActiveCfg = Debug
-		{0BEC8F4D-D565-42AE-A7CD-DC1E0EB09EA4}.Debug|ARM.ActiveCfg = Debug
-		{0BEC8F4D-D565-42AE-A7CD-DC1E0EB09EA4}.Debug|ARM64.ActiveCfg = Debug
-		{0BEC8F4D-D565-42AE-A7CD-DC1E0EB09EA4}.Debug|x64.ActiveCfg = Debug
-		{0BEC8F4D-D565-42AE-A7CD-DC1E0EB09EA4}.Debug|x86.ActiveCfg = Debug
-		{0BEC8F4D-D565-42AE-A7CD-DC1E0EB09EA4}.Release|Any CPU.ActiveCfg = Release
-		{0BEC8F4D-D565-42AE-A7CD-DC1E0EB09EA4}.Release|ARM.ActiveCfg = Release
-		{0BEC8F4D-D565-42AE-A7CD-DC1E0EB09EA4}.Release|ARM64.ActiveCfg = Release
-		{0BEC8F4D-D565-42AE-A7CD-DC1E0EB09EA4}.Release|x64.ActiveCfg = Release
-		{0BEC8F4D-D565-42AE-A7CD-DC1E0EB09EA4}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

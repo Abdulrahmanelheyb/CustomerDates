@@ -65,7 +65,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ManifestCertificateThumbprint>BC18AB4640029059A3E30BD448B831A2EEBC0FEA</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>95D33F215CAB030E43433D3AF55EC317E2239ADF</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>CustomerDates_TemporaryKey.pfx</ManifestKeyFile>

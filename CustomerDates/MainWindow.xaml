@@ -82,6 +82,17 @@
         </Grid>
         <Grid Name="Viewgrid" HorizontalAlignment="Stretch"  Margin="0,33,0,0" VerticalAlignment="Stretch">
         </Grid>
+        <Rectangle x:Name="MenuRectangle" HorizontalAlignment="Stretch"  Margin="0,33,0,0" Stroke="Black" VerticalAlignment="Stretch" Visibility="Collapsed">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Black" Opacity="0.75"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <StackPanel Name="MenuPanel" HorizontalAlignment="Left" Margin="0,33,0,0" VerticalAlignment="Stretch" Width="130" Background="#FF070077">
+            <Button Name="ToolsButton" Click="ToolsButton_Click" FontFamily="{StaticResource cdfont}" Height="30" Margin="0,10,0,0" Background="#FF070077" Foreground="White" Content="Tools" BorderBrush="White" BorderThickness="0" Template="{StaticResource MenuPanelButtonsTemplate}"/>
+            <Button Name="PreferencesButton" Click="PreferencesButton_Click" FontFamily="{StaticResource cdfont}" Height="30" Margin="0,10,0,0" Background="#FF070077" Foreground="White" Content="Preferences" BorderBrush="White" BorderThickness="0" Template="{StaticResource MenuPanelButtonsTemplate}"/>
+            <Button Name="ContactButton" Click="ContactButton_Click" FontFamily="{StaticResource cdfont}" Height="30" Margin="0,10,0,0" Background="#FF070077" Foreground="White" Content="Contact" BorderBrush="White" BorderThickness="0" Template="{StaticResource MenuPanelButtonsTemplate}"/>
+            <Button Name="AboutButton" Click="AboutButton_Click" FontFamily="{StaticResource cdfont}" Height="30" Margin="0,10,0,0" Background="#FF070077" Foreground="White" Content="About" BorderBrush="White" BorderThickness="0" Template="{StaticResource MenuPanelButtonsTemplate}"/>
+        </StackPanel>
     </Grid>
 </Window>
     

@@ -41,7 +41,8 @@ namespace CustomerDates
         {
             InitializeComponent();
             this.MaxHeight = SystemParameters.WorkArea.Height;
-           
+            MenuPanel.Visibility = Visibility.Collapsed;
+            MenuRectangle.Visibility = Visibility.Collapsed;
         }
 
 
@@ -223,6 +224,62 @@ namespace CustomerDates
             OtherDevicesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
             OtherDevicesList.Foreground = Brushes.White;
             Viewgrid.Children.Clear();
+        }
+
+        private void ToolsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToolsButton.Background = Brushes.White;
+            ToolsButton.Foreground = Brushes.Black;
+            ToolsButton.BorderThickness = new Thickness(0, 0, 0, 0);
+
+            PreferencesButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            PreferencesButton.Foreground = Brushes.White;
+            ContactButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            ContactButton.Foreground = Brushes.White;
+            AboutButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            AboutButton.Foreground = Brushes.White;
+        }
+
+        private void PreferencesButton_Click(object sender, RoutedEventArgs e)
+        {
+            PreferencesButton.Background = Brushes.White;
+            PreferencesButton.Foreground = Brushes.Black;
+            PreferencesButton.BorderThickness = new Thickness(0, 0, 0, 0);
+
+            ToolsButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            ToolsButton.Foreground = Brushes.White;
+            ContactButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            ContactButton.Foreground = Brushes.White;
+            AboutButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            AboutButton.Foreground = Brushes.White;
+        }
+
+        private void ContactButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContactButton.Background = Brushes.White;
+            ContactButton.Foreground = Brushes.Black;
+            ContactButton.BorderThickness = new Thickness(0, 0, 0, 0);
+
+            ToolsButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            ToolsButton.Foreground = Brushes.White;
+            PreferencesButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            PreferencesButton.Foreground = Brushes.White;
+            AboutButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            AboutButton.Foreground = Brushes.White;
+        }
+
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            AboutButton.Background = Brushes.White;
+            AboutButton.Foreground = Brushes.Black;
+            AboutButton.BorderThickness = new Thickness(0, 0, 0, 0);
+
+            ToolsButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            ToolsButton.Foreground = Brushes.White;
+            PreferencesButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            PreferencesButton.Foreground = Brushes.White;
+            ContactButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            ContactButton.Foreground = Brushes.White;
         }
     }
 }
