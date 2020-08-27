@@ -96,6 +96,19 @@ namespace CustomerDates
             {
                 MenuPanel.Visibility = Visibility.Collapsed;
                 MenuRectangle.Visibility = Visibility.Collapsed;
+
+                SolidColorBrush darkblue = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+                ToolsButton.Background = darkblue;
+                ToolsButton.Foreground = Brushes.White;
+
+                PreferencesButton.Background = darkblue;
+                PreferencesButton.Foreground = Brushes.White;
+
+                ContactButton.Background = darkblue;
+                ContactButton.Foreground = Brushes.White;
+
+                AboutButton.Background = darkblue;
+                AboutButton.Foreground = Brushes.White;
             }
 
         }
@@ -228,16 +241,38 @@ namespace CustomerDates
 
         private void homebtn_Click(object sender, RoutedEventArgs e)
         {
-            ComputersList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            SolidColorBrush darkblu = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            ComputersList.Background = darkblu;
             ComputersList.Foreground = Brushes.White;
-            LaptopsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+
+            LaptopsList.Background = darkblu;
             LaptopsList.Foreground = Brushes.White;
-            MobilesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+
+            MobilesList.Background = darkblu;
             MobilesList.Foreground = Brushes.White;
-            TabletsList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+
+            TabletsList.Background = darkblu;
             TabletsList.Foreground = Brushes.White;
-            OtherDevicesList.Background = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+
+            OtherDevicesList.Background = darkblu;
             OtherDevicesList.Foreground = Brushes.White;
+
+            SolidColorBrush darkblue = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            ToolsButton.Background = darkblue;
+            ToolsButton.Foreground = Brushes.White;
+
+            PreferencesButton.Background = darkblue;
+            PreferencesButton.Foreground = Brushes.White;
+
+            ContactButton.Background = darkblue;
+            ContactButton.Foreground = Brushes.White;
+
+            AboutButton.Background = darkblue;
+            AboutButton.Foreground = Brushes.White;
+
+            RequestedWindowGrid.Children.Clear();
+            MenuPanel.Visibility = Visibility.Collapsed;
+
             Viewgrid.Children.Clear();
         }
 
