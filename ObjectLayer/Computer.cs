@@ -9,6 +9,9 @@ using System.Data;
 
 namespace ObjectLayer
 {
+    /// <summary>
+    /// This Computer Basic Class.
+    /// </summary>
     public class Computer : Device
     {
         public Computer()
@@ -16,8 +19,6 @@ namespace ObjectLayer
             
         }
         public static DataTable Computers = new DataTable();
-
-        
         public static DataTable ComputersProperty
         {
             get
@@ -37,7 +38,6 @@ namespace ObjectLayer
             computer.SerialNumber = Computers.Rows[RowIndex][1].ToString();
             computer.CustomerName = Computers.Rows[RowIndex][2].ToString();
             computer.CustomerPhoneNumber = Computers.Rows[RowIndex][3].ToString();
-            // computer.Extras = Computers.Rows[RowIndex][4].ToString();
             computer.DeviceCompany = Computers.Rows[RowIndex][4].ToString();
             computer.Model = Computers.Rows[RowIndex][5].ToString();
             computer.Price = int.Parse(Computers.Rows[RowIndex][6].ToString());

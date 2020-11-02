@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace CustomerDates.InsertUpdateViewClasses
 {
@@ -55,30 +56,33 @@ namespace CustomerDates.InsertUpdateViewClasses
                 Hardwares = hardwares.WriteHardwaresXml(),
                 Softwares = softwares.WriteSoftwaresXml(),
                 Extras = extras.WriteExtras(),
-                Status = otherdevice.SetStatus()
+                Status = otherdevice.setStatus()
             };
 
             try
             {
-                computer.Price = otherdevice.SumDevicePartsPrice();
+                computer.Price = otherdevice.sumDevicePartsPrice();
                 if (OtherDeviceData.InsertOtherDevice(otherdevice) == true)
                 {
-                    OperationStatus.Content = "Insert is completed";
+                    SetMassage("Insert is completed");
+                    SetMassageBackground(Brushes.LimeGreen);
                     PriceTextBox.Text = otherdevice.Price.ToString();
                 }
                 else
                 {
-                    OperationStatus.Content = "Insert is failed";
+                    SetMassage("Insert is failed");
+                    SetMassageBackground(Brushes.Red);
                 }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR |\n" + ex.Message);
-                OperationStatus.Content = "Insert is failed";
+                SetMassage("Insert is failed");
+                SetMassageBackground(Brushes.Red);
             }
+            ClearFields();
             OtherDeviceData.LoadOtherDevice();
-
         }
 
     }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace CustomerDates.InsertUpdateViewClasses
 {
@@ -42,8 +43,8 @@ namespace CustomerDates.InsertUpdateViewClasses
             otherdevice.Extras = extras.WriteExtras();
             otherdevice.Hardwares = hardwares.WriteHardwaresXml();
             otherdevice.Softwares = softwares.WriteSoftwaresXml();
-            otherdevice.Status = otherdevice.SetStatus();
-            otherdevice.Price = otherdevice.SumDevicePartsPrice();
+            otherdevice.Status = otherdevice.setStatus();
+            otherdevice.Price = otherdevice.sumDevicePartsPrice();
 
 
             try
@@ -51,17 +52,23 @@ namespace CustomerDates.InsertUpdateViewClasses
                 if (OtherDeviceData.UpdateOtherDevice(otherdevice) == true)
                 {
                     SetMassage("Update is completed");
+                    SetMassageBackground(Brushes.LimeGreen);
                     PriceTextBox.Text = otherdevice.Price.ToString();
-                }    
+                }
+                else
+                {
                     SetMassage("Update is failed");
+                    SetMassageBackground(Brushes.Red);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR |\n" + ex.Message);
-                OperationStatus.Content = "Update is failed";
+                SetMassage("Update is failed");
+                SetMassageBackground(Brushes.Red);
             }
+            ClearFields();
             OtherDeviceData.LoadOtherDevice();
-
         }
 
 

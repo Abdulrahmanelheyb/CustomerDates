@@ -9,6 +9,9 @@ using System.Data;
 
 namespace DataManagement
 {
+    /// <summary>
+    /// This Class is Update Record from database (MySQL)
+    /// </summary>
     public class Update
     {
         private static SQLiteConnection con = new SQLiteConnection(SharedFields.DBPath);

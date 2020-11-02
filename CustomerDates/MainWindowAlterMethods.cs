@@ -7,6 +7,9 @@ using System.Windows.Controls;
 
 namespace CustomerDates
 {
+    /// <summary>
+    /// This class linked with mainwindow class is partial class has methods .
+    /// </summary>
     public partial class MainWindow
     {
         public void MainWindowAlterMethods()
@@ -20,9 +23,9 @@ namespace CustomerDates
             Grid.Children.Add(Usercontrol);
         }
 
-        //public void SetRequestedMenuTool(Grid grid,)
-        //{
-
-        //}
+        public void setRequestedMenuTool(Grid grid, UserControl usercontrol)
+        {
+            grid.Children.Add(usercontrol);
+        }
     }
 }

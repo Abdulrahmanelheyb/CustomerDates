@@ -149,8 +149,8 @@ namespace CustomerDates.FeaturesClasses
             XmlWriter writer = XmlWriter.Create(new StringWriter(softwarexml));
             writer.WriteStartDocument();
             writer.WriteStartElement("Softwares");
-            int index = 1;
-            while (index != chkboxes.Count)
+            int index = 0;
+            while (index < chkboxes.Count)
             {
 
                 if (chkboxes[index].IsChecked == true)
@@ -223,6 +223,34 @@ namespace CustomerDates.FeaturesClasses
                     }
                 }
             }
+        }
+        public void ResetELementsValues()
+        {
+            foreach (var item in Infogrids)
+            {
+                item.IsEnabled = false;
+            }
+
+            foreach (var item in chkboxes)
+            {
+                item.IsChecked = false;
+            }
+
+            foreach (var item in Descriptions)
+            {
+                item.Text = "";
+            }
+
+            foreach (var item in Prices)
+            {
+                item.Text = "";
+            }
+
+            foreach (var item in Statuses)
+            {
+                item.Fill = Brushes.White;
+            }
+
         }
 
 

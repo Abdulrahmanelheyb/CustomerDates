@@ -1,22 +1,10 @@
-﻿using CustomerDates;
-using CustomerDates.FeaturesClasses;
-using CustomerDates.ViewModel.ComputerServices;
-using CustomerDates.ViewModel.LaptopServices;
+﻿using CustomerDates.FeaturesClasses;
 using ObjectLayer;
-using System;
-using System.Activities.Expressions;
-using System.Collections.Generic;
-using System.Data;
-using System.IO;
-using System.Linq;
-using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Shapes;
-using System.Xml;
 
 namespace CustomerDates.InsertUpdateViewClasses
 {
@@ -30,26 +18,27 @@ namespace CustomerDates.InsertUpdateViewClasses
         {
             this.Close();
         }
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void ClearFields()
         {
-            if (OperationTypeProperty == OperationType.Insert)
+            NameTextBox.Text = null;
+            PhoneNumberTextBox.Text = null;
+            DeviceCompanyTextBox.Text = null;
+            ModelTextBox.Text = null;
+            SerialNumberTextBox.Text = null;
+            PriceTextBox.Text = null;
+            CodeTextBox.Text = null;
+            computer = null;
+            laptop = null;
+            mobile = null;
+            otherdevice = null;
+            tablet = null;
+            if (hardwares != null)
             {
-                if (e.Key == Key.Escape)
-                {
-                    NameTextBox.Text = null;
-                    PhoneNumberTextBox.Text = null;
-                    DeviceCompanyTextBox.Text = null;
-                    ModelTextBox.Text = null;
-                    SerialNumberTextBox.Text = null;
-                    PriceTextBox.Text = null;
-                    CodeTextBox.Text = null;
-                    computer = null;
-                    laptop = null;
-                    mobile = null;
-                    otherdevice = null;
-                    tablet = null;
-                    //.....
-                }
+                hardwares.ResetELementsValues();
+            }
+            if (softwares != null)
+            {
+                softwares.ResetELementsValues();
             }
         }
         private void Recmove_MouseDown(object sender, MouseButtonEventArgs e)
@@ -164,15 +153,31 @@ namespace CustomerDates.InsertUpdateViewClasses
 
         }
 
-        private void SetMassage(string massage)
+
+        private void SetMassageBackground(SolidColorBrush brush)
+        {
+            StatusBorder.Background = brush;
+        }
+        private async void SetMassage(string massage)
         {
             OperationStatus.Content = massage;
+            await ResetOperationStatusText();
         }
         private void SetHeader(string Text)
         {
             Header.Text = Text;
         }
-
+        public async Task ResetOperationStatusText()
+        {
+            await Task.Run(() =>
+            {
+                Thread.Sleep(3000);
+            });
+            OperationStatus.Content = "";
+            SolidColorBrush color = new SolidColorBrush();
+            color.Color = Color.FromRgb(102, 92, 255);
+            StatusBorder.Background = color;
+        }
 
         #region Device Technics
         #region Hardware

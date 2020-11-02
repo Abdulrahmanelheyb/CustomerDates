@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ObjectLayer
 {
+    /// <summary>
+    /// This Other Device Basic Class.
+    /// </summary>
     public class OtherDevice : Device
     {
         public OtherDevice()

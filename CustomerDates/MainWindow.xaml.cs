@@ -1,5 +1,6 @@
 ﻿using CustomerDates;
 using CustomerDates.DeviceControls;
+using CustomerDates.View;
 using ObjectLayer;
 using System;
 using System.Data;
@@ -241,46 +242,49 @@ namespace CustomerDates
 
         private void homebtn_Click(object sender, RoutedEventArgs e)
         {
-            SolidColorBrush darkblu = new SolidColorBrush(Color.FromRgb(5, 0, 89));
-            ComputersList.Background = darkblu;
+            SolidColorBrush darkblue1 = new SolidColorBrush(Color.FromRgb(5, 0, 89));
+            ComputersList.Background = darkblue1;
             ComputersList.Foreground = Brushes.White;
 
-            LaptopsList.Background = darkblu;
+            LaptopsList.Background = darkblue1;
             LaptopsList.Foreground = Brushes.White;
 
-            MobilesList.Background = darkblu;
+            MobilesList.Background = darkblue1;
             MobilesList.Foreground = Brushes.White;
 
-            TabletsList.Background = darkblu;
+            TabletsList.Background = darkblue1;
             TabletsList.Foreground = Brushes.White;
 
-            OtherDevicesList.Background = darkblu;
+            OtherDevicesList.Background = darkblue1;
             OtherDevicesList.Foreground = Brushes.White;
 
-            SolidColorBrush darkblue = new SolidColorBrush(Color.FromRgb(5, 0, 89));
-            ToolsButton.Background = darkblue;
+            SolidColorBrush darkblue2 = new SolidColorBrush(Color.FromRgb(7, 0, 119));
+            ToolsButton.Background = darkblue2;
             ToolsButton.Foreground = Brushes.White;
 
-            PreferencesButton.Background = darkblue;
+            PreferencesButton.Background = darkblue2;
             PreferencesButton.Foreground = Brushes.White;
 
-            ContactButton.Background = darkblue;
+            ContactButton.Background = darkblue2;
             ContactButton.Foreground = Brushes.White;
 
-            AboutButton.Background = darkblue;
+            AboutButton.Background = darkblue2;
             AboutButton.Foreground = Brushes.White;
 
-            RequestedWindowGrid.Children.Clear();
+            requestedWindowGrid.Children.Clear();
             MenuPanel.Visibility = Visibility.Collapsed;
+            MenuRectangle.Visibility = Visibility.Collapsed;
 
             Viewgrid.Children.Clear();
         }
 
         private void ToolsButton_Click(object sender, RoutedEventArgs e)
         {
+            requestedWindowGrid.Children.Clear();
             ToolsButton.Background = Brushes.White;
             ToolsButton.Foreground = Brushes.Black;
             ToolsButton.BorderThickness = new Thickness(0, 0, 0, 0);
+            setRequestedMenuTool(requestedWindowGrid, new Tools());
 
             PreferencesButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
             PreferencesButton.Foreground = Brushes.White;
@@ -292,6 +296,7 @@ namespace CustomerDates
 
         private void PreferencesButton_Click(object sender, RoutedEventArgs e)
         {
+            requestedWindowGrid.Children.Clear();
             PreferencesButton.Background = Brushes.White;
             PreferencesButton.Foreground = Brushes.Black;
             PreferencesButton.BorderThickness = new Thickness(0, 0, 0, 0);
@@ -306,6 +311,7 @@ namespace CustomerDates
 
         private void ContactButton_Click(object sender, RoutedEventArgs e)
         {
+            requestedWindowGrid.Children.Clear();
             ContactButton.Background = Brushes.White;
             ContactButton.Foreground = Brushes.Black;
             ContactButton.BorderThickness = new Thickness(0, 0, 0, 0);
@@ -320,9 +326,12 @@ namespace CustomerDates
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
+            requestedWindowGrid.Children.Clear();
             AboutButton.Background = Brushes.White;
             AboutButton.Foreground = Brushes.Black;
             AboutButton.BorderThickness = new Thickness(0, 0, 0, 0);
+            About about = new About();
+            about.Show();
 
             ToolsButton.Background = new SolidColorBrush(Color.FromRgb(7, 0, 119));
             ToolsButton.Foreground = Brushes.White;

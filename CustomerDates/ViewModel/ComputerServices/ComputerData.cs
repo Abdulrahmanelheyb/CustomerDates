@@ -14,22 +14,17 @@ namespace CustomerDates.ViewModel.ComputerServices
 {
     public class ComputerData
     {
-        public ComputerData()
-        {
-            
-        }
-
         public static bool InsertComputer(Computer computer)
         {
-            bool result = false;
+            bool result;
             try
             {
-                UniqueCode.GetCode(computer);
+                computer.ValidateData();
+                computer.GenerateDeviceInformationCode(Device.DeviceType.CMP);
                 result = Insert.InsertDevice(computer);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             
@@ -38,14 +33,13 @@ namespace CustomerDates.ViewModel.ComputerServices
 
         public static bool UpdateComputer(Computer computer)
         {
-            bool result = false;
+            bool result;
             try
             {
                 result = Update.UpdateDevice(computer);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
 
@@ -61,36 +55,13 @@ namespace CustomerDates.ViewModel.ComputerServices
         public static bool LoadComputer()
         {
             return Load.LoadComputers();
-
         }
 
         public static DataView SearchComputer(string Type, string Value)
         {
-            DataView dv = Computer.Computers.DefaultView;
-            if (Type == "Name")
-            {
-                dv.RowFilter = "CustomerName LIKE '%" + Value + "%'";
-            }
-            if (Type == "PhoneNumber")
-            {
-                dv.RowFilter = "PhoneNumber LIKE '%" + Value + "%'";
-            }
-            if (Type == "DeviceCompany")
-            {
-                dv.RowFilter = "DeviceCompany LIKE '%" + Value + "%'";
-            }
-            if (Type == "SerialNumber")
-            {
-                dv.RowFilter = "SerialNumber LIKE '%" + Value + "%'";
-            }
-            if (Type == "Model")
-            {
-                dv.RowFilter = "DeviceModel LIKE '%" + Value + "%'";
-            }
-            if (Type == "DeviceInformationCode")
-            {
-                dv.RowFilter = "DeviceInformationCode LIKE '%" + Value + "%'";
-            }
+            DataView dv = new DataView();
+            dv = Computer.ComputersProperty.DefaultView;
+            dv.RowFilter = Type + " LIKE '%" + Value + "%'";
             return dv;
         }
         

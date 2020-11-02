@@ -9,6 +9,9 @@ using System.Data;
 
 namespace DataManagement
 {
+    /// <summary>
+    /// This Class is Delete Record from database (MySQL)
+    /// </summary>
     public class Delete
     {
         private static SQLiteConnection con = new SQLiteConnection(SharedFields.DBPath);

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace CustomerDates.InsertUpdateViewClasses
 {
@@ -50,31 +51,34 @@ namespace CustomerDates.InsertUpdateViewClasses
                 Date = DateTime.Now,
                 Hardwares = hardwares.WriteHardwaresXml(),
                 Softwares = softwares.WriteSoftwaresXml(),
-                Status = mobile.SetStatus(),
+                Status = mobile.setStatus(),
                 Extras = extras.WriteExtras()
             };
 
             try
             {
-                mobile.Price = mobile.SumDevicePartsPrice();
+                mobile.Price = mobile.sumDevicePartsPrice();
                 if (MobileData.InsertMobile(mobile) == true)
                 {
-                    OperationStatus.Content = "Insert is completed";
+                    SetMassage("Insert is completed");
+                    SetMassageBackground(Brushes.LimeGreen);
                     PriceTextBox.Text = mobile.Price.ToString();
                 }
                 else
                 {
-                    OperationStatus.Content = "Insert is failed";
+                    SetMassage("Insert is failed");
+                    SetMassageBackground(Brushes.Red);
                 }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR |\n" + ex.Message);
-                OperationStatus.Content = "Insert is failed";
+                SetMassage("Insert is failed");
+                SetMassageBackground(Brushes.Red);
             }
+            ClearFields();
             MobileData.LoadMobile();
-
         }
 
     }

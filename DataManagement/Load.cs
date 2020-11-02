@@ -9,6 +9,9 @@ using System.Data;
 
 namespace DataManagement
 {
+    /// <summary>
+    /// This Class is Load Record from database (MySQL)
+    /// </summary>
     public class Load
     {
         private static SQLiteCommand cmd;

@@ -1,0 +1,2 @@
+﻿> make Check Device Method for check data after pass value to any method is clean
+> fix search method to easy ease

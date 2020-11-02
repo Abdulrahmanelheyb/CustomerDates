@@ -4,6 +4,7 @@ using ObjectLayer;
 using System;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace CustomerDates.InsertUpdateViewClasses
 {
@@ -64,31 +65,34 @@ namespace CustomerDates.InsertUpdateViewClasses
                 Hardwares = hardwares.WriteHardwaresXml(),
                 Softwares = softwares.WriteSoftwaresXml(),
                 Extras = extras.WriteExtras(),
-                Status = laptop.SetStatus()
+                Status = laptop.setStatus()
 
             };
 
             try
             {
-                laptop.Price = laptop.SumDevicePartsPrice();
+                laptop.Price = laptop.sumDevicePartsPrice();
                 if (LaptopData.InsertLaptop(laptop) == true)
                 {
-                    OperationStatus.Content = "Insert is completed";
+                    SetMassage("Insert is completed");
+                    SetMassageBackground(Brushes.LimeGreen);
                     PriceTextBox.Text = laptop.Price.ToString();
                 }
                 else
                 {
-                    OperationStatus.Content = "Insert is failed";
+                    SetMassage("Insert is failed");
+                    SetMassageBackground(Brushes.Red);
                 }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR |\n" + ex.Message);
-                OperationStatus.Content = "Insert is failed";
+                SetMassage("Insert is failed");
+                SetMassageBackground(Brushes.Red);
             }
+            ClearFields();
             LaptopData.LoadLaptop();
-
         }
 
     }

@@ -10,19 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomerDates.View.CustomerControls
+namespace CustomerDates.View
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for About.xaml
     /// </summary>
-    public partial class TextBoxDate : UserControl
+    public partial class About : Window
     {
-        public TextBoxDate()
+        public About()
         {
             InitializeComponent();
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
+using System.Windows.Media;
 
 namespace CustomerDates.InsertUpdateViewClasses
 {
@@ -43,26 +44,33 @@ namespace CustomerDates.InsertUpdateViewClasses
             tablet.Extras = extras.WriteExtras();
             tablet.Hardwares = hardwares.WriteHardwaresXml();
             tablet.Softwares = softwares.WriteSoftwaresXml();
-            tablet.Price = tablet.SumDevicePartsPrice();
-            tablet.Status = tablet.SetStatus();
+            tablet.Price = tablet.sumDevicePartsPrice();
+            tablet.Status = tablet.setStatus();
 
             try
             {
                 if (TabletData.UpdateTablet(tablet) == true)
                 {
                     SetMassage("Update is completed");
+                    SetMassageBackground(Brushes.LimeGreen);
                     PriceTextBox.Text = tablet.Price.ToString();
                 }
+                else
+                {
                     SetMassage("Update is failed");
+                    SetMassageBackground(Brushes.Red);
+                }
+                    
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR |\n" + ex.Message);
-                OperationStatus.Content = "Update is failed";
+                SetMassage("Update is failed");
+                SetMassageBackground(Brushes.Red);
             }
+            ClearFields();
             TabletData.LoadTablet();
-
         }
 
 

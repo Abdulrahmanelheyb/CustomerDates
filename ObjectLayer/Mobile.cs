@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ObjectLayer
 {
+
+    /// <summary>
+    /// This Mobile Basic Class.
+    /// </summary>
     public class Mobile : Device
     {
         public Mobile()

@@ -42,7 +42,6 @@ namespace CustomerDates.DeviceControls
             {
                 SearchPanel.Visibility = Visibility.Collapsed;
                 DevicesDataGrid.Margin = new Thickness(33, 0, 0, 20);
-                DevicesDataGrid.DataContext = new Laptop();
                 DevicesDataGrid.ItemsSource = Laptop.Laptops.DefaultView;
             }
             else

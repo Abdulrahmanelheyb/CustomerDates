@@ -9,8 +9,11 @@ using System.Xml;
 
 namespace ObjectLayer
 {
-      public class Device
-     {
+    /// <summary>
+    /// This Device Class has property and method to all device.
+    /// </summary>
+    public class Device
+      {
         
         
         public string DeviceInformationCode { get; set; }
@@ -24,10 +27,12 @@ namespace ObjectLayer
         public DateTime Date { get;  set; }
         public string Hardwares { get; set; }
         public string Softwares { get; set; }
+        public bool Validation { get; private set; }
         private enum StatusType { Repairing, Completed, Failed }
+        public enum DeviceType { CMP ,LTP ,MOB ,TAB ,OTH }
 
 
-        public int SumDevicePartsPrice()
+        public int sumDevicePartsPrice()
         {
             int hardwareprice = 0;
             int softwareprice = 0;
@@ -55,8 +60,7 @@ namespace ObjectLayer
             }
             return hardwareprice + softwareprice;
         }
-
-        public string SetStatus()
+        public string setStatus()
         {
             StatusType finalstatus = default;
             List<string> statuses = new List<string>();
@@ -116,6 +120,66 @@ namespace ObjectLayer
             }
 
             return finalstatus.ToString();
+        }
+        public bool ValidateData()
+        {
+            bool rlt = true;
+            if (string.IsNullOrEmpty(CustomerName) == false && string.IsNullOrWhiteSpace(CustomerName) == false && CustomerName.Length < 2)
+            {
+                throw new Exception("The Name Length Under Limit");
+            }
+
+            if (string.IsNullOrEmpty(CustomerPhoneNumber) == false && string.IsNullOrWhiteSpace(CustomerPhoneNumber) == false && CustomerPhoneNumber.Length < 11)
+            {
+                throw new Exception("The Phone Number Under Limit");
+            }
+
+            if (string.IsNullOrEmpty(Model) == false && string.IsNullOrWhiteSpace(Model) == false && Model.Length < 4)
+            {
+                throw new Exception("The Model Length Under Limit");
+            }
+
+            Validation = rlt;
+            return rlt;
+        }
+        public bool GenerateDeviceInformationCode(DeviceType deviceType)
+        {
+            bool rlt = false;
+            string Gchars = null;
+            string last = null;
+            if (Validation == true)
+            {
+                Gchars += CustomerName[CustomerName.Length - 1].ToString() + CustomerName[CustomerName.Length - 2].ToString();
+                Gchars = Gchars + CustomerPhoneNumber[CustomerPhoneNumber.Length - 1].ToString() + CustomerPhoneNumber[CustomerPhoneNumber.Length - 2].ToString() + CustomerPhoneNumber[CustomerPhoneNumber.Length - 3].ToString() + CustomerPhoneNumber[CustomerPhoneNumber.Length - 4].ToString();
+                Gchars += Model[Model.Length - 1].ToString() + Model[Model.Length - 2].ToString();
+
+                char[] CharCodeArray = Gchars.ToCharArray();
+                Random rdm = new Random();
+                int Charindex;
+
+                do
+                {
+                    Charindex = rdm.Next(0, 8);
+                    if (CharCodeArray[Charindex] != '*')
+                    {
+                        last += CharCodeArray[Charindex].ToString();
+                        CharCodeArray[Charindex] = '*';
+                    }
+
+                } while (last.Length != 8);
+
+                if (last.Length == 8)
+                {
+                    DeviceInformationCode = last.Insert(0, deviceType.ToString()).ToUpper();
+                    rlt = true;
+                }
+                else
+                {
+                    throw new Exception("Error in code generate !!!");
+                }
+                
+            }
+            return rlt;
         }
     }
 }

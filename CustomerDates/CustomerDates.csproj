@@ -160,15 +160,14 @@
     <Compile Include="ViewModel\MobileServices\MobileData.cs" />
     <Compile Include="ViewModel\OtherDeviceServices\OtherDeviceData.cs" />
     <Compile Include="ViewModel\TabletServices\TabletData.cs" />
-    <Compile Include="ViewModel\UniqueCode.cs" />
-    <Compile Include="View\CustomerControls\TextBoxDate.xaml.cs">
-      <DependentUpon>TextBoxDate.xaml</DependentUpon>
+    <Compile Include="View\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ReportDevice.xaml.cs">
       <DependentUpon>ReportDevice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Test.xaml.cs">
-      <DependentUpon>Test.xaml</DependentUpon>
+    <Compile Include="View\Tools.xaml.cs">
+      <DependentUpon>Tools.xaml</DependentUpon>
     </Compile>
     <Page Include="DeviceControls\CDevicesListAndControlsView.xaml">
       <SubType>Designer</SubType>
@@ -190,7 +189,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CustomerControls\TextBoxDate.xaml">
+    <Page Include="View\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,7 +223,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Test.xaml">
+    <Page Include="View\Tools.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -367,7 +366,9 @@
   <ItemGroup>
     <Resource Include="AppResources\Assets\About.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Notes.txt" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataManagement\DataManagement.csproj">
       <Project>{8ecf62ce-3b98-4702-bb7b-62a2f0b13d44}</Project>
@@ -379,5 +380,6 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,7 +29,8 @@ namespace CustomerDates.ViewModel.LaptopServices
         {
             try
             {
-                UniqueCode.GetCode(laptop);
+                laptop.ValidateData();
+                laptop.GenerateDeviceInformationCode(Device.DeviceType.LTP);
                 return Insert.InsertDevice(laptop);
             }
             catch (Exception ex)

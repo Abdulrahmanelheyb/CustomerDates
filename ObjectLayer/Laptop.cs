@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ObjectLayer
 {
+    /// <summary>
+    /// This Laptop Basic Class.
+    /// </summary>
     public class Laptop : Device
     {
         public Laptop()

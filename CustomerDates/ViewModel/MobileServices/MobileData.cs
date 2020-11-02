@@ -16,7 +16,8 @@ namespace CustomerDates.ViewModel.MobileServices
             bool result = false;
             try
             {
-                UniqueCode.GetCode(mobile);
+                mobile.ValidateData();
+                mobile.GenerateDeviceInformationCode(Device.DeviceType.MOB);
                 result = Insert.InsertDevice(mobile);
             }
             catch (Exception ex)

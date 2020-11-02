@@ -16,7 +16,8 @@ namespace CustomerDates.ViewModel.TabletServices
             bool result = false;
             try
             {
-                UniqueCode.GetCode(tablet);
+                tablet.ValidateData();
+                tablet.GenerateDeviceInformationCode(Device.DeviceType.TAB);
                 result = Insert.InsertDevice(tablet);
             }
             catch (Exception ex)

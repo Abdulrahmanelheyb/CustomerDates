@@ -9,6 +9,9 @@ using System.Data;
 
 namespace DataManagement
 {
+    /// <summary>
+    /// This Class is Insert Record from database (MySQL)
+    /// </summary>
     public class Insert
     {
 

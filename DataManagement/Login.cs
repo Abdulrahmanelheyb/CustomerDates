@@ -9,6 +9,9 @@ using System.CodeDom;
 
 namespace DataManagement
 {
+    /// <summary>
+    /// This Class is Login User if check value from database (MySQL)
+    /// </summary>
     public class Login
     {
         private static SQLiteConnection con = new SQLiteConnection(SharedFields.DBPath);

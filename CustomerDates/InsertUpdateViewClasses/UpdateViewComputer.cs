@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace CustomerDates.InsertUpdateViewClasses
 {
@@ -44,18 +45,20 @@ namespace CustomerDates.InsertUpdateViewClasses
             computer.DeviceInformationCode = CodeTextBox.Text;
             computer.Hardwares = hardwares.WriteHardwaresXml();
             computer.Softwares = softwares.WriteSoftwaresXml();
-            computer.Status = computer.SetStatus();
-            computer.Price = computer.SumDevicePartsPrice();
+            computer.Status = computer.setStatus();
+            computer.Price = computer.sumDevicePartsPrice();
             try
             {
                 if(ComputerData.UpdateComputer(computer) == true)
                 {
                     SetMassage("Update is completed");
+                    SetMassageBackground(Brushes.LimeGreen);
                     PriceTextBox.Text = computer.Price.ToString();
                 }
                 else
                 {
                     SetMassage("Update is failed");
+                    SetMassageBackground(Brushes.Red);
                 }
 
 
@@ -64,9 +67,10 @@ namespace CustomerDates.InsertUpdateViewClasses
             {
                 MessageBox.Show("ERROR | UPDATE\n" + ex.Message);
                 SetMassage("Update is failed");
+                SetMassageBackground(Brushes.Red);
             }
+            ClearFields();
             ComputerData.LoadComputer();
-            
         }
 
     }

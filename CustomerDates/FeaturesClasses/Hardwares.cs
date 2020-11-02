@@ -1,13 +1,7 @@
-﻿using ObjectLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net.Security;
-using System.Reflection.Emit;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -152,8 +146,8 @@ namespace CustomerDates.FeaturesClasses
             XmlWriter writer = XmlWriter.Create(new StringWriter(hardwarexml));
             writer.WriteStartDocument();
             writer.WriteStartElement("Hardwares");
-            int index = 1;
-            while (index != chkboxes.Count)
+            int index = 0;
+            while (index < chkboxes.Count)
             {
 
                 if (chkboxes[index].IsChecked == true)
@@ -228,6 +222,34 @@ namespace CustomerDates.FeaturesClasses
 
 
             }
+        }
+        public void ResetELementsValues()
+        {
+            foreach (var item in Infogrids)
+            {
+                item.IsEnabled = false;
+            }
+
+            foreach (var item in chkboxes)
+            {
+                item.IsChecked = false;
+            }
+
+            foreach (var item in Descriptions)
+            {
+                item.Text = "";
+            }
+
+            foreach (var item in Prices)
+            {
+                item.Text = "";
+            }
+
+            foreach (var item in Statuses)
+            {
+                item.Fill = Brushes.White;
+            }
+
         }
     }
 }

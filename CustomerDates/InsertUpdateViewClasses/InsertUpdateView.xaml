@@ -6,21 +6,21 @@
         xmlns:ComputerServices="clr-namespace:CustomerDates.ViewModel.ComputerServices"
     xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:UserControls="clr-namespace:CustomerDates.DeviceControls" x:Class="CustomerDates.InsertUpdateViewClasses.InsertUpdateView"
         mc:Ignorable="d" 
-        Title="NewDevice" Height="484" Width="962.6" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" IsTabStop="False" WindowStyle="None" AllowsTransparency="True" Background="#FF1C1492" BorderThickness="0,3" KeyDown="Window_KeyDown" BorderBrush="#FF332E80">
+        Title="NewDevice" Height="484" Width="962.6" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" IsTabStop="False" WindowStyle="None" AllowsTransparency="True" Background="#FF1C1492" BorderThickness="1" BorderBrush="White">
     <Window.Resources>
         <FontFamily x:Key="cdfont">Arial</FontFamily>
         <Thickness x:Key="Pdng">2,2.5,0,0</Thickness>
         <System:Double x:Key="cub">19</System:Double>
     </Window.Resources>
 
-    <Grid x:Name="MainGrid" Margin="0,-3,0,-3.4">
+    <Grid x:Name="MainGrid" Margin="0,0,0,0">
         <Border HorizontalAlignment="Stretch" x:Name="recmove" Height="25" VerticalAlignment="Top" MouseDown="Recmove_MouseDown" Cursor="Hand" Background="#FF665CFF"  BorderBrush="White" BorderThickness="0,0,0,1">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="20"/>
                 </Grid.ColumnDefinitions>
-                <Border HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="200" Background="Black" CornerRadius="0,12,12,0" BorderThickness="1,1,0,0" BorderBrush="White">
+                <Border HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="200" Background="Black" CornerRadius="0,12,12,0" BorderThickness="0,0,1,0" BorderBrush="White">
                     <TextBlock Name="Header"  Text="" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
                 </Border>
                 <Button Grid.Column="1" Content="" HorizontalAlignment="Right" x:Name="NDbtnexit" Margin="0,0,5,0" VerticalAlignment="Center" Width="15" Height="15" BorderBrush="{x:Null}" Click="NDbtnexit_Click" Cursor="Hand" Template="{StaticResource ExitButtonTemplate}">
@@ -102,8 +102,8 @@
 
 
 
-        <Border HorizontalAlignment="Left" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1,0" Margin="0,25" Width="285" Background="#FF1C1492">
-            <Grid Height="434" x:Name="datagrid" VerticalAlignment="Top" Width="284" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="69" Margin="0.2,0,-1,0">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="0" Margin="0,25" Width="285" Background="#FF1C1492">
+            <Grid Height="434.5" x:Name="datagrid" VerticalAlignment="Top" Width="284" HorizontalAlignment="Left" Margin="0,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -142,7 +142,7 @@
 
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="7" Text="Code" Margin="0,0,5,0" Foreground="White"/>
                 <TextBox x:Name="CodeTextBox"  Grid.Row="7" Grid.Column="1" Foreground="White" Height="26" VerticalContentAlignment="Center"  FontSize="12" FontFamily="{StaticResource cdfont}" Padding="0,0,10,3" Template="{StaticResource TextBoxTemplate}" BorderBrush="{x:Null}" BorderThickness="0" IsReadOnly="True" HorizontalContentAlignment="Center" Margin="10,0,0,0" Width="133" HorizontalAlignment="Left"/>
-                <Button Grid.ColumnSpan="2" Grid.Row="9" Content="Execute" x:Name="Execute_btn" Height="29" FontFamily="{StaticResource cdfont}" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" BorderBrush="White" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Cursor="Hand" Template="{DynamicResource ButtonTemplate}" Margin="0,0,0,0">
+                <Button Grid.ColumnSpan="2" Grid.Row="7" Content="Execute" x:Name="Execute_btn" Height="29" FontFamily="{StaticResource cdfont}" BorderThickness="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Black" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Cursor="Hand" Template="{DynamicResource ButtonTemplate}" Margin="0,0,-1,0.4" Grid.RowSpan="2">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <LinearGradientBrush.RelativeTransform>
@@ -153,8 +153,8 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </LinearGradientBrush.RelativeTransform>
-                            <GradientStop Color="#FF002D88" Offset="0"/>
-                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFA0BFFF" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
                         </LinearGradientBrush>
                     </Button.Background>
 
@@ -167,13 +167,13 @@
 
             </Grid>
         </Border>
-        <Border VerticalAlignment="Bottom" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="0" Height="25" Background="#FF665CFF">
+        <Border Name="StatusBorder" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="0" Height="25" Background="#FF665CFF">
             <Grid HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Bottom">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="29*"/>
                     <ColumnDefinition Width="10*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" x:Name="OperationStatus" Content="Issue" HorizontalAlignment="Stretch" Margin="10,0,1.8,0" Padding="0,0,0,1" VerticalAlignment="Top" Height="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" />
+                <Label Grid.Column="0" x:Name="OperationStatus" Content="Issue" HorizontalAlignment="Stretch" Margin="10,0,0,0" Padding="0,0,0,1" VerticalAlignment="Top" Height="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" FontWeight="Bold" FontSize="13" />
             </Grid>
         </Border>
 

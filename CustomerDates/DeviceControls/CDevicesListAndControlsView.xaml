@@ -16,15 +16,12 @@
             <StackPanel x:Name="SearchPanel" Orientation="Horizontal" Tag="SearchTopDockPanel" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Stretch">
                 <TextBlock Text="Property Type :" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 <ComboBox x:Name="SearchPropertyComboBox" FontFamily="{StaticResource cdfont}" Background="Black" BorderThickness="0,0,0,1" Template="{DynamicResource ComboBoxTemplate}" Foreground="White" Width="210" Margin="10,5,0,4.8">
-                    <ComboBoxItem Tag="Name" Content="Customer Name"/>
+                    <ComboBoxItem Tag="CustomerName" Content="Customer Name"/>
                     <ComboBoxItem Tag="PhoneNumber" Content="Customer Phone Number"/>
                     <ComboBoxItem Tag="DeviceCompany" Content="Device Company"/>
-                    <ComboBoxItem Tag="Model" Content="Model"/>
                     <ComboBoxItem Tag="SerialNumber" Content="Serial Number"/>
+                    <ComboBoxItem Tag="DeviceModel" Content="Model"/>
                     <ComboBoxItem Tag="DeviceInformationCode" Content="Code"/>
-                    <ComboBoxItem Tag="Price" Content="Price"/>
-                    <ComboBoxItem Tag="Date" Content="Date"/>
-                    <ComboBoxItem Tag="Status" Content="Status"/>
                 </ComboBox>
                 <TextBlock Text="Value :" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 <TextBox x:Name="SearchValueTextBox" HorizontalAlignment="Left" Background="{x:Null}"  FontFamily="{StaticResource cdfont}" Foreground="White" Padding="3,0,0,0" VerticalContentAlignment="Center" VerticalAlignment="Center" BorderBrush="White" BorderThickness="0,0,0,1" CaretBrush="White" Margin="10,4,0,4" Grid.ColumnSpan="3" Width="251" Height="21"/>

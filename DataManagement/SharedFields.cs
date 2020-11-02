@@ -7,6 +7,9 @@ using System.Data.SQLite;
 
 namespace DataManagement
 {
+    /// <summary>
+    /// This Class has SuperGlobals Variables.
+    /// </summary>
     public class SharedFields
     {
         public const string DBPath = @"Data Source = Data\CustomerDates.sl3;Version=3;";

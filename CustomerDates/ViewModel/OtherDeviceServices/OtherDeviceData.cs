@@ -16,12 +16,12 @@ namespace CustomerDates.ViewModel.OtherDeviceServices
             bool result = false;
             try
             {
-                UniqueCode.GetCode(otherdevice);
+                otherdevice.ValidateData();
+                otherdevice.GenerateDeviceInformationCode(Device.DeviceType.OTH);
                 result = Insert.InsertDevice(otherdevice);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
 

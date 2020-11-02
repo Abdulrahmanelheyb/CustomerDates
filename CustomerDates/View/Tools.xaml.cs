@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CustomerDates.View
 {
     /// <summary>
-    /// Interaction logic for Test.xaml
+    /// Interaction logic for Tools.xaml
     /// </summary>
-    public partial class Test : Window
+    public partial class Tools : UserControl
     {
-        public Test()
+        public Tools()
         {
             InitializeComponent();
         }

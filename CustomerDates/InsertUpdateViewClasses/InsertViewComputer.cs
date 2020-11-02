@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,7 +30,7 @@ namespace CustomerDates.InsertUpdateViewClasses
         private void LoadComputerFeatures()
         {
             //Hardwares
-             hardwares = new Hardwares();
+            hardwares = new Hardwares();
             HardwareStackPanel.Children.Add(hardwares.CreateHardware("Case", "Case"));
             HardwareStackPanel.Children.Add(hardwares.CreateHardware("Motherboard", "Motherboard"));
             HardwareStackPanel.Children.Add(hardwares.CreateHardware("Power Supply", "PowerSupply"));
@@ -63,31 +65,34 @@ namespace CustomerDates.InsertUpdateViewClasses
                 SerialNumber = SerialNumberTextBox.Text,
                 Date = DateTime.Now,
                 Hardwares = hardwares.WriteHardwaresXml(),
-                Softwares = softwares.WriteSoftwaresXml(),
-                Status = computer.SetStatus()
+                Softwares = softwares.WriteSoftwaresXml()
             };
+            computer.Status = computer.setStatus();
 
             try
             {
-                computer.Price = computer.SumDevicePartsPrice();
+                computer.Price = computer.sumDevicePartsPrice();
                 if (ComputerData.InsertComputer(computer) == true)
                 {
-                    OperationStatus.Content = "Insert is completed";
+                    SetMassage("Insert is completed");
+                    SetMassageBackground(Brushes.LimeGreen);
                     PriceTextBox.Text = computer.Price.ToString();
                 }
                 else
                 {
-                    OperationStatus.Content = "Insert is failed";
+                    SetMassage("Insert is failed");
+                    SetMassageBackground(Brushes.Red);
                 }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR |\n" + ex.Message);
-                OperationStatus.Content = "Insert is failed";
+                SetMassage("Insert is failed");
+                SetMassageBackground(Brushes.Red);
             }
+            ClearFields();
             ComputerData.LoadComputer();
-
         }
 
 

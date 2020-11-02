@@ -22,7 +22,7 @@
             <Label Grid.Row="0" Grid.Column="0" Content="Username" HorizontalAlignment="Left" VerticalAlignment="Center" Height="27" FontSize="14" Foreground="White"/>
             <PasswordBox Grid.Column="1" Grid.Row="1" Height="23"  Password="adroot" Width="175" x:Name="Passtbx" Background="{x:Null}" BorderBrush="White"  BorderThickness="0,0,0,1" Padding="3,0,0,0" FontSize="14" Template="{StaticResource PasswordTextBoxTemplate}" Foreground="White" CaretBrush="White"/>
             <Label Grid.Column="0" Grid.Row="1" Content="Password" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="20" Canvas.Top="74" FontSize="14" Foreground="White"/>
-            <Button x:Name="loginbtn" Grid.Row="2" Grid.ColumnSpan="2" Padding="0,0,0,3" Grid.IsSharedSizeScope="True"  BorderThickness="0,0,0,1" Cursor="Hand" Click="loginbtn_Click" Height="26"  Width="247" IsTabStop="False" AllowDrop="False" Content="Login" Foreground="White" FontSize="14" Background="{x:Null}" BorderBrush="White">
+            <Button x:Name="loginbtn" Grid.Row="2" Grid.ColumnSpan="2" Padding="0,0,0,3" Grid.IsSharedSizeScope="True"  BorderThickness="1" Cursor="Hand" Click="loginbtn_Click" Height="26"  Width="247" IsTabStop="False" AllowDrop="False" Content="Login" Foreground="White" FontSize="14" Background="Black" BorderBrush="White">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
