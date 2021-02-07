@@ -69,7 +69,7 @@ namespace CustomerDates.InsertUpdateViewClasses
                 SetMassage("Update is failed");
                 SetMassageBackground(Brushes.Red);
             }
-            ClearFields();
+            //ClearFields();
             ComputerData.LoadComputer();
         }
 

@@ -137,7 +137,7 @@ namespace CustomerDates.FeaturesClasses
             if (controller.Fill == Brushes.Lime)
             {
                 controller.Fill = Brushes.Red;
-                TextBox prc = Prices.Find(x => x.Name == controller.Name + "Price");
+                TextBox prc = Prices.Find(x => x.Name == controller.Name.Replace("Status", "") + "Price");
                 prc.Text = "0";
                 controller.Tag = "Failed";
                 return;

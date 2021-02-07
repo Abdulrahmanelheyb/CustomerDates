@@ -64,9 +64,5 @@ namespace CustomerDates.ViewModel.ComputerServices
             dv.RowFilter = Type + " LIKE '%" + Value + "%'";
             return dv;
         }
-        
-        
-
-
     }
 }
